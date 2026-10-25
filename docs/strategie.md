@@ -1,152 +1,164 @@
-# Strategie: Empfehlung, Urlaubsverteilung, Buchungsreihenfolge
+# Strategie: Startszenario, Arbeitszeit, Urlaubsverteilung, Buchung
 
-Stand: 25.10.2026. Flugpreise noch Schätzwerte – die *Reihenfolge* der Ziele und
-die *Zeitfenster* stehen aber unabhängig von den Preisen, weil sie aus der
-Saisonalität folgen.
+Stand: 25.10.2026, mit deinen Angaben vom 25.10. eingearbeitet (Residentenrabatt,
+Montafon bis 06.03., Arbeitszeit 09–16 Uhr, Firma in Hamburg, Eltern in Cottbus).
+Flugpreise sind noch Schätzwerte – die Reihenfolge der Ziele und die Zeitfenster
+folgen aber aus der Saisonalität und stehen unabhängig davon.
 
-## Die eine Empfehlung
+## Die Empfehlung
 
-**Sri Lanka Südküste (ca. 3 Wochen) → Lombok Süd (ca. 3 Wochen)**
-Abflug Mitte März, Rückflug Ende April, ab Madrid.
+**Szenario B: Cottbus-Brücke.** Am 06.03. mit deinen Eltern von Montafon nach
+Cottbus, dort knapp zwei Wochen normal arbeiten, am **17.03. ab BER nach Colombo**.
+Dann **Sri Lanka Südküste 17.03.–07.04.** (22 Tage), **Lombok Süd 08.04.–27.04.**
+(20 Tage), Rückflug über Madrid nach Teneriffa.
 
-Der Grund ist ein saisonaler Glücksfall: Sri Lankas Südküste ist im März auf dem
-Saisonhöhepunkt und bricht Ende April mit dem SW-Monsun weg. Lombok macht genau
-das Gegenteil – im März noch Regenzeit-Auslauf, ab Mitte April dreht der SO-Passat
-offshore und die Trockenzeit beginnt. Ihr surft also zweimal die beste Zeit des
-jeweiligen Ortes und nie die Nebensaison. Beide Ziele sind tropisch, beide haben
-ausdrücklich longboardtaugliche Wellen (Weligama Bay, Ceylon-Sliders-Rechte,
-Hiriketiya / Tanjung Aan, Gerupuk), beide haben Coworking.
+Kosten für zwei Personen: **ca. 7.220 €** (2.650 € Flüge, 4.420 € vor Ort,
+150 € Visa) – 172 € pro Tag für beide.
 
-Dass CMB→LOP über Kuala Lumpur läuft, ist ein Bonus: Penang/Langkawi liegt als
-optionaler Zwischenstopp fast gratis auf der Strecke.
+Warum diese Variante: sie kostet **keinen einzigen zusätzlichen Flug** (Mitfahrt
+mit den Eltern, Unterkunft bei der Familie), und sie verschiebt den Asien-Teil
+genau in das Fenster, in dem Lomboks Trockenzeit beginnt. Ein Direktabflug aus
+dem Montafon am 07.03. wäre zwei Wochen zu früh für Lombok.
 
-### Warum nicht die anderen Ziele?
+### Szenarienvergleich
 
-| Ziel | Warum es rausfällt |
-|---|---|
-| **Laos** | Brandsaison. AQI 150–300+ in Nord-Laos im März/April. Hart gesperrt. |
-| **Kambodscha** | Heißester Zeitraum des Jahres (36–40 °C), Khmer New Year mitten drin, kein Surf. |
-| **Oman** | Logistisch ideal (7–8 h, nur 2–3 h Zeitversatz), aber kein Longboard, nicht tropisch, ab Mitte April zu heiß, ~95 €/Person/Tag. Bester *erster* Block, wenn Surf nicht Priorität Nr. 1 ist. |
-| **Taiwan** | Beste Arbeitsinfrastruktur überhaupt, aber im März 18 °C und feucht, Surfsaison läuft aus, ab Mai Pflaumenregen. |
-| **Nepal** | Perfekte Trekkingsaison, aber null Tropen, null Surf, schwaches Internet. Nur als Urlaubsanhängsel (CMB–KTM Direktflug ~190 €). |
-| **Indien/Kerala** | März/April ist dort die heißeste Zeit mit der schwächsten Welle. |
-| **Madagaskar** | Internet landesweit zu schwach für Workation, Zyklonrisiko bis Mitte April. |
-| **Indonesien außer Lombok** | Sumbawa/Mentawais/Raja Ampat: Wellen bzw. Tauchen top, Arbeitsfähigkeit 2–4. Taugt als Urlaubswoche *innerhalb* des Lombok-Blocks. |
+| Szenario | Abflug | Zeitraum | ab | Kosten | €/Tag | Score/Tag |
+|---|---|---|---|---|---|---|
+| **B – Cottbus-Brücke (1–2 Wo.)** | 17.03. | 17.03.–27.04. | BER | **7.218 €** | **172 €** | **8,68** |
+| B2 – Cottbus lang (3 Wo.), nach Ostern | 31.03. | 31.03.–10.05. | BER | 7.088 € | 173 € | 8,54 |
+| A – Direkt ab Montafon | 07.03. | 07.03.–17.04. | MUC | 7.278 € | 173 € | 8,55 |
+| D – über Hamburg (Bürotage) | 17.03. | 17.03.–27.04. | MAD | 7.648 € | 182 € | 8,68 |
+| C – erst heim nach Teneriffa | 17.03. | 17.03.–27.04. | MAD | 7.708 € | 184 € | 8,68 |
 
-Begründungen im Detail: [`seasonality.md`](seasonality.md).
+**B2** ist 130 € billiger und hat den besten Lombok-Block des gesamten Fensters
+(19.04.–10.05., Passat voll offshore), verliert aber auf der Sri-Lanka-Seite: der
+Block rutscht ins Sinhala New Year (13./14.04., Land steht still) und an das
+Monsunende heran. Unterm Strich ein Patt – nimm B2, wenn drei Wochen Cottbus für
+dich ohnehin angenehmer sind, sonst B.
 
-## Konkreter 6-Wochen-Plan (42 Tage, 16.03.–26.04.)
+**A** ist überraschend schwach für die kürzeste Anreise: Lombok ist Ende März
+noch Regenzeit-Auslauf. Du würdest den schlechteren Lombok-Block gegen zwei
+Wochen früheren Reisebeginn tauschen.
 
-Drei Wochen Urlaub, verteilt in Blöcken – nicht einzelne Tage, weil
-Ganztagesaktivitäten sonst nicht funktionieren. Standortwechsel alle 10–14 Tage,
-innerhalb des Landes per Scooter/Auto.
+**C und D** kosten 430 bis 490 € mehr, weil zwei zusätzliche Flüge nach Teneriffa
+dazukommen. **Der Firmenflug HAM→TFS hilft dabei weniger, als es aussieht:** er
+deckt nur dich ab, ihr Ticket (~220 €) und die Bahn ins 900 km entfernte Hamburg
+(~180 € für zwei) bleiben. D ist 60 € billiger als C – wenn du Bürotage brauchst,
+nimm sie, aber nicht als Sparmaßnahme. Rein fürs Geld: lieber nach der Reise
+nach Hamburg und den Firmenflug dann nutzen.
 
-| Woche | Standort | Modus | Ganztagesaktivitäten |
+## Die 9–16-Uhr-Pflicht ist der härteste Nebenwiderspruch
+
+Das war die wichtigste neue Information, und sie verschiebt die Bewertung
+spürbar. Was 09:00–16:00 deutscher Zeit vor Ort bedeutet (Sommerzeit, also ab
+28.03.):
+
+| Ziel | starr 9–16 | mit 1 h Verschiebung (8–15) | Score |
 |---|---|---|---|
-| **1** (16.–22.03.) | Weligama / Mirissa | **Arbeit** | Surf vor/nach der Arbeit – Eingewöhnung, Jetlag, Board organisieren |
-| **2** (23.–29.03.) | Ahangama / Midigama | **Urlaub** | Udawalawe- oder Yala-Safari (ganztägig), Hochland-Trip Ella/Horton Plains (2–3 Tage), Walbeobachtung Mirissa |
-| **3** (30.03.–06.04.) | Hiriketiya / Dikwella | **Arbeit** | Windgeschützte Linke für den Longboard-Alltag, Coworking in Dikwella |
-| — | ✈ CMB → LOP (07.04.) | Transfer | Umsteigetag KUL; optional 2 Nächte Penang einlegen |
-| **4** (08.–14.04.) | Kuta Lombok | **Arbeit** | Eingewöhnung, Scooter, Tanjung Aan am Morgen |
-| **5** (15.–21.04.) | Kuta / Gerupuk | **Urlaub** | Gerupuk-Bootstage (ganztägig), Rinjani-Vorberge, Benang-Stokel-Wasserfälle, 3 Tage Gili Air oder Gili Meno |
-| **6** (22.–26.04.) | Kuta / Mawi-Seite | **Arbeit + Puffer** | Beste Surfwoche der Reise (Passat offshore), Abreise 26.04. |
+| **Oman** | 11:00–18:00 | 10:00–17:00 | 10,0 |
+| **Sri Lanka** | 12:30–19:30 | 11:30–18:30 | 10,0 |
+| Nordvietnam | 14:00–21:00 | 13:00–20:00 | 9,7 |
+| **Lombok** | 15:00–22:00 | 14:00–21:00 | 8,2 |
+| Penang, Taiwan | 15:00–22:00 | 14:00–21:00 | 8,2 |
 
-**Urlaubsbilanz:** ca. 14 Urlaubstage in zwei Blöcken plus die Wochenenden. Wenn
-ihr auf 3 Wochen Urlaub wollt, hängt eine weitere Urlaubswoche an Woche 5 an und
-macht daraus einen Sumbawa-Trip (Lakey Peak, 8 h per Fähre von Lombok) – dort ist
-das Internet zu schlecht zum Arbeiten, als Urlaubswoche aber perfekt.
+**Sri Lanka ist für deine Arbeitszeit fast ideal:** 6,5 Stunden freier Morgen –
+genau die offshore-Vormittage, in denen du surfen willst – und der Abend bleibt
+weitgehend frei. Du arbeitest de facto von Mittag bis Sonnenuntergang.
 
-**Warum der Abflug am 16.03. und nicht später:** Semana Santa ist 21.–29.03.2027
-(Ostersonntag 28.03.), die teuerste Woche für Langstrecken ab MAD/BCN *und* für
-die Teneriffa-Zubringer. Vor dem 20.03. losfliegen oder nach dem 29.03.
+**Lombok kostet dich die Abende.** Starr 9–16 heißt 15:00–22:00 Ortszeit: drei
+Stunden nach Sonnenuntergang, Abendessen um 22:30, jeden Tag, drei Wochen lang.
+Mit der einen Stunde Flexibilität wird 14:00–21:00 daraus, was deutlich besser
+ist. Der Ausgleich: neun Stunden freier Morgen.
 
-**Warum nicht in Sri Lanka bleiben bis Mitte April:** Sinhala & Tamil New Year am
-13./14.04. legt das Land 3–4 Tage still (Coworking und Restaurants zu). Der
-Wechsel am 07.04. läuft genau davor.
+**Daraus folgt die Urlaubsverteilung.** Der Optimierer legt Urlaubstage dorthin,
+wo das Arbeitsfenster am meisten weh tut – und das ist nicht gleichmäßig:
 
-## Varianten
+- **Sri Lanka: 18 Arbeitstage, 4 Urlaubstage.** Hier zu arbeiten kostet fast
+  nichts. Die vier Urlaubstage gehen in einen Block: Udawalawe-Safari plus
+  Hochland-Trip (Ella/Horton Plains) – das sind echte Ganztagesaktivitäten.
+- **Lombok: 10 Arbeitstage, 10 Urlaubstage.** Hier ist jeder Urlaubstag doppelt
+  wertvoll, weil er einen verlorenen Abend zurückgibt. Zwei Blöcke: Gerupuk-
+  Bootstage und Rinjani-Vorberge, plus 3–4 Tage Gili Air.
 
-### A) 4 Wochen statt 6 (28 Tage, ca. 14.03.–10.04.)
+Mit 21 statt 14 Urlaubstagen verschiebt sich das auf etwa 7 / 14 – die
+zusätzliche Woche landet wieder in Lombok. Eine Option für diese Woche:
+**Sumbawa** (Lakey Peak, 8 h per Fähre von Lombok). Dort ist das Internet zu
+schlecht zum Arbeiten, als reine Urlaubswoche aber perfekt. Deswegen taucht
+Sumbawa auch nicht als eigener Routenbaustein auf – das Modell schließt Ziele mit
+Arbeitsinfrastruktur unter 5 als Standort aus, egal wie gut die Wellen sind.
 
-Gleiche Route, je Block 2 Wochen. Kostet rund 1.450 € weniger, aber der Lombok-Block
-liegt dann zu früh (Trockenzeit gerade erst im Anlaufen) und eine Urlaubswoche
-fällt weg. Der Tag kostet dabei 216 € statt 178 € – die Langstrecke amortisiert
-sich schlechter. **Wenn es zeitlich geht: die 6 Wochen nehmen.**
+## Konkreter Plan für Szenario B
 
-### B) Nur Sri Lanka (spart einen Langstreckenflug)
+| Zeitraum | Standort | Modus | Ganztagesaktivitäten |
+|---|---|---|---|
+| 06.–16.03. | **Cottbus** | Arbeit | Eltern, Packen, Boards organisieren |
+| 17.–23.03. | Weligama / Mirissa | Arbeit (12:30–19:30 Ortszeit) | Dawn Patrol vor der Arbeit, Eingewöhnung |
+| 24.–29.03. | Ahangama / Midigama | **Urlaub (4 Tage)** | Udawalawe-Safari, Ella/Horton Plains, Walbeobachtung |
+| 30.03.–07.04. | Hiriketiya / Dikwella | Arbeit | windgeschützte Linke, Coworking Dikwella |
+| ✈ 08.04. | BER→CMB→LOP via KUL | Transfer | optional 2 Nächte Penang einlegen |
+| 09.–14.04. | Kuta Lombok | Arbeit (14:00–21:00 Ortszeit) | Tanjung Aan morgens, Scooter |
+| 15.–24.04. | Kuta / Gerupuk / Gilis | **Urlaub (10 Tage)** | Gerupuk-Bootstage, Rinjani-Vorberge, Wasserfälle, 3–4 Tage Gili Air |
+| 25.–27.04. | Kuta | Arbeit + Puffer | beste Surfwoche der Reise, Abflug 27.04. |
 
-Südküste März → **Ostküste Arugam Bay** Ende April/Anfang Mai. Der Umzug ist eine
-6–8-stündige Autofahrt statt eines Flugs, spart ~580 € und einen Reisetag.
-Nachteil: Arugam Bay läuft erst ab Mai richtig, im April sind es die ersten
-Swells, und die Infrastruktur ist dort gerade erst am Aufwachen (Work-Score 5
-statt 8). Als 5-Wochen-Variante mit Rückflug Anfang Mai attraktiv.
+**Warum Abflug am 17.03. und nicht später:** Semana Santa ist 21.–29.03.2027
+(Ostersonntag 28.03.), die teuerste Woche für Langstrecken ab Europa. 17.03.
+liegt davor.
 
-### C) Mit Arbeitsblock in Malaysia
+**Warum Wechsel am 08.04.:** Sinhala & Tamil New Year am 13./14.04. legt Sri Lanka
+3–4 Tage still (Coworking und Restaurants zu). Du bist vorher weg.
 
-Sri Lanka → **Penang 7–10 Tage** → Lombok. Penang hat die beste
-Arbeitsinfrastruktur der Liste (Glasfaser, Essen, günstig) und liegt sowieso auf der
-Umsteigeroute. Kein Surf, aber als reiner Arbeitsblock zwischen zwei Surfblöcken
-sinnvoll – und er verschiebt den Lombok-Block weiter nach hinten, also in die
-bessere Saison.
+**Warum Rückflug am 27.04.:** Der SW-Monsun erreicht Sri Lanka ab ca. 25.04., und
+ab 29.04. treiben regionale Feiertage (1. Mai) die Rückflugpreise. 27.04. liegt in
+der Lücke.
 
-### D) Mit Elternbesuch in Berlin/Hamburg
+## Was eine Woche mehr oder weniger bringt (Szenario B)
 
-Rechnet sich nur, wenn der Besuch ohnehin stattfindet: BER/HAM hat keinen
-Residentenrabatt (kein Peninsula-Flug), der Zubringer kostet ~110 € statt ~45 €,
-und die Langstreckenauswahl ist dünner. Sinnvoll als **Rückweg**: Asien → BER,
-eine Woche Eltern, dann BER → TFS. Durchrechnen mit
-`--origins BER,HAM` sobald echte Preise da sind.
+| Reiselänge | Zeitraum | Kosten | €/Tag | Score/Tag |
+|---|---|---|---|---|
+| 28 Tage | 31.03.–27.04. | 5.688 € | 203 € | 8,42 |
+| 35 Tage | 18.03.–21.04. | 6.518 € | 186 € | 8,59 |
+| **42 Tage** | 17.03.–27.04. | 7.218 € | **172 €** | **8,68** |
 
-## Buchungsreihenfolge
+Die sechs Wochen sind klar die beste Variante: 31 € pro Tag günstiger als vier
+Wochen, weil sich die Langstrecke besser amortisiert, und zugleich der höhere
+Score. Vier Wochen würden bedeuten, erst am 31.03. zu starten – dann fällt der
+Sri-Lanka-Block ins Monsunende.
 
-1. **Zuerst die Langstrecke scrapen und buchen.** Sie ist 40 % der Flugkosten und
-   der einzige Posten, der mit der Zeit deutlich teurer wird. Multi-City
-   (MAD→CMB, CMB→LOP, LOP→MAD) als *ein* Ticket ist oft 10–20 % günstiger als drei
-   Einzeltickets – das messen, nicht raten. Die Suchen stehen in
-   [`scrape_checklist.md`](scrape_checklist.md) unter „Multi-City Gesamtticket".
-2. **Residentenrabatt klären, bevor gebucht wird.** Die 75 % gelten für
-   Kanaren↔Peninsula. Ob sie auf einem durchgehenden TFS-MAD-CMB-Ticket greifen,
-   ist nicht belegt – dazu war keine belastbare Quelle zu finden. Direkt bei
-   Iberia/Binter fragen. Davon hängt ab, ob `self_transfer` (Zubringer separat,
-   mit Rabatt, aber ohne Umsteigeschutz und mit Puffernacht in Madrid) oder
-   `through_ticket` (ein PNR, kein Rabatt, dafür durchgecheckt) günstiger ist.
-   Überraschendes Modellergebnis: der Unterschied ist **klein, nur etwa 55 €**
-   für zwei Personen. Der Residentenrabatt spart auf den vier Zubringerstrecken
-   rund 420 €, aber die Puffernacht in Madrid plus Risikoaufschlag (je Richtung
-   170 €) frisst das fast vollständig auf. Praktische Folge: **wenn der Rabatt
-   auf einem durchgehenden Ticket greift, ist `through_ticket` klar die bessere
-   Wahl** – gleicher Preis, dafür durchgechecktes Gepäck, Umsteigeschutz und ein
-   Reisetag gespart. Deswegen ist die Frage an Iberia/Binter die wichtigste
-   Einzelfrage der ganzen Planung.
-3. **Danach den Zwischenflug CMB→LOP** – AirAsia-Tarife ab KUL bewegen sich wenig
-   und lassen sich später buchen.
-4. **Unterkünfte erst 4–6 Wochen vorher**, monatsweise vor Ort verhandeln. In
-   Weligama/Ahangama und Kuta Lombok ist das üblich und deutlich billiger als
-   Monatsbuchungen über Plattformen.
+## Buchung
+
+Der Residentenrabatt ist jetzt geklärt: **nur separate Tickets**, also wie du es
+ohnehin machst. Das Modell rechnet nur noch so (3 h Eigenumstieg, keine
+Puffernacht, 50 € Umbuchungsrisiko). In Szenario B betrifft das ausschließlich den
+Rückweg MAD→TFS – der Hinflug geht ab BER ohne Kanaren-Zubringer.
+
+1. **Zuerst die Langstrecke.** Sie ist 40 % der Flugkosten und der einzige Posten,
+   der mit der Zeit deutlich teurer wird. Scrape BER→CMB für den 13.–20.03. und
+   LOP→MAD für Mitte April bis Mitte Mai, und vergleiche ein Multi-City-Ticket
+   (BER→CMB, CMB→LOP, LOP→MAD) gegen drei Einzeltickets. Open-Jaw ist oft 10–20 %
+   billiger; das Modell unterstellt derzeit 12 % und sollte gemessen werden.
+2. **Dann MAD→TFS separat** mit Residentenrabatt, mindestens 3 h nach der
+   geplanten Ankunft.
+3. **Dann CMB→LOP** – AirAsia-Tarife ab KUL bewegen sich wenig.
+4. **Unterkünfte 4–6 Wochen vorher**, monatsweise vor Ort verhandeln.
 5. **Boards vor Ort mieten.** Longboards über 8 ft sind bei vielen Airlines
-   Sondergepäck oder gar nicht erlaubt, Boardbag kostet ~90 € pro Strecke. Miete
-   liegt bei 8–15 €/Tag, in Weligama und Kuta Lombok gibt es reichlich Auswahl.
-   Falls doch eigenes Board: ein Mid-Length bis 7'6" nehmen und
+   Sondergepäck oder gar nicht erlaubt, Boardbag kostet ~90 € pro Strecke, Miete
+   8–15 €/Tag. Falls doch eigenes Board: Mid-Length bis 7'6" und
    `--board-bags 2` rechnen.
 
-## Was ich für den nächsten Durchlauf brauche
+## Offene Punkte
 
-Sobald die Google-Flights-Scrapes da sind, ändert sich voraussichtlich:
-
-- **Der Abflughafen.** MAD und BCN liegen im Modell nur 18 € auseinander – das
-  ist Rauschen, keine Aussage. Mit echten Preisen entscheidet sich das neu.
-- **Die Blockaufteilung.** Wenn der CMB→LOP-Flug an bestimmten Tagen deutlich
-  billiger ist, verschiebt der Optimierer den Wechsel dorthin.
-- **Die Reiselänge.** Bei echten Preisen zeigt die Tabelle „Was bringt eine Woche
-  mehr?" belastbar, ob 42 Tage den Aufpreis wert sind.
-
-Offene Fragen an dich:
-
-1. **Residentenrabatt bei internationalen Anschlüssen** – weißt du das aus
-   Erfahrung? Das ist der größte einzelne Unsicherheitsposten.
-2. **Wie viele Urlaubstage genau** (14 oder 21) und sind sie frei verteilbar?
-3. **Elternbesuch:** fest geplant oder optional? Wenn fest: Hin- oder Rückweg?
-4. **Zeitzonen-Zwang:** gibt es feste Termine mit Europa? Bei Lombok (+6 h im
-   Sommer) heißt europäischer Vormittag 15–17 Uhr Ortszeit – geht, kostet aber
-   die beste Nachmittagszeit. Falls das ein Problem ist, gewinnt eine
-   Oman- oder Sri-Lanka-lastige Route.
+1. **Wo startet deine Freundin?** Das Modell rechnet derzeit, dass ihr beide ab
+   demselben Flughafen fliegt – in Szenario B also, dass sie zu euch nach Cottbus
+   kommt oder schon dabei ist. Wenn sie stattdessen von Teneriffa aus fliegt,
+   braucht sie ein eigenes Ticket TFS→MAD→CMB (~435 € mit Residentenrabatt), und
+   dann kippt der Vergleich möglicherweise zugunsten von Szenario C oder D, weil
+   ihr dann sowieso getrennt anreist. Das ist der größte offene Posten.
+2. **14 oder 21 Urlaubstage?** Bei 21 geht die dritte Woche nach Lombok oder als
+   Sumbawa-Trip raus.
+3. **Wie weit ist die Arbeitszeit wirklich verschiebbar?** Das Modell nimmt 1 h an.
+   Bei 2 h Flexibilität (7–14 Uhr deutscher Zeit) wird Lombok zu 13:00–20:00 und
+   das Problem fast gelöst. Bei 0 h Flexibilität (starr 9–16) lohnt es sich,
+   Lombok zu kürzen und Sri Lanka zu verlängern – oder über die reine
+   Sri-Lanka-Variante (Südküste → Arugam Bay) nachzudenken, die ganz ohne
+   Abendverlust auskommt.
+4. **Alle Flugpreise** sind bis zum ersten Scrape Schätzwerte.

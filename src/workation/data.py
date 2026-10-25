@@ -8,7 +8,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import CalendarEvent, Destination, OriginHub, WindowScore
+from .models import Access, CalendarEvent, Destination, OriginHub, WindowScore
 
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
@@ -72,20 +72,32 @@ def load_origins() -> tuple[dict[str, OriginHub], dict]:
     raw = _load("origins.yaml")
     out: dict[str, OriginHub] = {}
     for item in raw["origins"]:
-        f = item["feeder"]
+        access = {
+            context: Access(
+                context=context,
+                mode=spec["mode"],
+                hours=float(spec["hours"]),
+                price_eur_pp=float(spec["price_eur_pp"]),
+                residencia_discount=bool(spec.get("residencia_discount", False)),
+                min_connect_h=float(spec.get("min_connect_h", 3.0)),
+                company_covered_travellers=int(spec.get("company_covered_travellers", 0)),
+                note=(spec.get("note") or "").strip(),
+            )
+            for context, spec in item["access"].items()
+        }
         out[item["id"]] = OriginHub(
             id=item["id"],
             name=item["name"],
             role=item["role"],
-            flight_time_h=float(f["flight_time_h"]),
-            self_transfer_price_eur=float(f["self_transfer_price_eur"]),
-            through_ticket_feeder_eur=float(f["through_ticket_feeder_eur"]),
-            min_connect_self_h=float(f["min_connect_self_h"]),
-            min_connect_through_h=float(f["min_connect_through_h"]),
-            daily_frequency=float(f["daily_frequency"]),
+            access=access,
             notes=item.get("notes", "").strip(),
         )
     return out, raw["meta"]
+
+
+def hubs_reachable_from(context: str) -> list[str]:
+    origins, _ = load_origins()
+    return [h.id for h in origins.values() if h.reachable_from(context)]
 
 
 @functools.cache

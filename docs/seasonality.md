@@ -26,9 +26,11 @@ Ceylon Sliders wird als ausgesprochen longboardtaugliche Welle beschrieben.
 Hiriketiya ist eine Linke über Riff mit langen Sections und windgeschützt, dadurch
 fast ganzjährig surfbar.
 
-Arbeitsseite: dichtes Coworking-Netz (Verse Collective Ahangama, Hideout, Kip),
-Zeitversatz +4,5 h zu Madrid (ab 28.03. nur noch +3,5 h) – europäischer Vormittag
-fällt auf den srilankischen Nachmittag, Calls sind gut machbar.
+Arbeitsseite: dichtes Coworking-Netz (Verse Collective Ahangama, Hideout, Kip).
+Zeitversatz +4,5 h zu Mitteleuropa, ab 28.03. nur noch +3,5 h. Bei einer
+Pflicht-Arbeitszeit von 09–16 Uhr deutscher Zeit heißt das 12:30–19:30 Ortszeit:
+6,5 Stunden freier Morgen für die offshore-Vormittage, und der Abend bleibt
+weitgehend frei. **Das beste Arbeitszeitfenster aller tropischen Ziele der Liste.**
 
 **Harte Termine:** Sinhala & Tamil New Year 13./14.04. – das Land steht 3–4 Tage
 still. Entweder vorher weiterfliegen oder bewusst an einem Ort bleiben.
@@ -50,6 +52,12 @@ Longboard: Tanjung Aan wird als „awesome für Longboarding" beschrieben – ei
 geteilte Bucht mit langem Riff-/Sandschelf und langsamen Rollern. Gerupuk ist
 überwiegend per Boot erreichbar und bietet mehrere Breaks für verschiedene
 Windrichtungen; Mawi ist die Welle für Fortgeschrittene.
+
+Arbeitsseite: der Haken des Ziels. +7 h zu Mitteleuropa, ab 28.03. +6 h. Eine
+Arbeitszeit von 09–16 Uhr deutscher Zeit landet auf 15:00–22:00 Ortszeit – drei
+Stunden nach Sonnenuntergang, jeden Tag. Mit einer Stunde Verschiebung
+(08–15 Uhr) wird 14:00–21:00 daraus. Dafür neun Stunden freier Morgen. Deswegen
+gehören die Urlaubstage der Reise überwiegend hierher, siehe `strategie.md`.
 
 **Harter Termin:** Idul Fitri ca. 10.03.2027. Die Mudik-/Lebaran-Reisewelle macht
 indonesische Inlandsflüge etwa 05.–16.03. teuer und knapp. Dieses Fenster ist in

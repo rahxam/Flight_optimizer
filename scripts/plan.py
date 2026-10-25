@@ -21,8 +21,15 @@ sys.path.insert(0, str(ROOT / "src"))
 from workation.optimizer import Optimizer, TripConfig  # noqa: E402
 from workation.prices import PriceBook  # noqa: E402
 from workation.report import build_report  # noqa: E402
-from workation.scrape.queries import candidate_queries, grid_queries, write_matrix  # noqa: E402
+from workation.scenarios import SCENARIOS  # noqa: E402
+from workation.scrape.queries import (  # noqa: E402
+    candidate_queries,
+    grid_queries,
+    scenario_queries,
+    write_matrix,
+)
 from workation.seasonality import Weights, season_table  # noqa: E402
+from workation.workwindow import WorkWindow  # noqa: E402
 
 PROFILES = {
     "surf": Weights.surf_focused,
@@ -42,6 +49,8 @@ def _config(args) -> TripConfig:
         max_destinations=args.max_dest,
         allowed_origins=tuple(args.origins.split(",")),
         weights=PROFILES[args.profile](),
+        work_window=WorkWindow(args.work_start, args.work_end, args.work_flex),
+        vacation_days=args.vacation_days,
         start_date_step=args.step,
         budget_eur=args.budget,
         min_good_surf_days=args.min_surf_days,
@@ -97,6 +106,44 @@ def cmd_optimize(args) -> None:
         print()
 
 
+def cmd_scenarios(args) -> None:
+    base = _config(args)
+    print(
+        f"{'Szenario':<46}{'Route':<30}{'Zeitraum':<14}{'d':>4}{'ab':>5}"
+        f"{'Kosten':>9}{'EUR/Tag':>9}{'S/Tag':>7}{'Surf':>6}"
+    )
+    print("-" * 130)
+    details = []
+    for scenario in SCENARIOS.values():
+        opt = Optimizer(scenario.config(base), PriceBook())
+        results = opt.run(top_n=1)
+        if not results:
+            print(f"{scenario.name:<46}keine zulaessige Route")
+            continue
+        it = results[0]
+        print(
+            f"{scenario.name:<46}{it.label:<30}{it.start:%d.%m}-{it.end:%d.%m}  "
+            f"{it.total_days:>4}{it.origin_hub:>5}{it.total_cost_eur:>9,.0f}"
+            f"{it.cost_per_day_eur:>9,.0f}{it.score_per_day:>7.2f}{it.good_surf_days:>6}"
+        )
+        details.append((scenario, it))
+    print()
+    for scenario, it in details:
+        print(f"[{scenario.name}]")
+        print(f"  {scenario.pre_trip_note}")
+        for b in it.blocks:
+            print(
+                f"  {b.start:%d.%m.}-{b.end:%d.%m.} ({b.days:>2}d, davon {b.vacation_days:>2}d Urlaub)  "
+                f"{b.destination.name}"
+            )
+        for leg in it.legs:
+            print(
+                f"  fly {leg.date:%d.%m.}  {leg.origin}->{leg.destination:<4} "
+                f"{leg.price_eur:>7,.0f} EUR  [{leg.source}]"
+            )
+        print()
+
+
 def cmd_report(args) -> None:
     opt = Optimizer(_config(args), PriceBook())
     results = opt.run(top_n=args.top)
@@ -109,6 +156,25 @@ def cmd_report(args) -> None:
 
 
 def cmd_scrape_matrix(args) -> None:
+    if args.from_scenarios:
+        queries = scenario_queries(
+            list(SCENARIOS.values()),
+            gateways=[g for g in args.gateways.split(",") if g],
+            adults=args.travellers,
+        )
+        if args.with_candidates:
+            base = _config(args)
+            for scenario in SCENARIOS.values():
+                opt = Optimizer(scenario.config(base), PriceBook())
+                queries += candidate_queries(opt.run(top_n=2), adults=args.travellers)
+        write_matrix(
+            queries,
+            ROOT / "data" / "prices" / "_queries.json",
+            ROOT / "docs" / "scrape_checklist.md",
+        )
+        print(f"{len(queries)} Suchen -> data/prices/_queries.json + docs/scrape_checklist.md")
+        print(f"Geschätzte Laufzeit automatisiert: ~{len(queries) * 6 / 60:.0f} min")
+        return
     queries = grid_queries(
         earliest_start=dt.date.fromisoformat(args.earliest_start),
         latest_start=dt.date.fromisoformat(args.latest_start),
@@ -147,6 +213,10 @@ def main() -> None:
     common.add_argument("--exclude", default="", help="Ziel-IDs, die ausgeschlossen sind")
     common.add_argument("--board-bags", type=int, default=0)
     common.add_argument("--top", type=int, default=10)
+    common.add_argument("--work-start", type=float, default=9.0, help="Arbeitsbeginn CET")
+    common.add_argument("--work-end", type=float, default=16.0, help="Arbeitsende CET")
+    common.add_argument("--work-flex", type=float, default=1.0, help="Verschiebbarkeit in Stunden")
+    common.add_argument("--vacation-days", type=int, default=14)
 
     p = argparse.ArgumentParser(description="Workation-Routenplaner", parents=[common])
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -161,12 +231,24 @@ def main() -> None:
     r.add_argument("--no-tradeoff", action="store_true")
     r.set_defaults(func=cmd_report)
 
+    sub.add_parser("scenarios", parents=[common]).set_defaults(func=cmd_scenarios)
+
     s = sub.add_parser("scrape-matrix", parents=[common])
     s.add_argument("--level", choices=["quick", "standard", "full"], default="standard")
     s.add_argument("--latest-start", default="2027-04-03")
     s.add_argument("--earliest-return", default="2027-04-18")
     s.add_argument("--latest-return", default="2027-05-10")
     s.add_argument("--with-candidates", action="store_true")
+    s.add_argument(
+        "--gateways",
+        default="CMB,KUL,LOP,HAN,MCT",
+        help="Asien-Einstiegsflughaefen, die abgefragt werden",
+    )
+    s.add_argument(
+        "--from-scenarios",
+        action="store_true",
+        help="nur die Suchen, die die Startszenarien brauchen (empfohlen)",
+    )
     s.set_defaults(func=cmd_scrape_matrix)
 
     args = p.parse_args()

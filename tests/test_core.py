@@ -11,7 +11,13 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from workation.data import load_calendar, load_destinations, load_origins  # noqa: E402
+from workation.data import (  # noqa: E402
+    hubs_reachable_from,
+    load_calendar,
+    load_destinations,
+    load_origins,
+)
+from workation.scenarios import SCENARIOS  # noqa: E402
 from workation.optimizer import Optimizer, TripConfig  # noqa: E402
 from workation.prices import PriceBook  # noqa: E402
 from workation.scrape.queries import grid_queries  # noqa: E402
@@ -21,8 +27,10 @@ from workation.seasonality import (  # noqa: E402
     daily_score,
     interpolated_scores,
     is_available,
+    vacation_gain,
     window_of,
 )
+from workation.workwindow import WorkWindow, local_window, overlap_score  # noqa: E402
 
 
 # --------------------------------------------------------------------------- #
@@ -104,16 +112,198 @@ def test_lombok_blocked_during_lebaran_travel_wave():
     assert is_available(lombok, dt.date(2027, 3, 20))[0]
 
 
-def test_dst_shift_reduces_timezone_penalty():
+# --------------------------------------------------------------------------- #
+# Arbeitszeitfenster
+# --------------------------------------------------------------------------- #
+def test_local_window_reflects_offset_and_dst():
+    dests, _ = load_destinations()
+    sl = dests["LK-SOUTH"]
+    win = WorkWindow(9.0, 16.0, flex_h=0.0)
+    # Winterzeit: +4,5 h -> 13:30-20:30
+    assert local_window(sl, dt.date(2027, 3, 20), win) == pytest.approx((13.5, 20.5))
+    # Ab 28.03. gilt Sommerzeit, der Versatz schrumpft um 1 h
+    assert local_window(sl, dt.date(2027, 3, 28), win) == pytest.approx((12.5, 19.5))
+
+
+def test_dst_shift_improves_work_window():
     dests, _ = load_destinations()
     lombok = dests["ID-LOMBOK"]
-    # Nur der Work-Anteil, damit sich der Saison-Verlauf nicht ueberlagert; der
-    # Basiswert muss positiv sein, weil daily_score bei 0 abschneidet.
-    weights = Weights(weather=0.0, surf=0.0, calm=0.0, work=1.0, tropical_bonus=0.0)
-    before = daily_score(lombok, dt.date(2027, 3, 27), weights)
-    after = daily_score(lombok, dt.date(2027, 3, 28), weights)
-    assert before > 0
-    assert after == pytest.approx(before + weights.tz_penalty_per_hour)
+    win = WorkWindow(9.0, 16.0, flex_h=0.0)
+    before = overlap_score(lombok, dt.date(2027, 3, 27), win)
+    after = overlap_score(lombok, dt.date(2027, 3, 28), win)
+    assert after > before
+
+
+def test_work_window_ranks_destinations_by_evening_loss():
+    dests, _ = load_destinations()
+    win = WorkWindow(9.0, 16.0, flex_h=1.0)
+    day = dt.date(2027, 4, 15)
+    oman = overlap_score(dests["OM-OMAN"], day, win)
+    sri = overlap_score(dests["LK-SOUTH"], day, win)
+    lombok = overlap_score(dests["ID-LOMBOK"], day, win)
+    assert oman == pytest.approx(sri)       # beide verlieren keinen Abend
+    assert sri > lombok                      # Lombok kostet 2 h Abend
+    assert 0 <= lombok <= 10
+
+
+def test_flexibility_can_only_help():
+    dests, _ = load_destinations()
+    lombok = dests["ID-LOMBOK"]
+    day = dt.date(2027, 4, 15)
+    rigid = overlap_score(lombok, day, WorkWindow(9.0, 16.0, flex_h=0.0))
+    flexible = overlap_score(lombok, day, WorkWindow(9.0, 16.0, flex_h=2.0))
+    assert flexible >= rigid
+
+
+# --------------------------------------------------------------------------- #
+# Urlaubstage
+# --------------------------------------------------------------------------- #
+def test_vacation_does_not_reward_bad_infrastructure():
+    """Ein Urlaubstag darf ein Ziel nicht dafuer belohnen, dass man dort nicht arbeiten kann.
+
+    Lombok und Sumbawa haben im April identische Wetter-/Surf-/Ruhe-Scores und
+    unterscheiden sich nur in der Arbeitsinfrastruktur (7 vs 3). Ein Urlaubstag
+    muss daher an beiden gleich viel wert sein.
+    """
+    dests, _ = load_destinations()
+    weights = Weights.surf_focused()
+    win = WorkWindow(9.0, 16.0, flex_h=1.0)
+    day = dt.date(2027, 4, 20)
+    lombok, sumbawa = dests["ID-LOMBOK"], dests["ID-SUMBAWA"]
+    a, b = lombok.scores["2027-04-H2"], sumbawa.scores["2027-04-H2"]
+    assert (a.weather, a.surf, a.calm) == (b.weather, b.surf, b.calm)
+    assert daily_score(lombok, day, weights, win, vacation=True) == pytest.approx(
+        daily_score(sumbawa, day, weights, win, vacation=True)
+    )
+    # Am Arbeitstag schlaegt die Infrastruktur dagegen voll durch.
+    assert daily_score(lombok, day, weights, win) > daily_score(sumbawa, day, weights, win)
+
+
+def test_vacation_gain_is_highest_where_the_work_window_hurts():
+    dests, _ = load_destinations()
+    weights = Weights.surf_focused()
+    win = WorkWindow(9.0, 16.0, flex_h=1.0)
+    day = dt.date(2027, 4, 20)
+    # Sri Lanka: Arbeitsfenster perfekt -> Urlaub bringt dort am wenigsten.
+    assert vacation_gain(dests["ID-LOMBOK"], day, weights, win) > vacation_gain(
+        dests["LK-SOUTH"], day, weights, win
+    )
+
+
+def test_vacation_days_are_spread_across_blocks():
+    cfg = TripConfig(
+        outbound_context="cottbus", allowed_origins=("BER",), eligible_tiers=("A",),
+        max_destinations=2, start_date_step=7, vacation_days=14,
+        max_vacation_share_per_block=0.5,
+    )
+    results = Optimizer(cfg).run(top_n=1)
+    assert results
+    itin = results[0]
+    assert itin.vacation_days == 14
+    assert all(b.vacation_days > 0 for b in itin.blocks), "Urlaub klumpt in einem Block"
+    for block in itin.blocks:
+        assert block.vacation_days <= max(1, int(block.days * 0.5)) or itin.vacation_days == sum(
+            b.days for b in itin.blocks
+        )
+        assert block.work_days + block.vacation_days == block.days
+
+
+def test_low_work_destinations_are_not_usable_as_bases():
+    cfg = TripConfig(min_work_score=5.0, eligible_tiers=("A", "B", "C"))
+    ids = {d.id for d in Optimizer(cfg).eligible_destinations()}
+    assert "ID-SUMBAWA" not in ids      # work 3
+    assert "MG-MADAGASCAR" not in ids   # work 2
+    assert "ID-LOMBOK" in ids           # work 7
+    # Ohne die Schranke sind sie wieder dabei.
+    loose = TripConfig(min_work_score=0.0, eligible_tiers=("A", "B", "C"))
+    assert "ID-SUMBAWA" in {d.id for d in Optimizer(loose).eligible_destinations()}
+
+
+# --------------------------------------------------------------------------- #
+# Anreisekontexte
+# --------------------------------------------------------------------------- #
+def test_hubs_are_filtered_by_departure_context():
+    assert set(hubs_reachable_from("montafon")) >= {"ZRH", "MUC"}
+    assert "MAD" not in hubs_reachable_from("montafon")
+    assert "BER" in hubs_reachable_from("cottbus")
+
+
+def test_residencia_discount_only_on_separate_tenerife_ticket():
+    origins, meta = load_origins()
+    mad = origins["MAD"].access["tenerife"]
+    assert mad.residencia_discount
+    assert mad.min_connect_h == 3.0
+    # Ohne Rabatt ist derselbe Zubringer das Vierfache - so wird ein
+    # Durchgangsticket bewertet.
+    assert mad.full_fare_eur_pp == pytest.approx(mad.price_eur_pp * 4)
+    assert "NICHT" in meta["residencia_note"]
+
+
+def test_company_covers_exactly_one_ticket_from_hamburg():
+    origins, _ = load_origins()
+    ham = origins["HAM"].access["tenerife"]
+    assert ham.company_covered_travellers == 1
+    assert ham.total_price(1) == 0.0
+    assert ham.total_price(2) == pytest.approx(ham.price_eur_pp)
+
+
+def test_outbound_from_montafon_uses_train_not_a_feeder_flight():
+    cfg = TripConfig(
+        outbound_context="montafon", allowed_origins=("ZRH",), eligible_tiers=("A",),
+        max_destinations=2, start_date_step=7,
+        earliest_start=dt.date(2027, 3, 5), latest_end=dt.date(2027, 4, 20),
+    )
+    opt = Optimizer(cfg)
+    priced = opt.outbound_cost("ZRH", "CMB", dt.date(2027, 3, 7), "separate_tickets")
+    assert priced is not None
+    cost, source = priced
+    assert source.endswith("+train")
+    # Kein Self-Connect-Risiko, weil kein Zubringerflug im Spiel ist.
+    longhaul, _ = opt._leg_price("ZRH", "CMB", dt.date(2027, 3, 7))
+    access = opt.origins["ZRH"].access["montafon"]
+    assert cost == pytest.approx(longhaul * 2 + access.price_eur_pp * 2)
+    # MAD ist aus dem Montafon nicht erreichbar.
+    assert opt.outbound_cost("MAD", "CMB", dt.date(2027, 3, 7), "separate_tickets") is None
+
+
+def test_return_always_routes_home_via_an_allowed_hub():
+    cfg = TripConfig(
+        outbound_context="montafon", allowed_origins=("ZRH",),
+        allowed_return_hubs=("MAD",), eligible_tiers=("A",), max_destinations=2,
+        start_date_step=7, earliest_start=dt.date(2027, 3, 5),
+        latest_end=dt.date(2027, 4, 20),
+    )
+    results = Optimizer(cfg).run(top_n=1)
+    assert results
+    assert results[0].return_hub == "MAD"
+    assert results[0].legs[-1].destination == "MAD"
+
+
+# --------------------------------------------------------------------------- #
+# Szenarien
+# --------------------------------------------------------------------------- #
+def test_every_scenario_yields_a_feasible_route():
+    base = TripConfig(
+        weights=Weights.surf_focused(), eligible_tiers=("A",), max_destinations=2,
+    )
+    for scenario in SCENARIOS.values():
+        cfg = scenario.config(base)
+        results = Optimizer(cfg).run(top_n=1)
+        assert results, f"{scenario.key} ohne Ergebnis"
+        itin = results[0]
+        assert scenario.earliest_start <= itin.start <= scenario.latest_start
+        assert itin.outbound_context == scenario.outbound_context
+        assert itin.origin_hub in scenario.allowed_origins
+
+
+def test_scenario_pre_trip_cost_lands_in_the_total():
+    base = TripConfig(
+        weights=Weights.surf_focused(), eligible_tiers=("A",), max_destinations=2,
+    )
+    cheap = Optimizer(SCENARIOS["cottbus_bruecke"].config(base)).run(top_n=1)[0]
+    pricey = Optimizer(SCENARIOS["heim_tfs"].config(base)).run(top_n=1)[0]
+    assert SCENARIOS["heim_tfs"].pre_trip_cost_eur > 0
+    assert pricey.total_cost_eur > cheap.total_cost_eur
 
 
 # --------------------------------------------------------------------------- #

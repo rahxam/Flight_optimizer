@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 from .data import load_destinations
 from .models import Destination
+from .workwindow import WorkWindow, overlap_score
 
 
 def window_of(day: dt.date) -> str:
@@ -26,23 +27,29 @@ def _window_bounds(key: str) -> tuple[dt.date, dt.date]:
 
 @dataclass(frozen=True)
 class Weights:
-    """Gewichtung der Teilscores. Summe der ersten vier sollte 1.0 sein."""
+    """Gewichtung der Teilscores. Die Summe der fuenf Gewichte sollte 1.0 sein.
 
-    weather: float = 0.30
-    surf: float = 0.30
-    calm: float = 0.15
-    work: float = 0.25
-    # Zusatz-Terme
-    tz_penalty_per_hour: float = 0.12  # Score-Abzug je Stunde Versatz zu Madrid
+    work        = Arbeitsinfrastruktur (Internet, Coworking, Strom)
+    work_window = wie gut die Pflicht-Arbeitszeit vor Ort liegt (s. workwindow.py)
+    """
+
+    weather: float = 0.25
+    surf: float = 0.25
+    calm: float = 0.10
+    work: float = 0.20
+    work_window: float = 0.20
     tropical_bonus: float = 0.3
 
     @classmethod
     def surf_focused(cls) -> "Weights":
-        return cls(weather=0.25, surf=0.42, calm=0.10, work=0.23, tropical_bonus=0.5)
+        return cls(
+            weather=0.22, surf=0.36, calm=0.08, work=0.16, work_window=0.18,
+            tropical_bonus=0.5,
+        )
 
     @classmethod
     def work_focused(cls) -> "Weights":
-        return cls(weather=0.25, surf=0.15, calm=0.15, work=0.45, tz_penalty_per_hour=0.25)
+        return cls(weather=0.20, surf=0.12, calm=0.10, work=0.28, work_window=0.30)
 
     @classmethod
     def balanced(cls) -> "Weights":
@@ -83,23 +90,54 @@ def interpolated_scores(dest: Destination, day: dt.date) -> tuple[float, float, 
     )
 
 
-def daily_score(dest: Destination, day: dt.date, weights: Weights) -> float:
-    """Erlebniswert eines Tages an einem Ziel, 0-10."""
+DEFAULT_WINDOW = WorkWindow()
+
+
+def daily_score(
+    dest: Destination,
+    day: dt.date,
+    weights: Weights,
+    window: WorkWindow | None = None,
+    vacation: bool = False,
+) -> float:
+    """Erlebniswert eines Tages an einem Ziel, 0-10.
+
+    An einem Urlaubstag entfallen die beiden Arbeitsterme, und das Gewicht wird
+    auf Wetter/Surf/Ruhe UMVERTEILT - nicht durch Vollwert ersetzt. Der
+    Unterschied ist wichtig: wuerde man `work = 10` setzen, wuerde ein Ziel mit
+    schlechter Infrastruktur dafuer belohnt, dass es schlecht ist (Sumbawa haette
+    den groessten "Urlaubsgewinn" und wuerde dadurch zum Favoriten). So bemisst
+    sich ein Urlaubstag ausschliesslich an den eigenen Qualitaeten des Ortes.
+    """
     weather, surf, calm = interpolated_scores(dest, day)
-    score = (
-        weights.weather * weather
-        + weights.surf * surf
-        + weights.calm * calm
-        + weights.work * dest.work
-    )
-    # Sommerzeit ab 28.03.2027 verkleinert den Versatz zu Europa um 1 h.
-    offset = dest.tz_offset_vs_madrid_winter
-    if day >= dt.date(2027, 3, 28):
-        offset = max(0.0, offset - 1.0)
-    score -= weights.tz_penalty_per_hour * max(0.0, offset - 3.0)
+    if vacation:
+        experience = weights.weather + weights.surf + weights.calm
+        total = experience + weights.work + weights.work_window
+        scale = (total / experience) if experience else 0.0
+        score = scale * (
+            weights.weather * weather + weights.surf * surf + weights.calm * calm
+        )
+    else:
+        work_window = overlap_score(dest, day, window or DEFAULT_WINDOW)
+        score = (
+            weights.weather * weather
+            + weights.surf * surf
+            + weights.calm * calm
+            + weights.work * dest.work
+            + weights.work_window * work_window
+        )
     if dest.tropical:
         score += weights.tropical_bonus
     return max(0.0, score)
+
+
+def vacation_gain(
+    dest: Destination, day: dt.date, weights: Weights, window: WorkWindow | None = None
+) -> float:
+    """Wie viel ein Urlaubstag an diesem Ziel mehr wert ist als ein Arbeitstag."""
+    return daily_score(dest, day, weights, window, vacation=True) - daily_score(
+        dest, day, weights, window, vacation=False
+    )
 
 
 def is_available(dest: Destination, day: dt.date) -> tuple[bool, str]:
@@ -112,7 +150,11 @@ def is_available(dest: Destination, day: dt.date) -> tuple[bool, str]:
     return True, ""
 
 
-def season_table(window_keys: list[str] | None = None, weights: Weights | None = None) -> list[dict]:
+def season_table(
+    window_keys: list[str] | None = None,
+    weights: Weights | None = None,
+    work_window: WorkWindow | None = None,
+) -> list[dict]:
     """Uebersichtstabelle aller Ziele x Fenster - fuer den Report."""
     dests, meta = load_destinations()
     weights = weights or Weights.balanced()
@@ -126,6 +168,6 @@ def season_table(window_keys: list[str] | None = None, weights: Weights | None =
             if win in dest.hard_avoid_windows:
                 row[win] = None
             else:
-                row[win] = round(daily_score(dest, mid, weights), 2)
+                row[win] = round(daily_score(dest, mid, weights, work_window), 2)
         rows.append(row)
     return rows

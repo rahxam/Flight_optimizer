@@ -8,6 +8,7 @@ from .data import load_calendar, load_destinations
 from .models import Itinerary
 from .optimizer import Optimizer
 from .seasonality import Weights, interpolated_scores, season_table
+from .workwindow import WorkWindow, describe as describe_window
 
 DE_MONTHS = {3: "Mrz", 4: "Apr", 5: "Mai"}
 
@@ -16,10 +17,10 @@ def _fmt(day: dt.date) -> str:
     return f"{day.day:02d}.{day.month:02d}."
 
 
-def season_section(weights: Weights) -> str:
+def season_section(weights: Weights, work_window: WorkWindow | None = None) -> str:
     _, meta = load_destinations()
     windows = meta["windows"]
-    rows = season_table(weights=weights)
+    rows = season_table(weights=weights, work_window=work_window)
     def _span(window: str) -> str:
         year, month, half = window.split("-")
         if half == "H1":
@@ -56,7 +57,8 @@ def itinerary_section(itin: Itinerary, index: int) -> str:
         f"### {index}. {itin.label}",
         "",
         f"**{_fmt(itin.start)}–{_fmt(itin.end)} {itin.end.year}** · {itin.total_days} Tage · "
-        f"ab **{itin.origin_hub}** · Ticketstrategie: `{itin.ticket_strategy}`",
+        f"ab **{itin.origin_hub}** (Anreise aus `{itin.outbound_context}`) · "
+        f"zurück über **{itin.return_hub}** · `{itin.ticket_strategy}`",
         "",
         f"| Kennzahl | Wert |",
         f"|---|---|",
@@ -66,21 +68,22 @@ def itinerary_section(itin: Itinerary, index: int) -> str:
         f"| Visa | {itin.visa_cost_eur:,.0f} € |",
         f"| Kosten pro Tag (beide) | {itin.cost_per_day_eur:,.0f} € |",
         f"| Erlebnis-Score pro Tag | {itin.score_per_day:.2f} / 10 |",
+        f"| Urlaubstage (verteilt) | {itin.vacation_days} von {itin.total_days} |",
         f"| Tage mit Longboard-Surf (Score ≥ 6) | {itin.good_surf_days} |",
         f"| Schätzanteil der Flugpreise | {itin.estimated_share:.0%} |",
         "",
         "**Blöcke**",
         "",
-        "| Zeitraum | Tage | Ziel | Wetter | Surf | Ruhe | Work | €/Tag/Pers |",
-        "|---|---|---|---|---|---|---|---|",
+        "| Zeitraum | Tage | Arbeit/Urlaub | Ziel | Wetter | Surf | Ruhe | Work | €/Tag/Pers |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for b in itin.blocks:
         mid = b.start + dt.timedelta(days=b.days // 2)
         weather, surf, calm = interpolated_scores(b.destination, mid)
         out.append(
-            f"| {_fmt(b.start)}–{_fmt(b.end)} | {b.days} | {b.destination.name} | "
-            f"{weather:.1f} | {surf:.1f} | {calm:.1f} | {b.destination.work:.0f} | "
-            f"{b.destination.cost_per_day_eur_pp:.0f} € |"
+            f"| {_fmt(b.start)}–{_fmt(b.end)} | {b.days} | {b.work_days} / {b.vacation_days} | "
+            f"{b.destination.name} | {weather:.1f} | {surf:.1f} | {calm:.1f} | "
+            f"{b.destination.work:.0f} | {b.destination.cost_per_day_eur_pp:.0f} € |"
         )
     out += ["", "**Flüge**", "", "| Datum | Strecke | Art | Preis (2 Pers.) | Quelle |", "|---|---|---|---|---|"]
     for leg in itin.legs:
@@ -92,6 +95,21 @@ def itinerary_section(itin: Itinerary, index: int) -> str:
         out += ["", "**Hinweise**", ""]
         out += [f"- {w}" for w in itin.warnings]
     return "\n".join(out) + "\n"
+
+
+def work_window_section(window: WorkWindow) -> str:
+    """Wo das Pflicht-Arbeitsfenster vor Ort landet - je Ziel."""
+    from .workwindow import overlap_score
+
+    dests, _ = load_destinations()
+    day = dt.date(2027, 4, 15)  # Sommerzeit, Mitte des Reisefensters
+    rows = sorted(
+        ((overlap_score(d, day, window), d) for d in dests.values()), key=lambda r: -r[0]
+    )
+    lines = ["| Ziel | Score | Arbeitszeit vor Ort |", "|---|---|---|"]
+    for score, dest in rows:
+        lines.append(f"| {dest.region_short} | {score:.1f} | {describe_window(dest, day, window)} |")
+    return "\n".join(lines)
 
 
 def length_tradeoff_section(opt: Optimizer, lengths: tuple[int, ...] = (28, 35, 42)) -> str:
@@ -167,12 +185,20 @@ def build_report(
         "Gewichteter Tagesscore je Ziel und Halbmonat (0–10, höher = besser). "
         "**X** = hart ausgeschlossen. Fett = Saisonhoch des Ziels.",
         "",
-        season_section(cfg.weights),
+        season_section(cfg.weights, cfg.work_window),
         "",
         f"*Gewichtung: Wetter {cfg.weights.weather:.0%}, Surf {cfg.weights.surf:.0%}, "
-        f"Ruhe {cfg.weights.calm:.0%}, Arbeitsfähigkeit {cfg.weights.work:.0%}; "
-        f"Abzug {cfg.weights.tz_penalty_per_hour:.2f}/h Zeitversatz über 3 h, "
+        f"Ruhe {cfg.weights.calm:.0%}, Arbeitsinfrastruktur {cfg.weights.work:.0%}, "
+        f"Arbeitszeitfenster {cfg.weights.work_window:.0%}; "
         f"Tropen-Bonus {cfg.weights.tropical_bonus:+.1f}.*",
+        "",
+        "## Arbeitszeitfenster vor Ort",
+        "",
+        f"Pflicht-Arbeitszeit {cfg.work_window.start_h:.0f}:00–{cfg.work_window.end_h:.0f}:00 "
+        f"deutscher Zeit, verschiebbar um ±{cfg.work_window.flex_h:.0f} h. Stand 15.04.2027 "
+        "(Sommerzeit). Der freie Morgen ist für Surfer ein Gewinn, der verlorene Abend der Preis.",
+        "",
+        work_window_section(cfg.work_window),
         "",
         "## Kalender im Reisefenster",
         "",

@@ -51,20 +51,42 @@ class Destination:
         return None
 
 
+@dataclass(frozen=True)
+class Access:
+    """Wie man einen Abflughafen aus einem bestimmten Startkontext erreicht."""
+
+    context: str  # montafon | cottbus | hamburg | tenerife
+    mode: str  # train | flight | local
+    hours: float
+    price_eur_pp: float
+    residencia_discount: bool = False
+    min_connect_h: float = 3.0
+    company_covered_travellers: int = 0
+    note: str = ""
+
+    def total_price(self, travellers: int) -> float:
+        """Gesamtpreis fuer alle Reisenden; von der Firma bezahlte Tickets fallen raus."""
+        paying = max(0, travellers - self.company_covered_travellers)
+        return self.price_eur_pp * paying
+
+    @property
+    def full_fare_eur_pp(self) -> float:
+        """Preis ohne Residentenrabatt - fuer den Vergleich mit einem Durchgangsticket."""
+        return self.price_eur_pp / 0.25 if self.residencia_discount else self.price_eur_pp * 1.3
+
+
 @dataclass
 class OriginHub:
-    """Ein Abflughafen auf dem Festland plus Zubringer ab Teneriffa."""
+    """Ein Abflughafen plus die Wege dorthin."""
 
     id: str
     name: str
     role: str
-    flight_time_h: float
-    self_transfer_price_eur: float
-    through_ticket_feeder_eur: float
-    min_connect_self_h: float
-    min_connect_through_h: float
-    daily_frequency: float
+    access: dict[str, Access]
     notes: str = ""
+
+    def reachable_from(self, context: str) -> bool:
+        return context in self.access
 
 
 @dataclass(frozen=True)
@@ -132,6 +154,7 @@ class Block:
     destination: Destination
     start: Date
     end: Date  # inklusiv
+    vacation_days: int = 0
 
     @property
     def nights(self) -> int:
@@ -141,13 +164,17 @@ class Block:
     def days(self) -> int:
         return (self.end - self.start).days + 1
 
+    @property
+    def work_days(self) -> int:
+        return self.days - self.vacation_days
+
 
 @dataclass
 class Itinerary:
     blocks: list[Block]
     legs: list[Leg]
     origin_hub: str
-    ticket_strategy: str  # self_transfer | through_ticket
+    ticket_strategy: str  # separate_tickets | through_ticket
     travellers: int
     flight_cost_eur: float
     ground_cost_eur: float
@@ -157,6 +184,9 @@ class Itinerary:
     objective_eur: float  # Gesamtkosten minus monetarisierter Erlebniswert
     objective_per_day_eur: float = 0.0  # dasselbe pro Reisetag - laengenneutral
     good_surf_days: int = 0  # Tage mit interpoliertem Surf-Score >= 6
+    outbound_context: str = "tenerife"
+    return_hub: str = ""
+    vacation_days: int = 0
     warnings: list[str] = field(default_factory=list)
     estimated_share: float = 1.0  # Anteil der Flugkosten, der auf Schaetzungen beruht
 

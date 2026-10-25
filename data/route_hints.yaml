@@ -29,6 +29,31 @@ longhaul:
   - {from: [MAD, BCN], to: TNR, oneway_eur: 620, return_eur: 980, best_carriers: [ET, KQ, TK, AF], typical_stops: 1, note: "Madagaskar: teuer, duenne Frequenzen"}
   - {from: [MAD, BCN], to: PDG, oneway_eur: 600, return_eur: 940, typical_stops: 2}
   - {from: [BER, HAM], to: CMB, oneway_eur: 420, return_eur: 650, best_carriers: [QR, EK, TK], typical_stops: 1}
+  # --- Hubs, die aus dem Montafon mit der Bahn erreichbar sind ---
+  - {from: [ZRH], to: CMB, oneway_eur: 430, return_eur: 660, best_carriers: [QR, EK, TK, WK], typical_stops: 1, note: "Edelweiss (WK) fliegt saisonal direkt ZRH-CMB"}
+  - {from: [ZRH], to: KUL, oneway_eur: 450, return_eur: 700, best_carriers: [QR, EK, TK, SQ], typical_stops: 1}
+  - {from: [ZRH], to: LOP, oneway_eur: 650, return_eur: 1010, typical_stops: 2}
+  - {from: [ZRH], to: HAN, oneway_eur: 440, return_eur: 680, best_carriers: [QR, TK, EK], typical_stops: 1}
+  - {from: [ZRH], to: TPE, oneway_eur: 540, return_eur: 800, best_carriers: [TK, QR, CI], typical_stops: 1}
+  - {from: [ZRH], to: MCT, oneway_eur: 340, return_eur: 520, best_carriers: [QR, TK, WY], typical_stops: 1}
+  - {from: [ZRH], to: KTM, oneway_eur: 480, return_eur: 730, best_carriers: [QR, TK], typical_stops: 1}
+  - {from: [ZRH], to: TRV, oneway_eur: 450, return_eur: 690, best_carriers: [QR, EK, TK], typical_stops: 1}
+  - {from: [MUC], to: CMB, oneway_eur: 420, return_eur: 650, best_carriers: [QR, EK, TK], typical_stops: 1}
+  - {from: [MUC], to: KUL, oneway_eur: 440, return_eur: 690, best_carriers: [QR, EK, TK, SQ], typical_stops: 1}
+  - {from: [MUC], to: LOP, oneway_eur: 640, return_eur: 1000, typical_stops: 2}
+  - {from: [MUC], to: HAN, oneway_eur: 430, return_eur: 660, best_carriers: [TK, QR, LH], typical_stops: 1}
+  - {from: [MUC], to: TPE, oneway_eur: 530, return_eur: 790, typical_stops: 1}
+  - {from: [MUC], to: MCT, oneway_eur: 330, return_eur: 510, typical_stops: 1}
+  - {from: [MUC], to: KTM, oneway_eur: 470, return_eur: 720, typical_stops: 1}
+  - {from: [STR], to: CMB, oneway_eur: 460, return_eur: 710, best_carriers: [TK, QR], typical_stops: 1, note: "ueber IST/DOH, kleinerer Markt"}
+  - {from: [STR], to: KUL, oneway_eur: 480, return_eur: 740, typical_stops: 1}
+  - {from: [VIE], to: CMB, oneway_eur: 440, return_eur: 680, best_carriers: [QR, TK, EK], typical_stops: 1}
+  - {from: [VIE], to: KUL, oneway_eur: 460, return_eur: 710, typical_stops: 1}
+  - {from: [FDH], to: CMB, oneway_eur: 540, return_eur: 830, typical_stops: 2, note: "immer 2x umsteigen (via FRA/MUC + Golf)"}
+  - {from: [INN], to: CMB, oneway_eur: 540, return_eur: 830, typical_stops: 2}
+  - {from: [BER], to: LOP, oneway_eur: 640, return_eur: 1000, typical_stops: 2}
+  - {from: [BER], to: TRV, oneway_eur: 450, return_eur: 690, typical_stops: 1}
+  - {from: [HAM], to: LOP, oneway_eur: 650, return_eur: 1010, typical_stops: 2}
   - {from: [BER, HAM], to: KUL, oneway_eur: 440, return_eur: 680, best_carriers: [QR, EK, TK], typical_stops: 1}
   - {from: [BER, HAM], to: HAN, oneway_eur: 420, return_eur: 640, best_carriers: [TK, QR, CZ], typical_stops: 1}
   - {from: [BER, HAM], to: MCT, oneway_eur: 340, return_eur: 520, best_carriers: [QR, TK], typical_stops: 1}

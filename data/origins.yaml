@@ -1,91 +1,208 @@
-# Abflug-Optionen ab Teneriffa (TFS/TFN) bzw. Zubringer-Hubs.
-# Alle Preise in EUR pro Person, Richtwerte bis echte Scrapes vorliegen.
+# Abflughaefen und wie du sie erreichst.
+#
+# "access" beschreibt je Startkontext, wie du zum Flughafen kommst:
+#   montafon  - du bist bis 06.03.2027 beim Skifahren (Schruns/Bludenz), OEPNV
+#   cottbus   - du bist mit den Eltern nach Cottbus gefahren
+#   hamburg   - du bist bei der Firma
+#   tenerife  - du bist zu Hause (Flug noetig)
+# Der Rueckweg endet immer auf Teneriffa (TFS/TFN).
 meta:
   home_airports: [TFS, TFN]
+  work_clock_tz: CET            # Arbeitszeit 09:00-16:00 deutsche/oesterreichische Zeit
   residencia_note: >-
-    Der 75%-Residentenrabatt gilt auf dem Segment Kanaren <-> Peninsula/Balearen.
-    Bei einem durchgehenden internationalen Ticket (TFS-MAD-CMB auf einem PNR) wird er
-    in der Praxis NICHT auf den Gesamtpreis angewandt. Darum werden hier zwei Varianten
-    modelliert: 'self_transfer' (eigenes Zubringerticket mit Rabatt, aber Umsteige-Risiko)
-    und 'through_ticket' (ein PNR, kein Rabatt, aber durchgecheckt + Umsteigeschutz).
+    BESTAETIGT (Nutzerangabe): Der 75%-Residentenrabatt gilt NICHT auf Tickets mit
+    internationalem Anschluss. Der Zubringer Kanaren<->Peninsula wird deshalb immer
+    separat gebucht, mit 3 h Umstiegszeit, ohne Puffernacht. Das Modell rechnet nur
+    noch diese Variante ('separate_tickets'); 'through_ticket' bleibt als Vergleich
+    ohne Rabatt erhalten.
+  connection_note: >-
+    3 h Eigenumstieg ist die Normalpraxis des Nutzers. Risikoaufschlag im Modell
+    deshalb niedrig (kein Hotel, nur Umbuchungsrisiko).
 
 origins:
+  # ===================== Erreichbar aus dem Montafon (OEPNV) =====================
+  - id: ZRH
+    name: Zuerich
+    role: longhaul_hub
+    access:
+      montafon:
+        mode: train
+        hours: 2.6
+        price_eur_pp: 50
+        note: "Bludenz -> Zuerich HB (ueber Sargans, ~1x/h) -> Flughafen, 10 min"
+      tenerife:
+        mode: flight
+        hours: 5.0
+        price_eur_pp: 230
+        note: "Edelweiss/Eurowings, kein Residentenrabatt"
+    notes: >-
+      Der beste Abflughafen aus dem Montafon: 2,5 h mit der Bahn und ein echter
+      Langstreckenhub (Qatar, Emirates, Turkish, Swiss; Edelweiss saisonal direkt
+      nach Colombo).
+
+  - id: MUC
+    name: Muenchen
+    role: longhaul_hub
+    access:
+      montafon:
+        mode: train
+        hours: 4.2
+        price_eur_pp: 55
+        note: "Bludenz -> Lindau -> Muenchen Hbf (EC), dann S8 zum Flughafen"
+      cottbus:
+        mode: train
+        hours: 6.5
+        price_eur_pp: 90
+        note: "Umweg, nur wenn der Preis es rechtfertigt"
+      tenerife:
+        mode: flight
+        hours: 4.7
+        price_eur_pp: 210
+    notes: Lufthansa-Langstrecke plus alle Golf-Carrier. 1,5 h weiter weg als ZRH.
+
+  - id: STR
+    name: Stuttgart
+    role: secondary_hub
+    access:
+      montafon:
+        mode: train
+        hours: 3.6
+        price_eur_pp: 55
+        note: "Bludenz -> Lindau -> Stuttgart, dann S2/S3"
+    notes: Keine eigene Langstrecke nach Asien, aber guenstige Zubringer nach IST/DOH.
+
+  - id: FDH
+    name: Friedrichshafen
+    role: regional
+    access:
+      montafon:
+        mode: train
+        hours: 2.0
+        price_eur_pp: 25
+        note: "Bludenz -> Lindau -> Friedrichshafen, naechstgelegener Flughafen"
+    notes: >-
+      Am naechsten, aber nur Zubringer nach FRA/MUC/DUS. Langstrecke damit immer
+      zweimal umsteigen - meist teurer und laenger als gleich nach ZRH zu fahren.
+
+  - id: INN
+    name: Innsbruck
+    role: regional
+    access:
+      montafon:
+        mode: train
+        hours: 2.0
+        price_eur_pp: 30
+        note: "Bludenz -> Innsbruck (Railjet, Arlbergbahn)"
+    notes: Klein und im Winter charterlastig. Langstrecke nur ueber FRA/VIE.
+
+  - id: FMM
+    name: Memmingen
+    role: lowcost_only
+    access:
+      montafon:
+        mode: train
+        hours: 2.5
+        price_eur_pp: 30
+        note: "Bludenz -> Memmingen + Flughafenbus"
+    notes: >-
+      Nur Ryanair/Wizz, keine Langstrecke und keine Interlining-Tickets.
+      Taugt nicht als Asien-Startpunkt - bewusst ohne Langstreckenpreise gelistet.
+
+  - id: VIE
+    name: Wien
+    role: longhaul_hub
+    access:
+      montafon:
+        mode: train
+        hours: 6.5
+        price_eur_pp: 70
+        note: "Bludenz -> Wien (Railjet, durchgehend)"
+    notes: Guter Hub, aber 6,5 h Bahn - nur bei deutlichem Preisvorteil sinnvoll.
+
+  # ========================= Erreichbar aus Cottbus =========================
+  - id: BER
+    name: Berlin Brandenburg
+    role: longhaul_hub
+    access:
+      cottbus:
+        mode: train
+        hours: 2.0
+        price_eur_pp: 25
+        note: "Cottbus -> Berlin Hbf (RE, ~1h20) -> FEX zum Flughafen (~35 min)"
+      tenerife:
+        mode: flight
+        hours: 5.0
+        price_eur_pp: 220
+        note: "kein Residentenrabatt (kein Peninsula-Flug)"
+    notes: >-
+      Der Flughafen fuer die Cottbus-Variante. Keine eigene Asien-Langstrecke,
+      aber gute Anbindung ueber IST/DOH/DXB.
+
+  # ======================== Erreichbar aus Hamburg ========================
+  - id: HAM
+    name: Hamburg
+    role: company_hub
+    access:
+      hamburg:
+        mode: local
+        hours: 0.5
+        price_eur_pp: 10
+        note: "du bist bereits vor Ort"
+      cottbus:
+        mode: train
+        hours: 4.5
+        price_eur_pp: 60
+      tenerife:
+        mode: flight
+        hours: 5.0
+        price_eur_pp: 220
+        company_covered_travellers: 1
+        note: >-
+          HAM->TFS zahlt die Firma - aber NUR fuer dich, nicht fuer deine Freundin.
+          Das Modell berechnet daher 220 EUR fuer genau eine Person.
+    notes: >-
+      Firmensitz. Der von der Firma bezahlte Flug HAM->TFS ist nur dann ein echter
+      Vorteil, wenn du ohnehin nach Teneriffa zurueck willst.
+
+  # ===================== Erreichbar von Teneriffa (Zuhause) =====================
   - id: MAD
     name: Madrid Barajas
     role: primary_hub
-    feeder:
-      from: [TFS, TFN]
-      flight_time_h: 3.2
-      self_transfer_price_eur: 45      # Residentenrabatt bereits abgezogen (Richtwert)
-      through_ticket_feeder_eur: 150   # ohne Rabatt, als Teil des Langstreckentickets
-      min_connect_self_h: 4.0
-      min_connect_through_h: 1.5
-      daily_frequency: 12
-    notes: Beste Langstrecken-Auswahl nach Asien (Iberia, Qatar, Emirates, Turkish, Etihad).
+    access:
+      tenerife:
+        mode: flight
+        hours: 3.2
+        price_eur_pp: 45
+        residencia_discount: true
+        min_connect_h: 3.0
+        note: "Separates Ticket mit 75% Residentenrabatt, 3 h Eigenumstieg"
+      cottbus:
+        mode: flight
+        hours: 3.0
+        price_eur_pp: 120
+        note: "ueber BER, separates Ticket"
+    notes: Beste Langstreckenauswahl nach Asien und der Rueckflughafen der Wahl.
 
   - id: BCN
     name: Barcelona El Prat
     role: primary_hub
-    feeder:
-      from: [TFS, TFN]
-      flight_time_h: 3.5
-      self_transfer_price_eur: 50
-      through_ticket_feeder_eur: 160
-      min_connect_self_h: 4.0
-      min_connect_through_h: 1.5
-      daily_frequency: 10
-    notes: Oft guenstiger Richtung Golf/Asien (Qatar, Turkish, Etihad), etwas duennere Frequenzen.
-
-  - id: BER
-    name: Berlin Brandenburg
-    role: family_visit
-    feeder:
-      from: [TFS, TFN]
-      flight_time_h: 5.0
-      self_transfer_price_eur: 110     # kein Residentenrabatt (kein Peninsula-Flug)
-      through_ticket_feeder_eur: 180
-      min_connect_self_h: 24.0         # Elternbesuch ohnehin >= 1 Nacht
-      min_connect_through_h: 2.0
-      daily_frequency: 2
-    notes: >-
-      Nur sinnvoll in Kombination mit Elternbesuch. Rechne Aufenthalt als eigenen Block,
-      nicht als Transit. Langstrecke ab BER meist ueber IST/DOH/DXB.
-
-  - id: HAM
-    name: Hamburg
-    role: family_visit
-    feeder:
-      from: [TFS, TFN]
-      flight_time_h: 5.0
-      self_transfer_price_eur: 115
-      through_ticket_feeder_eur: 185
-      min_connect_self_h: 24.0
-      min_connect_through_h: 2.0
-      daily_frequency: 1.5
-    notes: Weniger Langstreckenoptionen als BER, haeufig Umstieg ueber FRA/MUC/IST.
-
-  - id: MUC
-    name: Muenchen
-    role: alternate_hub
-    feeder:
-      from: [TFS, TFN]
-      flight_time_h: 4.7
-      self_transfer_price_eur: 120
-      through_ticket_feeder_eur: 190
-      min_connect_self_h: 4.0
-      min_connect_through_h: 1.5
-      daily_frequency: 2
-    notes: Lufthansa-Direktfluege nach BKK/SIN/DEL, oft teurer. Als Vergleichswert mitscrapen.
+    access:
+      tenerife:
+        mode: flight
+        hours: 3.5
+        price_eur_pp: 50
+        residencia_discount: true
+        min_connect_h: 3.0
+        note: "Separates Ticket mit 75% Residentenrabatt, 3 h Eigenumstieg"
+    notes: Oft guenstig Richtung Golf/Asien, etwas duennere Frequenzen als MAD.
 
   - id: LIS
     name: Lissabon
     role: alternate_hub
-    feeder:
-      from: [TFS, TFN]
-      flight_time_h: 3.0
-      self_transfer_price_eur: 90
-      through_ticket_feeder_eur: 150
-      min_connect_self_h: 4.0
-      min_connect_through_h: 1.5
-      daily_frequency: 1.5
-    notes: Gelegentlich guenstig Richtung Indien/Asien via IST/DOH, duenne Zubringerfrequenz.
+    access:
+      tenerife:
+        mode: flight
+        hours: 3.0
+        price_eur_pp: 90
+        note: "kein Residentenrabatt (Portugal)"
+    notes: Gelegentlich guenstig via IST/DOH, duenne Zubringerfrequenz.

@@ -1,13 +1,12 @@
 """Routen-Optimierer.
 
-Sucht Kombinationen aus 2-3 Zielen, Start-/Enddatum, Blocklaengen, Abflughafen
-und Ticketstrategie, die Gesamtkosten gegen Erlebniswert optimal abwaegen.
+Sucht Kombinationen aus 2-3 Zielen, Start-/Enddatum, Blocklaengen, Abflughafen und
+Ticketstrategie, die Gesamtkosten gegen Erlebniswert optimal abwaegen.
 
-Verfahren: fuer jede geordnete Zielsequenz, jedes Startdatum, jeden Hub und
-jede Ticketstrategie laeuft ein Dynamic-Programming ueber die Tage
-(Zustand = "Ziele seq[0..i-1] fertig, Tage [0,t) gefuellt"). Das ist innerhalb
-des Tagesrasters exakt: es gibt keine Aufteilung der Blocklaengen, die die
-Suche verpassen koennte.
+Verfahren: fuer jede geordnete Zielsequenz, jedes Startdatum, jeden Abflughafen und
+jede Ticketstrategie laeuft ein Dynamic-Programming ueber die Tage (Zustand =
+"Ziele seq[0..i-1] fertig, Tage [0,t) gefuellt"). Das ist innerhalb des Tagesrasters
+exakt: es gibt keine Aufteilung der Blocklaengen, die die Suche verpassen koennte.
 
 Zielfunktion (kleiner = besser), standardmaessig laengenneutral pro Reisetag:
 
@@ -16,6 +15,16 @@ Zielfunktion (kleiner = besser), standardmaessig laengenneutral pro Reisetag:
 Warum pro Tag: eine 42-Tage-Route sammelt zwangslaeufig mehr Erlebnispunkte als
 eine 28-Tage-Route. Ohne Normierung gewinnt immer die laengste Reise, was keine
 Information ist - die Reiselaenge ist eine Vorgabe, keine Optimierungsgroesse.
+
+Anreise: der Abflughafen wird aus einem Startkontext erreicht (montafon, cottbus,
+hamburg, tenerife - s. data/origins.yaml). Der Rueckweg endet immer auf Teneriffa,
+ueber einen der `allowed_return_hubs`.
+
+Urlaubstage: werden NACH dem DP verteilt, und zwar greedy nach dem Zugewinn pro
+Ziel (`seasonality.vacation_gain`). Das ist bei gegebenen Blocklaengen exakt
+optimal, weil der Zugewinn pro Tag konstant und das Budget global ist - aber es
+ist eine Heuristik gegenueber einer gemeinsamen Optimierung von Laengen UND
+Urlaubsverteilung. Der Effekt auf die Laengenwahl ist zweiter Ordnung.
 """
 
 from __future__ import annotations
@@ -25,9 +34,16 @@ import itertools
 from dataclasses import dataclass, field
 
 from .data import load_calendar, load_destinations, load_origins, load_route_hints
-from .models import Block, Destination, Itinerary, Leg
+from .models import Access, Block, Destination, Itinerary, Leg
 from .prices import PriceBook
-from .seasonality import Weights, daily_score, interpolated_scores, is_available
+from .seasonality import (
+    Weights,
+    daily_score,
+    interpolated_scores,
+    is_available,
+    vacation_gain,
+)
+from .workwindow import WorkWindow
 
 NEG = float("-inf")
 GOOD_SURF = 6.0
@@ -44,30 +60,46 @@ class TripConfig:
     max_destinations: int = 3
     min_block_days: int = 9
     max_block_days: int = 22
-    allowed_origins: tuple[str, ...] = ("MAD", "BCN")
-    ticket_strategies: tuple[str, ...] = ("self_transfer", "through_ticket")
+
+    # Anreise und Rueckweg
+    outbound_context: str = "tenerife"
+    allowed_origins: tuple[str, ...] = ()  # leer = alle aus dem Kontext erreichbaren
+    allowed_return_hubs: tuple[str, ...] = ("MAD", "BCN")
+    home_airport: str = "TFS"
+    ticket_strategies: tuple[str, ...] = ("separate_tickets",)
+
     eligible_tiers: tuple[str, ...] = ("A", "B")
-    include_destinations: tuple[str, ...] = ()  # erzwingt diese Ziele in der Route
+    # Ziele unter dieser Arbeitsinfrastruktur taugen nicht als Standort fuer mehrere
+    # Wochen - unabhaengig davon, wie viel Urlaub dort liegt. Stromausfaelle und
+    # fehlendes Internet machen Arbeit nicht nur unangenehm, sondern unzuverlaessig.
+    # Solche Orte gehoeren als Ausflug in einen Block (Sumbawa per Faehre von
+    # Lombok), nicht als eigener Routenbaustein.
+    min_work_score: float = 5.0
+    include_destinations: tuple[str, ...] = ()
     exclude_destinations: tuple[str, ...] = ()
     weights: Weights = field(default_factory=Weights.balanced)
+    work_window: WorkWindow = field(default_factory=WorkWindow)
+    vacation_days: int = 14
+    # Obergrenze je Block: Urlaub soll sich ueber die Reise VERTEILEN, nicht in
+    # einem Block klumpen. Ohne diese Grenze wuerde die greedy Zuteilung den
+    # ersten Block bis zum Anschlag fuellen.
+    max_vacation_share_per_block: float = 0.5
 
-    # "per_day" = laengenneutral (Default), "total" = Gesamtsumme
-    objective_mode: str = "per_day"
-    # Monetarisierung: wie viel ist ein Score-Punkt pro Person pro Tag wert?
+    objective_mode: str = "per_day"  # per_day | total
     value_per_score_point_eur: float = 22.0
-    # Ein Umzugstag ist kein voller Urlaubstag.
     travel_day_score_factor: float = 0.35
-    # Self-Transfer: Pufferuebernachtung am Hub + Risikoaufschlag (pro Richtung, total).
-    self_transfer_buffer_eur: float = 120.0
-    self_transfer_risk_eur: float = 50.0
-    # Open-Jaw/Multi-City-Rabatt gegenueber zwei Einzeltickets (Schaetzung).
+    # 3 h Eigenumstieg ohne Puffernacht: nur Umbuchungsrisiko, kein Hotel.
+    self_connect_risk_eur: float = 50.0
+    # Kosten, um ueberhaupt in den Startkontext zu kommen (z.B. Montafon -> Cottbus).
+    # Gesamtbetrag fuer alle Reisenden, wird den Flugkosten zugeschlagen.
+    pre_trip_cost_eur: float = 0.0
+    scenario_label: str = ""
     openjaw_discount: float = 0.12
-    # Boardbags auf Langstrecke (0 = vor Ort mieten, s. data/route_hints.yaml).
     board_bags: int = 0
 
     require_tropical: bool = True
     min_good_surf_days: int = 0
-    budget_eur: float | None = None  # harte Obergrenze fuer Gesamtkosten
+    budget_eur: float | None = None
     start_date_step: int = 2
 
     def date_grid(self) -> list[dt.date]:
@@ -80,11 +112,10 @@ class TripConfig:
 
 @dataclass
 class _Profile:
-    """Vorberechnete Tagesprofile eines Ziels ab einem Startdatum."""
-
     score: list[float]
     avail: list[bool]
     surf: list[bool]
+    vac_gain: list[float]
     pref: list[float]
     blocked: list[int]
 
@@ -107,25 +138,31 @@ class Optimizer:
         cached = self._profiles.get(key)
         if cached is not None:
             return cached
+        cfg = self.cfg
         score: list[float] = []
         avail: list[bool] = []
         surf: list[bool] = []
+        gain: list[float] = []
         for t in range(length):
             day = start + dt.timedelta(days=t)
             ok, _ = is_available(dest, day)
             avail.append(ok)
             if ok:
-                score.append(daily_score(dest, day, self.cfg.weights))
+                score.append(daily_score(dest, day, cfg.weights, cfg.work_window))
                 surf.append(interpolated_scores(dest, day)[1] >= GOOD_SURF)
+                gain.append(vacation_gain(dest, day, cfg.weights, cfg.work_window))
             else:
                 score.append(0.0)
                 surf.append(False)
+                gain.append(0.0)
         pref = [0.0] * (length + 1)
         blocked = [0] * (length + 1)
         for t in range(length):
             pref[t + 1] = pref[t] + score[t]
             blocked[t + 1] = blocked[t] + (0 if avail[t] else 1)
-        prof = _Profile(score=score, avail=avail, surf=surf, pref=pref, blocked=blocked)
+        prof = _Profile(
+            score=score, avail=avail, surf=surf, vac_gain=gain, pref=pref, blocked=blocked
+        )
         self._profiles[key] = prof
         return prof
 
@@ -137,18 +174,68 @@ class Optimizer:
             self._prices[key] = cached
         return cached
 
-    def _origin_leg_price(
+    # ------------------------------------------------------------------ #
+    # Anreise und Rueckweg
+    # ------------------------------------------------------------------ #
+    def _access(self, hub: str, context: str) -> Access | None:
+        origin = self.origins.get(hub)
+        return origin.access.get(context) if origin else None
+
+    def outbound_cost(
         self, hub: str, dest_airport: str, day: dt.date, strategy: str
-    ) -> tuple[float, str, float]:
-        """(Preis pro Person, Quelle, Fixkosten total) fuer die Anreise ab Teneriffa."""
-        o = self.origins[hub]
+    ) -> tuple[float, str] | None:
+        """Gesamtkosten der Anreise ab Startkontext bis zum ersten Ziel."""
+        cfg = self.cfg
+        access = self._access(hub, cfg.outbound_context)
+        if access is None:
+            return None
         longhaul, src = self._leg_price(hub, dest_airport, day)
         if longhaul == float("inf"):
-            return float("inf"), "unknown", 0.0
-        if strategy == "self_transfer":
-            fixed = self.cfg.self_transfer_buffer_eur + self.cfg.self_transfer_risk_eur
-            return longhaul + o.self_transfer_price_eur, f"{src}+feeder", fixed
-        return longhaul + o.through_ticket_feeder_eur, f"{src}+through", 0.0
+            return None
+
+        total = longhaul * cfg.travellers
+        if strategy == "through_ticket":
+            if access.mode != "flight":
+                return None  # ein Durchgangsticket gibt es nur mit Zubringerflug
+            total += access.full_fare_eur_pp * cfg.travellers
+            return total, f"{src}+through"
+        total += access.total_price(cfg.travellers)
+        if access.mode == "flight":
+            total += cfg.self_connect_risk_eur
+        return total, f"{src}+{access.mode}"
+
+    def return_cost(
+        self, last_airport: str, hub: str, day: dt.date, strategy: str
+    ) -> tuple[float, str] | None:
+        """Gesamtkosten des Rueckwegs vom letzten Ziel bis Teneriffa."""
+        cfg = self.cfg
+        access = self._access(hub, "tenerife")
+        if access is None:
+            return None
+        longhaul, src = self._leg_price(last_airport, hub, day)
+        if longhaul == float("inf"):
+            return None
+        # Open-Jaw: Hin und Rueck auf einem Langstreckenticket ist guenstiger
+        # als zwei Einzelstrecken.
+        longhaul *= 1 - cfg.openjaw_discount
+
+        total = longhaul * cfg.travellers
+        if strategy == "through_ticket":
+            if access.mode != "flight":
+                return None
+            total += access.full_fare_eur_pp * cfg.travellers
+            return total, f"{src}+through"
+        total += access.total_price(cfg.travellers)
+        if access.mode == "flight":
+            total += cfg.self_connect_risk_eur
+        return total, f"{src}+{access.mode}"
+
+    def outbound_hubs(self) -> list[str]:
+        cfg = self.cfg
+        candidates = cfg.allowed_origins or tuple(
+            h.id for h in self.origins.values() if h.reachable_from(cfg.outbound_context)
+        )
+        return [h for h in candidates if self._access(h, cfg.outbound_context)]
 
     # ------------------------------------------------------------------ #
     # Kandidatenauswahl
@@ -163,6 +250,8 @@ class Optimizer:
                 continue
             if d.tier not in self.cfg.eligible_tiers:
                 continue
+            if d.work < self.cfg.min_work_score:
+                continue
             out.append(d)
         return out
 
@@ -173,8 +262,6 @@ class Optimizer:
         for n in range(self.cfg.min_destinations, self.cfg.max_destinations + 1):
             for combo in itertools.permutations(pool, n):
                 countries = [d.country for d in combo]
-                # Zwei gleiche Laender direkt hintereinander waeren ein
-                # Inlandsumzug, kein eigener Routenbaustein.
                 if any(countries[i] == countries[i + 1] for i in range(len(countries) - 1)):
                     continue
                 if self.cfg.require_tropical and not any(d.tropical for d in combo):
@@ -188,7 +275,12 @@ class Optimizer:
     # Kern-DP
     # ------------------------------------------------------------------ #
     def _solve(
-        self, seq: tuple[Destination, ...], start: dt.date, hub: str, strategy: str
+        self,
+        seq: tuple[Destination, ...],
+        start: dt.date,
+        hub: str,
+        return_hub: str,
+        strategy: str,
     ) -> Itinerary | None:
         cfg = self.cfg
         k = len(seq)
@@ -199,7 +291,6 @@ class Optimizer:
         vpp = cfg.value_per_score_point_eur * cfg.travellers
         profiles = [self._profile(d, start, max_len) for d in seq]
 
-        # g[i][t] = bester Nettowert, nachdem seq[0..i-1] die Tage [0,t) fuellen.
         g = [[NEG] * (max_len + 1) for _ in range(k + 1)]
         back: dict[tuple[int, int], tuple[int, int, float, str]] = {}
         g[0][0] = 0.0
@@ -213,17 +304,17 @@ class Optimizer:
                     continue
                 arrive_day = start + dt.timedelta(days=t)
                 if i == 0:
-                    ppp, src, fixed = self._origin_leg_price(
-                        hub, dest.primary_airport, arrive_day, strategy
-                    )
+                    priced = self.outbound_cost(hub, dest.primary_airport, arrive_day, strategy)
+                    if priced is None:
+                        continue
+                    arrival_cost, src = priced
                 else:
                     ppp, src = self._leg_price(
                         seq[i - 1].primary_airport, dest.primary_airport, arrive_day
                     )
-                    fixed = 0.0
-                if ppp == float("inf"):
-                    continue
-                arrival_cost = ppp * cfg.travellers + fixed
+                    if ppp == float("inf"):
+                        continue
+                    arrival_cost = ppp * cfg.travellers
                 if cfg.board_bags:
                     arrival_cost += self.pb.boardbag_eur() * cfg.board_bags
 
@@ -240,41 +331,31 @@ class Optimizer:
                     net = row_in[t] + value - arrival_cost - ground
                     if net > row_out[end]:
                         row_out[end] = net
-                        back[(i + 1, end)] = (i, t, ppp, src)
+                        back[(i + 1, end)] = (i, t, arrival_cost, src)
 
-        # Rueckflug anhaengen, beste Gesamtlaenge nach Zielfunktion waehlen.
         best: tuple[float, float, int, float, str] | None = None
         last = seq[-1]
         for total in range(cfg.min_days, max_len + 1):
             if g[k][total] == NEG:
                 continue
             back_day = start + dt.timedelta(days=total - 1)
-            ppp, src = self._leg_price(last.primary_airport, hub, back_day)
-            if ppp == float("inf"):
+            priced = self.return_cost(last.primary_airport, return_hub, back_day, strategy)
+            if priced is None:
                 continue
-            o = self.origins[hub]
-            if strategy == "self_transfer":
-                ppp += o.self_transfer_price_eur
-                fixed = cfg.self_transfer_buffer_eur + cfg.self_transfer_risk_eur
-                src = f"{src}+feeder"
-            else:
-                ppp += o.through_ticket_feeder_eur
-                fixed = 0.0
-                src = f"{src}+through"
-            # Open-Jaw: Hin und Rueck auf einem Ticket ist guenstiger als zwei Einzelstrecken.
-            ppp *= 1 - cfg.openjaw_discount
-            cost = ppp * cfg.travellers + fixed
+            cost, src = priced
             if cfg.board_bags:
                 cost += self.pb.boardbag_eur() * cfg.board_bags
             net = g[k][total] - cost
             rank = -net / total if cfg.objective_mode == "per_day" else -net
             if best is None or rank < best[0]:
-                best = (rank, net, total, ppp, src)
+                best = (rank, net, total, cost, src)
 
         if best is None:
             return None
-        _, net, total, return_ppp, return_src = best
-        itin = self._reconstruct(seq, start, total, hub, strategy, back, net, return_ppp, return_src)
+        _, net, total, return_total, return_src = best
+        itin = self._reconstruct(
+            seq, start, total, hub, return_hub, strategy, back, net, return_total, return_src
+        )
         if cfg.budget_eur is not None and itin.total_cost_eur > cfg.budget_eur:
             return None
         if itin.good_surf_days < cfg.min_good_surf_days:
@@ -288,18 +369,19 @@ class Optimizer:
         start: dt.date,
         total: int,
         hub: str,
+        return_hub: str,
         strategy: str,
         back: dict,
         net: float,
-        return_ppp: float,
+        return_total: float,
         return_src: str,
     ) -> Itinerary:
         cfg = self.cfg
         bounds: list[tuple[int, int, float, str]] = []
         i, t = len(seq), total
         while i > 0:
-            pi, pt, ppp, src = back[(i, t)]
-            bounds.append((pt, t, ppp, src))
+            pi, pt, cost, src = back[(i, t)]
+            bounds.append((pt, t, cost, src))
             i, t = pi, pt
         bounds.reverse()
 
@@ -307,7 +389,7 @@ class Optimizer:
         legs: list[Leg] = []
         flight_cost = 0.0
         estimated = 0.0
-        for idx, (bt, bend, ppp, src) in enumerate(bounds):
+        for idx, (bt, bend, cost, src) in enumerate(bounds):
             dest = seq[idx]
             blocks.append(
                 Block(
@@ -316,7 +398,6 @@ class Optimizer:
                     end=start + dt.timedelta(days=bend - 1),
                 )
             )
-            cost = ppp * cfg.travellers
             flight_cost += cost
             if "estimate" in src or "unknown" in src:
                 estimated += cost
@@ -331,37 +412,32 @@ class Optimizer:
                 )
             )
 
-        return_cost = return_ppp * cfg.travellers
-        flight_cost += return_cost
+        flight_cost += return_total + cfg.pre_trip_cost_eur
         if "estimate" in return_src or "unknown" in return_src:
-            estimated += return_cost
+            estimated += return_total
         legs.append(
             Leg(
                 origin=seq[-1].primary_airport,
-                destination=hub,
+                destination=return_hub,
                 date=start + dt.timedelta(days=total - 1),
-                price_eur=return_cost,
+                price_eur=return_total,
                 kind="return",
                 source=return_src,
             )
         )
 
-        fixed = 0.0
-        if strategy == "self_transfer":
-            fixed = 2 * (cfg.self_transfer_buffer_eur + cfg.self_transfer_risk_eur)
+        self._allocate_vacation(blocks)
+
         baggage = self.pb.boardbag_eur() * cfg.board_bags * len(legs)
         ground = sum(b.destination.cost_per_day_eur_pp * b.days * cfg.travellers for b in blocks)
-        visas = sum(self.pb.visa_eur(c) for c in {b.destination.country for b in blocks}) * cfg.travellers
+        visas = sum(
+            self.pb.visa_eur(c) for c in {b.destination.country for b in blocks}
+        ) * cfg.travellers
 
-        raw_score = 0.0
-        good_surf = 0
-        for b in blocks:
-            for n in range(b.days):
-                day = b.start + dt.timedelta(days=n)
-                s = daily_score(b.destination, day, cfg.weights)
-                raw_score += s * (cfg.travel_day_score_factor if n == 0 else 1.0)
-                if interpolated_scores(b.destination, day)[1] >= GOOD_SURF:
-                    good_surf += 1
+        raw_score, good_surf = self._score_blocks(blocks)
+        # Der Urlaubszugewinn steckt nicht im DP-Nettowert - hier nachtragen.
+        work_only, _ = self._score_blocks(blocks, ignore_vacation=True)
+        net += (raw_score - work_only) * cfg.value_per_score_point_eur * cfg.travellers
 
         return Itinerary(
             blocks=blocks,
@@ -369,20 +445,86 @@ class Optimizer:
             origin_hub=hub,
             ticket_strategy=strategy,
             travellers=cfg.travellers,
-            flight_cost_eur=round(flight_cost + fixed, 2),
+            flight_cost_eur=round(flight_cost, 2),
             ground_cost_eur=round(ground, 2),
             visa_cost_eur=round(visas, 2),
             baggage_cost_eur=round(baggage, 2),
             experience_score=round(raw_score, 2),
+            estimated_share=round(estimated / flight_cost, 3) if flight_cost else 1.0,
             objective_eur=round(-net, 2),
             objective_per_day_eur=round(-net / total, 2),
             good_surf_days=good_surf,
-            estimated_share=round(estimated / flight_cost, 3) if flight_cost else 1.0,
+            outbound_context=cfg.outbound_context,
+            return_hub=return_hub,
+            vacation_days=sum(b.vacation_days for b in blocks),
         )
+
+    # ------------------------------------------------------------------ #
+    def _allocate_vacation(self, blocks: list[Block]) -> None:
+        """Urlaubstage dorthin, wo sie am meisten bringen (schlechtestes Arbeitsfenster)."""
+        cfg = self.cfg
+        budget = min(cfg.vacation_days, sum(b.days for b in blocks))
+        if budget <= 0:
+            return
+        ranked = sorted(
+            blocks,
+            key=lambda b: -sum(
+                vacation_gain(
+                    b.destination, b.start + dt.timedelta(days=n), cfg.weights, cfg.work_window
+                )
+                for n in range(b.days)
+            )
+            / b.days,
+        )
+        caps = {
+            id(b): max(1, int(b.days * cfg.max_vacation_share_per_block)) for b in blocks
+        }
+        for block in ranked:
+            if budget <= 0:
+                break
+            take = min(caps[id(block)], budget)
+            block.vacation_days = take
+            budget -= take
+        # Rest verteilen, falls die Deckel das Budget nicht aufbrauchen.
+        for block in ranked:
+            if budget <= 0:
+                break
+            extra = min(block.days - block.vacation_days, budget)
+            block.vacation_days += extra
+            budget -= extra
+
+    def _score_blocks(
+        self, blocks: list[Block], ignore_vacation: bool = False
+    ) -> tuple[float, int]:
+        cfg = self.cfg
+        raw_score = 0.0
+        good_surf = 0
+        for b in blocks:
+            # Urlaubstage auf die Tage mit dem besten Surf legen - so wuerde man es
+            # auch in der Praxis machen.
+            days = [b.start + dt.timedelta(days=n) for n in range(b.days)]
+            if ignore_vacation or not b.vacation_days:
+                vac_days: set[dt.date] = set()
+            else:
+                vac_days = set(
+                    sorted(days, key=lambda d: -interpolated_scores(b.destination, d)[1])[
+                        : b.vacation_days
+                    ]
+                )
+            for n, day in enumerate(days):
+                s = daily_score(
+                    b.destination, day, cfg.weights, cfg.work_window, vacation=day in vac_days
+                )
+                raw_score += s * (cfg.travel_day_score_factor if n == 0 else 1.0)
+                if interpolated_scores(b.destination, day)[1] >= GOOD_SURF:
+                    good_surf += 1
+        return raw_score, good_surf
 
     # ------------------------------------------------------------------ #
     def annotate(self, itin: Itinerary) -> Itinerary:
         """Haengt Warnungen an - erst fuer die Finalisten, nicht fuer alle Varianten."""
+        from .workwindow import describe
+
         out: list[str] = []
         for event in load_calendar():
             for b in itin.blocks:
@@ -394,17 +536,14 @@ class Optimizer:
             if "EU-Abfluege" in event.affects and event.overlaps(
                 itin.start - dt.timedelta(days=1), itin.start + dt.timedelta(days=1)
             ):
-                out.append(f"Abflugtag liegt in {event.name} - teuerste Woche ab MAD/BCN")
+                out.append(f"Abflugtag liegt in {event.name} - Preisspitze")
             if "EU-Abfluege" in event.affects and event.overlaps(
                 itin.end - dt.timedelta(days=1), itin.end + dt.timedelta(days=1)
             ):
                 out.append(f"Rueckflugtag liegt in {event.name} - Preisspitze")
-        if itin.ticket_strategy == "self_transfer":
-            hub = self.origins[itin.origin_hub]
-            out.append(
-                f"Self-Transfer ab {hub.id}: Residentenrabatt nutzbar, aber kein "
-                f"Umsteigeschutz ({hub.min_connect_self_h:.0f} h Puffer + 1 Hotelnacht eingerechnet)"
-            )
+        for b in itin.blocks:
+            mid = b.start + dt.timedelta(days=b.days // 2)
+            out.append(f"Arbeitszeit in {b.destination.region_short}: {describe(b.destination, mid, self.cfg.work_window)}")
         if itin.good_surf_days:
             out.append(f"{itin.good_surf_days} Tage mit Surf-Score >= 6 (longboardtauglich)")
         else:
@@ -423,13 +562,15 @@ class Optimizer:
     # ------------------------------------------------------------------ #
     def run_all(self) -> list[Itinerary]:
         out: list[Itinerary] = []
+        hubs = self.outbound_hubs()
         for seq in self.sequences():
             for start in self.cfg.date_grid():
-                for hub in self.cfg.allowed_origins:
-                    for strategy in self.cfg.ticket_strategies:
-                        itin = self._solve(seq, start, hub, strategy)
-                        if itin:
-                            out.append(itin)
+                for hub in hubs:
+                    for return_hub in self.cfg.allowed_return_hubs:
+                        for strategy in self.cfg.ticket_strategies:
+                            itin = self._solve(seq, start, hub, return_hub, strategy)
+                            if itin:
+                                out.append(itin)
         key = (
             (lambda i: i.objective_per_day_eur)
             if self.cfg.objective_mode == "per_day"

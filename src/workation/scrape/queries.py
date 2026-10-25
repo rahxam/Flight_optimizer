@@ -142,6 +142,84 @@ def grid_queries(
     return queries
 
 
+def scenario_queries(
+    scenarios: list,
+    gateways: list[str] | None = None,
+    return_hubs: tuple[str, ...] = ("MAD", "BCN"),
+    return_window: tuple[dt.date, dt.date] = (dt.date(2027, 4, 15), dt.date(2027, 5, 12)),
+    return_step: int = 3,
+    adults: int = 2,
+) -> list[Query]:
+    """Genau die Suchen, die die Startszenarien brauchen.
+
+    Weil die Abflugfenster der Szenarien klein sind (3-8 Tage), wird dort jeder
+    Tag abgefragt - gerade bei Flugpreisen entscheidet oft ein einzelner Tag.
+    """
+    gateways = gateways or ["CMB", "KUL", "LOP", "HAN", "MCT", "TPE", "KTM"]
+    queries: list[Query] = []
+    n = 0
+    seen: set[tuple] = set()
+    for scenario in scenarios:
+        days = _dates(scenario.earliest_start, scenario.latest_start, 1)
+        for hub in scenario.allowed_origins:
+            for gate in gateways:
+                for day in days:
+                    key = (hub, gate, day.isoformat(), "oneway")
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    n += 1
+                    queries.append(
+                        Query(
+                            id=f"s{n:04d}",
+                            phase="scenario",
+                            trip_type="oneway",
+                            legs=[(hub, gate, day.isoformat())],
+                            adults=adults,
+                            purpose=f"Hinflug {scenario.key}: {hub}->{gate}",
+                        ).build_urls()
+                    )
+    for hub in return_hubs:
+        for gate in gateways:
+            for day in _dates(return_window[0], return_window[1], return_step):
+                key = (gate, hub, day.isoformat(), "oneway")
+                if key in seen:
+                    continue
+                seen.add(key)
+                n += 1
+                queries.append(
+                    Query(
+                        id=f"s{n:04d}",
+                        phase="scenario",
+                        trip_type="oneway",
+                        legs=[(gate, hub, day.isoformat())],
+                        adults=adults,
+                        purpose=f"Rueckflug {gate}->{hub}",
+                    ).build_urls()
+                )
+    mid = _dates(dt.date(2027, 3, 25), dt.date(2027, 4, 28), 4)
+    for a, b in INTRA_ROUTES:
+        if a not in gateways or b not in gateways:
+            continue
+        for day in mid:
+            key = (a, b, day.isoformat(), "oneway")
+            if key in seen:
+                continue
+            seen.add(key)
+            n += 1
+            queries.append(
+                Query(
+                    id=f"s{n:04d}",
+                    phase="scenario",
+                    trip_type="oneway",
+                    legs=[(a, b, day.isoformat())],
+                    adults=adults,
+                    purpose=f"Zwischenflug {a}->{b}",
+                ).build_urls()
+            )
+    return queries
+
+
 def candidate_queries(itineraries: list[Itinerary], adults: int = 2) -> list[Query]:
     """Multi-City-Suchen fuer konkrete Routenvorschlaege, plus Vergleichs-Einzeltickets."""
     queries: list[Query] = []
