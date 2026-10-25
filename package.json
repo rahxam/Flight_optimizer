@@ -8,6 +8,6 @@
     "scrape": "node scripts/scrape_google_flights.cjs data/prices/_queries.json data/prices/raw/manual.csv"
   },
   "dependencies": {
-    "playwright": "1.49.1"
+    "playwright": "1.55.1"
   }
 }
