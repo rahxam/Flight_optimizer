@@ -1,0 +1,91 @@
+# Abflug-Optionen ab Teneriffa (TFS/TFN) bzw. Zubringer-Hubs.
+# Alle Preise in EUR pro Person, Richtwerte bis echte Scrapes vorliegen.
+meta:
+  home_airports: [TFS, TFN]
+  residencia_note: >-
+    Der 75%-Residentenrabatt gilt auf dem Segment Kanaren <-> Peninsula/Balearen.
+    Bei einem durchgehenden internationalen Ticket (TFS-MAD-CMB auf einem PNR) wird er
+    in der Praxis NICHT auf den Gesamtpreis angewandt. Darum werden hier zwei Varianten
+    modelliert: 'self_transfer' (eigenes Zubringerticket mit Rabatt, aber Umsteige-Risiko)
+    und 'through_ticket' (ein PNR, kein Rabatt, aber durchgecheckt + Umsteigeschutz).
+
+origins:
+  - id: MAD
+    name: Madrid Barajas
+    role: primary_hub
+    feeder:
+      from: [TFS, TFN]
+      flight_time_h: 3.2
+      self_transfer_price_eur: 45      # Residentenrabatt bereits abgezogen (Richtwert)
+      through_ticket_feeder_eur: 150   # ohne Rabatt, als Teil des Langstreckentickets
+      min_connect_self_h: 4.0
+      min_connect_through_h: 1.5
+      daily_frequency: 12
+    notes: Beste Langstrecken-Auswahl nach Asien (Iberia, Qatar, Emirates, Turkish, Etihad).
+
+  - id: BCN
+    name: Barcelona El Prat
+    role: primary_hub
+    feeder:
+      from: [TFS, TFN]
+      flight_time_h: 3.5
+      self_transfer_price_eur: 50
+      through_ticket_feeder_eur: 160
+      min_connect_self_h: 4.0
+      min_connect_through_h: 1.5
+      daily_frequency: 10
+    notes: Oft guenstiger Richtung Golf/Asien (Qatar, Turkish, Etihad), etwas duennere Frequenzen.
+
+  - id: BER
+    name: Berlin Brandenburg
+    role: family_visit
+    feeder:
+      from: [TFS, TFN]
+      flight_time_h: 5.0
+      self_transfer_price_eur: 110     # kein Residentenrabatt (kein Peninsula-Flug)
+      through_ticket_feeder_eur: 180
+      min_connect_self_h: 24.0         # Elternbesuch ohnehin >= 1 Nacht
+      min_connect_through_h: 2.0
+      daily_frequency: 2
+    notes: >-
+      Nur sinnvoll in Kombination mit Elternbesuch. Rechne Aufenthalt als eigenen Block,
+      nicht als Transit. Langstrecke ab BER meist ueber IST/DOH/DXB.
+
+  - id: HAM
+    name: Hamburg
+    role: family_visit
+    feeder:
+      from: [TFS, TFN]
+      flight_time_h: 5.0
+      self_transfer_price_eur: 115
+      through_ticket_feeder_eur: 185
+      min_connect_self_h: 24.0
+      min_connect_through_h: 2.0
+      daily_frequency: 1.5
+    notes: Weniger Langstreckenoptionen als BER, haeufig Umstieg ueber FRA/MUC/IST.
+
+  - id: MUC
+    name: Muenchen
+    role: alternate_hub
+    feeder:
+      from: [TFS, TFN]
+      flight_time_h: 4.7
+      self_transfer_price_eur: 120
+      through_ticket_feeder_eur: 190
+      min_connect_self_h: 4.0
+      min_connect_through_h: 1.5
+      daily_frequency: 2
+    notes: Lufthansa-Direktfluege nach BKK/SIN/DEL, oft teurer. Als Vergleichswert mitscrapen.
+
+  - id: LIS
+    name: Lissabon
+    role: alternate_hub
+    feeder:
+      from: [TFS, TFN]
+      flight_time_h: 3.0
+      self_transfer_price_eur: 90
+      through_ticket_feeder_eur: 150
+      min_connect_self_h: 4.0
+      min_connect_through_h: 1.5
+      daily_frequency: 1.5
+    notes: Gelegentlich guenstig Richtung Indien/Asien via IST/DOH, duenne Zubringerfrequenz.

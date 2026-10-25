@@ -1,0 +1,6 @@
+origin,destination,depart_date,return_date,trip_type,price_eur,carrier,stops,duration_min,source,url,itinerary_id,leg_index
+MAD,CMB,2027-03-17,,oneway,412,QR,1,1105,google_flights,https://www.google.com/travel/flights/...,,0
+MAD,CMB,2027-03-17,2027-05-05,return,648,QR,1,1105,google_flights,,,0
+MAD,CMB,2027-03-17,,multicity_leg,735,QR,1,1105,google_flights,,itin-A1,0
+CMB,LOP,2027-04-10,,multicity_leg,0,AK,1,720,google_flights,,itin-A1,1
+LOP,MAD,2027-05-05,,multicity_leg,0,QR,2,1480,google_flights,,itin-A1,2

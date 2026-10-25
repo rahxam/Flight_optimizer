@@ -1,0 +1,125 @@
+# Fallback-Schaetzpreise und Routenwissen, solange keine echten Scrapes vorliegen.
+# ALLE Werte sind Richtwerte in EUR pro Person, Economy, 1 Gepaeckstueck + Boardbag
+# nicht eingerechnet (siehe baggage.boardbag_eur).
+# Sobald data/prices/*.csv existiert, haben echte Preise Vorrang.
+meta:
+  currency: EUR
+  estimated: true
+  as_of: "2026-10-25"
+
+baggage:
+  boardbag_eur: 90        # pro Strecke pro Boardbag, Richtwert Langstrecke
+  boardbag_note: >-
+    Longboards (>8 ft) sind bei vielen Airlines Sondergepaeck oder gar nicht
+    erlaubt. Fuer Longboard-Ziele lieber vor Ort mieten (SL/Lombok: 8-15 EUR/Tag)
+    und nur ein Mid-Length/Funboard im Bag mitnehmen (max. 7'6").
+  checked_bag_eur: 60
+
+# Langstrecken Europa -> Asien (Hin ODER Rueck, einfach; Return i.d.R. ~1.7x)
+longhaul:
+  - {from: [MAD, BCN], to: CMB, oneway_eur: 390, return_eur: 620, best_carriers: [QR, EK, TK, UL+AY], typical_stops: 1, note: "Qatar/Emirates ueber DOH/DXB, 15-18 h"}
+  - {from: [MAD, BCN], to: KUL, oneway_eur: 430, return_eur: 690, best_carriers: [QR, EK, TK, SQ], typical_stops: 1, note: "Gut als Gateway fuer LOP"}
+  - {from: [MAD, BCN], to: LOP, oneway_eur: 620, return_eur: 980, best_carriers: [QR+AK, EK+GA, SQ+AK], typical_stops: 2, note: "Meist 2 Stops; oft billiger als KUL+Separat-Ticket pruefen"}
+  - {from: [MAD, BCN], to: HAN, oneway_eur: 430, return_eur: 660, best_carriers: [QR, TK, EK, CZ], typical_stops: 1}
+  - {from: [MAD, BCN], to: TPE, oneway_eur: 520, return_eur: 780, best_carriers: [TK, QR, EK, CI], typical_stops: 1}
+  - {from: [MAD, BCN], to: KTM, oneway_eur: 450, return_eur: 700, best_carriers: [QR, TK, EK], typical_stops: 1}
+  - {from: [MAD, BCN], to: MCT, oneway_eur: 300, return_eur: 480, best_carriers: [QR, TK, WY, EK], typical_stops: 1, note: "Kuerzeste Langstrecke der Liste, 8-10 h"}
+  - {from: [MAD, BCN], to: PNH, oneway_eur: 480, return_eur: 740, best_carriers: [QR, EK, TK], typical_stops: 2}
+  - {from: [MAD, BCN], to: TRV, oneway_eur: 430, return_eur: 650, best_carriers: [QR, EK, TK, AI], typical_stops: 1}
+  - {from: [MAD, BCN], to: TNR, oneway_eur: 620, return_eur: 980, best_carriers: [ET, KQ, TK, AF], typical_stops: 1, note: "Madagaskar: teuer, duenne Frequenzen"}
+  - {from: [MAD, BCN], to: PDG, oneway_eur: 600, return_eur: 940, typical_stops: 2}
+  - {from: [BER, HAM], to: CMB, oneway_eur: 420, return_eur: 650, best_carriers: [QR, EK, TK], typical_stops: 1}
+  - {from: [BER, HAM], to: KUL, oneway_eur: 440, return_eur: 680, best_carriers: [QR, EK, TK], typical_stops: 1}
+  - {from: [BER, HAM], to: HAN, oneway_eur: 420, return_eur: 640, best_carriers: [TK, QR, CZ], typical_stops: 1}
+  - {from: [BER, HAM], to: MCT, oneway_eur: 340, return_eur: 520, best_carriers: [QR, TK], typical_stops: 1}
+  - {from: [BER, HAM], to: TPE, oneway_eur: 540, return_eur: 800, best_carriers: [TK, QR], typical_stops: 1}
+  - {from: [BER, HAM], to: KTM, oneway_eur: 470, return_eur: 720, best_carriers: [QR, TK], typical_stops: 1}
+
+# Intra-Asien-Verbindungen zwischen den Zielen (einfach, pro Person)
+intra_asia:
+  - {from: CMB, to: KUL, oneway_eur: 130, carriers: [AK, UL, MH], duration_h: 3.5, note: "Mehrfach taeglich, AirAsia billig"}
+  - {from: CMB, to: LOP, oneway_eur: 290, carriers: [AK+AK, UL+GA], duration_h: 12, stops: 1, note: "Via KUL; LOP-Anflug teils via DPS/SUB"}
+  - {from: CMB, to: HAN, oneway_eur: 260, carriers: [TG, AK, SQ], duration_h: 10, stops: 1}
+  - {from: CMB, to: KTM, oneway_eur: 190, carriers: [UL, RA], duration_h: 3.5, note: "Direkt, sehr guenstig - Nepal-Anhang ist billig"}
+  - {from: CMB, to: TRV, oneway_eur: 110, carriers: [UL, IX], duration_h: 1.2, note: "Kurzhop nach Kerala"}
+  - {from: CMB, to: MCT, oneway_eur: 180, carriers: [WY, UL, OD], duration_h: 4.5}
+  - {from: CMB, to: TPE, oneway_eur: 420, carriers: ["AK+div", SQ, TG], duration_h: 13, stops: 1}
+  - {from: KUL, to: LOP, oneway_eur: 120, carriers: [AK], duration_h: 3.5, note: "AirAsia direkt (saisonal); sonst via DPS/CGK"}
+  - {from: KUL, to: HAN, oneway_eur: 110, carriers: [AK, VJ, MH], duration_h: 3.5}
+  - {from: KUL, to: TPE, oneway_eur: 230, carriers: [AK, CI, BR], duration_h: 4.8}
+  - {from: KUL, to: PNH, oneway_eur: 100, carriers: [AK, K6], duration_h: 2.2}
+  - {from: KUL, to: PDG, oneway_eur: 90, carriers: [AK], duration_h: 1.8}
+  - {from: KUL, to: MCT, oneway_eur: 230, carriers: [WY, MH], duration_h: 6.8}
+  - {from: LOP, to: KUL, oneway_eur: 120, carriers: [AK], duration_h: 3.5}
+  - {from: LOP, to: HAN, oneway_eur: 260, carriers: [AK+AK, GA+VN], duration_h: 10, stops: 1}
+  - {from: HAN, to: TPE, oneway_eur: 170, carriers: [VN, CI, BR, VJ], duration_h: 3.0}
+  - {from: HAN, to: KTM, oneway_eur: 300, carriers: ["TG+div", "AK+div"], duration_h: 12, stops: 1}
+  - {from: KTM, to: KUL, oneway_eur: 190, carriers: [AK, MH], duration_h: 5.0}
+  - {from: KTM, to: HAN, oneway_eur: 300, duration_h: 12, stops: 1}
+  - {from: MCT, to: CMB, oneway_eur: 180, carriers: [WY, UL], duration_h: 4.5}
+  - {from: MCT, to: KUL, oneway_eur: 230, carriers: [WY, MH], duration_h: 6.8}
+  - {from: MCT, to: KTM, oneway_eur: 230, carriers: [WY, QR], duration_h: 6.0, stops: 1}
+  - {from: TRV, to: CMB, oneway_eur: 110, duration_h: 1.2}
+  - {from: TRV, to: KUL, oneway_eur: 190, carriers: [AK, MH], duration_h: 4.5}
+  - {from: PNH, to: HAN, oneway_eur: 95, carriers: [VJ, VN, K6], duration_h: 2.0}
+  - {from: TNR, to: CMB, oneway_eur: 650, duration_h: 20, stops: 2, note: "Madagaskar ist ein Sackgassen-Netz: Kombi teuer"}
+
+# Boden-Transfers innerhalb eines Ziels (kein Flug noetig)
+ground:
+  - {from: LK-SOUTH, to: LK-EAST, hours: 7, cost_eur_pp: 35, mode: "Privatauto/Zug+Bus"}
+  - {from: ID-LOMBOK, to: ID-SUMBAWA, hours: 8, cost_eur_pp: 30, mode: "Scooter/Auto + Faehre Kayangan-Poto Tano"}
+  - {from: MY-PENANG-LANGKAWI, to: MY-CHERATING, hours: 7, cost_eur_pp: 25, mode: "Bus/Mietwagen"}
+
+# Visa-/Einreisekosten pro Person (Richtwerte, vor Buchung pruefen)
+visa_eur:
+  Sri Lanka: 45       # ETA, 30 Tage
+  Indonesien: 30      # e-VOA 30 Tage, 1x verlaengerbar (+30 EUR)
+  Malaysia: 0         # visumfrei 90 Tage (MDAC-Registrierung noetig)
+  Vietnam: 25         # e-Visum, bis 90 Tage
+  Taiwan: 0           # visumfrei 90 Tage
+  Nepal: 45           # Visa on Arrival 30 Tage
+  Oman: 0             # visumfrei bis 14 Tage, darueber e-Visum ~45 EUR
+  Kambodscha: 30
+  Laos: 35
+  Indien: 35          # e-Visum 30 Tage
+  Madagaskar: 35
+
+# Saisonale Aufschlaege auf SCHAETZPREISE (echte Scrapes bleiben unberuehrt).
+# applies_to: "eu_departure" = Abflug ab EU-Hub, "eu_return" = Ankunft an EU-Hub,
+#             oder eine Liste von Flughafencodes (ein Endpunkt genuegt).
+estimate_multipliers:
+  - start: "2027-03-19"
+    end: "2027-03-30"
+    factor: 1.28
+    applies_to: eu_departure
+    reason: "Semana Santa / Ostern - teuerste Woche ab MAD/BCN"
+  - start: "2027-03-19"
+    end: "2027-03-30"
+    factor: 1.22
+    applies_to: eu_return
+    reason: "Semana Santa / Ostern - Rueckreisewelle"
+  - start: "2027-03-05"
+    end: "2027-03-16"
+    factor: 1.25
+    applies_to: [LOP, KUL, PEN, LGK, BMU, PDG]
+    reason: "Lebaran / Hari Raya - Mudik-Reisewelle Indonesien/Malaysia"
+  - start: "2027-04-10"
+    end: "2027-04-17"
+    factor: 1.15
+    applies_to: [CMB, HRI]
+    reason: "Sinhala & Tamil New Year - Inlandsreisewelle Sri Lanka"
+  - start: "2027-04-11"
+    end: "2027-04-18"
+    factor: 1.15
+    applies_to: [PNH, REP, VTE, LPQ]
+    reason: "Khmer / Lao New Year"
+  - start: "2027-04-28"
+    end: "2027-05-04"
+    factor: 1.12
+    applies_to: eu_return
+    reason: "1. Mai / Brueckentage"
+  - start: "2027-04-28"
+    end: "2027-05-04"
+    factor: 1.12
+    applies_to: [HAN, LOP, KUL, TPE]
+    reason: "Regionale Feiertage Ende April / 1. Mai"

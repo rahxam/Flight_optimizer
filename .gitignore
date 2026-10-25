@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+
+# Gescrapte Preise sind Rohdaten mit Zeitstempel - bewusst NICHT ignoriert,
+# damit Laeufe reproduzierbar bleiben. Nur Zwischendateien ausschliessen:
+data/prices/*.tmp
+data/prices/*.partial

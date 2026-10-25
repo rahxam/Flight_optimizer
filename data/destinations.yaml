@@ -1,0 +1,455 @@
+# ---------------------------------------------------------------------------
+# Kandidaten-Ziele fuer die Workation 15.03.2027 - 08.05.2027 (4-6 Wochen)
+#
+# Bewertungsskalen: 0-10, IMMER "hoeher = besser".
+#   weather : trocken/angenehm, wenig Regen, ertraegliche Hitze
+#   surf    : Wellenqualitaet + Konsistenz SPEZIELL fuer Longboard (lange, sanfte Walls)
+#   calm    : Abwesenheit von Crowds / Feiertagschaos / Hochpreisphasen
+# work      : Internet, Coworking, Strom, Arbeitsfaehigkeit (konstant pro Ziel)
+# tz_offset_vs_madrid_winter : Stunden Versatz zu Madrid (vor 28.03.2027 = CET).
+#             Ab 28.03.2027 (EU-Sommerzeit) schrumpft der Versatz um 1 h.
+# cost_per_day_eur_pp : Unterkunft(50%) + Essen + lokale Mobilitaet, pro Person/Tag
+# Quellen/Begruendung siehe docs/seasonality.md
+# ---------------------------------------------------------------------------
+meta:
+  trip_year: 2027
+  windows: ["2027-03-H1", "2027-03-H2", "2027-04-H1", "2027-04-H2", "2027-05-H1"]
+  window_dates:
+    "2027-03-H1": ["2027-03-01", "2027-03-15"]
+    "2027-03-H2": ["2027-03-16", "2027-03-31"]
+    "2027-04-H1": ["2027-04-01", "2027-04-15"]
+    "2027-04-H2": ["2027-04-16", "2027-04-30"]
+    "2027-05-H1": ["2027-05-01", "2027-05-15"]
+
+destinations:
+
+  # ====================== TIER A: Tropen + Longboard ======================
+  - id: LK-SOUTH
+    name: "Sri Lanka Suedkueste (Weligama / Ahangama / Hiriketiya / Dikwella)"
+    country: Sri Lanka
+    region_short: "SL Süd"
+    tier: A
+    airports: [CMB, HRI]
+    primary_airport: CMB
+    tropical: true
+    work: 8
+    tz_offset_vs_madrid_winter: 4.5
+    cost_per_day_eur_pp: 55
+    activities: [longboard, shortboard, snorkel, whale_watching, safari_udawalawe, jungle_hike, scooter, yoga]
+    hub_to_base_h: 2.5
+    scores:
+      "2027-03-H1": {weather: 9, surf: 9, calm: 6, note: "Kernsaison Suedkueste, offshore Vormittage, 2-5ft"}
+      "2027-03-H2": {weather: 9, surf: 9, calm: 6, note: "Weiter top; Ostern 28.03. bringt europ. Kurzurlauber"}
+      "2027-04-H1": {weather: 8, surf: 8, calm: 4, note: "Heiss+feucht steigend; 13./14.04. Sinhala/Tamil New Year -> Land steht still"}
+      "2027-04-H2": {weather: 7, surf: 7, calm: 7, note: "Saisonende naht, erste Gewitter, leerer"}
+      "2027-05-H1": {weather: 4, surf: 4, calm: 7, note: "SW-Monsun setzt ein, Suedkueste onshore/choppy -> raus hier"}
+    notes: >-
+      Das beste Longboard-Ziel der Liste fuer Maerz. Weligama Bay + die Rechte vor
+      Ceylon Sliders sind klassische Longboard-Wellen, Hiriketiya ein windgeschuetzter
+      Links-Reef mit langen Sections. Dichtes Coworking-Netz (Verse Collective Ahangama,
+      Hideout, Kip). Standortwechsel Weligama -> Ahangama -> Hiriketiya in 1-2 h Scooter.
+      Zeitzone +4.5 h ist fuer europaeische Calls noch gut machbar (EU-Morgen = SL-Mittag).
+
+  - id: ID-LOMBOK
+    name: "Lombok Sued (Kuta / Gerupuk / Tanjung Aan / Mawi)"
+    country: Indonesien
+    region_short: "Lombok"
+    tier: A
+    airports: [LOP]
+    primary_airport: LOP
+    tropical: true
+    work: 7
+    tz_offset_vs_madrid_winter: 7.0
+    cost_per_day_eur_pp: 50
+    activities: [longboard, shortboard, snorkel, gili_islands, rinjani_foothills, waterfalls, scooter]
+    hub_to_base_h: 1.0
+    scores:
+      "2027-03-H1": {weather: 5, surf: 6, calm: 5, note: "Regenzeit-Ende; glassy Mornings, aber Nachmittagsregen. 10.03. Idul Fitri -> Lebaran-Reisewelle"}
+      "2027-03-H2": {weather: 6, surf: 7, calm: 7, note: "Uebergang, zunehmend trocken, noch leer"}
+      "2027-04-H1": {weather: 8, surf: 8, calm: 8, note: "Trockenzeit beginnt, SO-Passat dreht offshore"}
+      "2027-04-H2": {weather: 9, surf: 9, calm: 8, note: "Sehr gut: offshore Vormittage, erster Swell der Saison"}
+      "2027-05-H1": {weather: 9, surf: 9, calm: 7, note: "Saisonstart voll da, bester Monat im Fenster"}
+    notes: >-
+      Perfekter Gegenlauf zu Sri Lanka: Lombok wird genau dann gut, wenn SL endet.
+      Tanjung Aan = langsame Roller, ideal Longboard; Gerupuk (Bootszugang) mit mehreren
+      Breaks fuer jede Windrichtung; Mawi fuer Fortgeschrittene. Coworking in Kuta Lombok
+      vorhanden aber duenner als Bali/SL. Bali/Java sind ausgeschlossen - LOP ist direkt
+      ab KUL/SIN erreichbar, sonst Transit (nicht Aufenthalt) via DPS/CGK.
+    constraints:
+      avoid_dates: [["2027-03-05", "2027-03-16"]]
+      avoid_reason: "Lebaran/Mudik-Reisewelle um Idul Fitri (~10.03.2027): Inlandsfluege teuer und ausgebucht"
+
+  - id: ID-SUMBAWA
+    name: "Sumbawa (Lakey Peak / Maluk / Scar Reef)"
+    country: Indonesien
+    region_short: "Sumbawa"
+    tier: B
+    airports: [LOP, BMU]
+    primary_airport: LOP
+    tropical: true
+    work: 3
+    tz_offset_vs_madrid_winter: 7.0
+    cost_per_day_eur_pp: 45
+    activities: [shortboard, longboard, snorkel, remote_beaches]
+    hub_to_base_h: 8.0
+    scores:
+      "2027-03-H1": {weather: 5, surf: 6, calm: 8, note: "Regenzeit-Ende"}
+      "2027-03-H2": {weather: 6, surf: 7, calm: 8, note: "Uebergang"}
+      "2027-04-H1": {weather: 8, surf: 8, calm: 8, note: "Saisonstart"}
+      "2027-04-H2": {weather: 9, surf: 9, calm: 8, note: "Sehr gut"}
+      "2027-05-H1": {weather: 9, surf: 9, calm: 7, note: "Top"}
+    notes: >-
+      Wellenmaessig stark, fuer Workation aber riskant: Internet in Lakey ist
+      LTE-abhaengig und schwankend, Stromausfaelle. Nur als 1-Wochen-Urlaubsblock
+      INNERHALB eines Lombok-Aufenthalts sinnvoll, nicht als Arbeitsstandort.
+
+  - id: ID-SUMATRA-WEST
+    name: "West-Sumatra (Padang / Mentawai-Vorinseln)"
+    country: Indonesien
+    region_short: "W-Sumatra"
+    tier: C
+    airports: [PDG]
+    primary_airport: PDG
+    tropical: true
+    work: 4
+    tz_offset_vs_madrid_winter: 6.0
+    cost_per_day_eur_pp: 45
+    activities: [shortboard, boat_trips, jungle]
+    hub_to_base_h: 4.0
+    scores:
+      "2027-03-H1": {weather: 5, surf: 5, calm: 8, note: "Nass, Saison noch nicht da"}
+      "2027-03-H2": {weather: 5, surf: 6, calm: 8, note: "Uebergang"}
+      "2027-04-H1": {weather: 7, surf: 7, calm: 8, note: "Mentawai-Saison beginnt (Apr-Okt)"}
+      "2027-04-H2": {weather: 7, surf: 8, calm: 8, note: "Besser werdend"}
+      "2027-05-H1": {weather: 7, surf: 8, calm: 7, note: "Gut, aber Mentawais = Boat-Charter, kein Workation-Setup"}
+    notes: >-
+      Mentawais sind eine Boot-Charter-Destination (10-12 Tage, kein Internet, teuer,
+      Shortboard-Reef-Barrels). Fuer eine Workation mit Longboard-Fokus falsch.
+      Nur gelistet, um es bewusst auszuschliessen.
+
+  - id: ID-RAJA-AMPAT
+    name: "Raja Ampat / Nord-Sulawesi (Tauchen)"
+    country: Indonesien
+    region_short: "Raja Ampat"
+    tier: C
+    airports: [SOQ, MDC]
+    primary_airport: SOQ
+    tropical: true
+    work: 3
+    tz_offset_vs_madrid_winter: 8.0
+    cost_per_day_eur_pp: 110
+    activities: [diving, snorkel, kayak]
+    hub_to_base_h: 12.0
+    scores:
+      "2027-03-H1": {weather: 8, surf: 0, calm: 7, note: "Tauchsaison Okt-Apr, gute Sicht"}
+      "2027-03-H2": {weather: 8, surf: 0, calm: 7, note: "Gut"}
+      "2027-04-H1": {weather: 7, surf: 0, calm: 7, note: "Saisonende naht"}
+      "2027-04-H2": {weather: 5, surf: 0, calm: 8, note: "Uebergang, viele Resorts schliessen"}
+      "2027-05-H1": {weather: 4, surf: 0, calm: 8, note: "Nebensaison"}
+    notes: >-
+      Weltklasse Tauchen, aber kein Surf, teuer, sehr lange Anreise (SOQ via CGK/UPG)
+      und Internet nur per Starlink in Resorts. Passt nicht zum Longboard/Workation-Profil.
+
+  # ================ TIER B: Tropen, aber Surf schwach / Timing ================
+  - id: LK-EAST
+    name: "Sri Lanka Ostkueste (Arugam Bay)"
+    country: Sri Lanka
+    region_short: "SL Ost"
+    tier: B
+    airports: [CMB]
+    primary_airport: CMB
+    tropical: true
+    work: 5
+    tz_offset_vs_madrid_winter: 4.5
+    cost_per_day_eur_pp: 45
+    activities: [longboard, shortboard, lagoon, safari_kumana, scooter]
+    hub_to_base_h: 7.0
+    scores:
+      "2027-03-H1": {weather: 6, surf: 2, calm: 9, note: "Off-Season, flach, halb geschlossen"}
+      "2027-03-H2": {weather: 7, surf: 3, calm: 9, note: "Noch flach"}
+      "2027-04-H1": {weather: 7, surf: 4, calm: 8, note: "Erste Swells, Laeden oeffnen"}
+      "2027-04-H2": {weather: 8, surf: 6, calm: 8, note: "Saisonanfang, Main Point laeuft gelegentlich"}
+      "2027-05-H1": {weather: 8, surf: 7, calm: 7, note: "Saison startet richtig (Mai-Sep)"}
+    notes: >-
+      Interessant als End-Block, falls Sri Lanka als einziges Land laufen soll:
+      Suedkueste im Maerz -> Ostkueste Ende April/Anfang Mai. Spart einen
+      internationalen Flug komplett, Umzug per Auto/Zug 6-8 h.
+
+  - id: MY-PENANG-LANGKAWI
+    name: "Malaysia Westkueste (Penang / Langkawi)"
+    country: Malaysia
+    region_short: "Penang/Langkawi"
+    tier: B
+    airports: [PEN, LGK, KUL]
+    primary_airport: PEN
+    tropical: true
+    work: 9
+    tz_offset_vs_madrid_winter: 7.0
+    cost_per_day_eur_pp: 50
+    activities: [snorkel, jungle_hike, island_hopping, food, kayak]
+    hub_to_base_h: 1.0
+    scores:
+      "2027-03-H1": {weather: 8, surf: 0, calm: 6, note: "Trocken; Hari Raya 10.03. -> Inlandsreisewelle"}
+      "2027-03-H2": {weather: 8, surf: 0, calm: 8, note: "Gut, vor der Hitze"}
+      "2027-04-H1": {weather: 7, surf: 0, calm: 8, note: "Heiss (33-35 C), erste Inter-Monsun-Gewitter"}
+      "2027-04-H2": {weather: 6, surf: 0, calm: 8, note: "Schwuel, Nachmittagsgewitter"}
+      "2027-05-H1": {weather: 6, surf: 0, calm: 8, note: "Schwuel"}
+    notes: >-
+      Beste Arbeitsinfrastruktur der Liste (Penang: Glasfaser, Cafes, Essen, billig,
+      gute Aerztedichte) - aber Null Surf an der Westkueste. Taugt als 7-10-taegiger
+      ARBEITS-Block zwischen zwei Surf-Bloecken, weil KUL/PEN sowieso auf der
+      Umsteigeroute Sri Lanka -> Lombok liegt. Perhentians/Redang oeffnen ab Maerz.
+
+  - id: MY-CHERATING
+    name: "Malaysia Ostkueste (Cherating)"
+    country: Malaysia
+    region_short: "Cherating"
+    tier: C
+    airports: [KUL, KBR]
+    primary_airport: KUL
+    tropical: true
+    work: 5
+    tz_offset_vs_madrid_winter: 7.0
+    cost_per_day_eur_pp: 45
+    activities: [longboard, river_tour, turtles]
+    hub_to_base_h: 4.0
+    scores:
+      "2027-03-H1": {weather: 7, surf: 5, calm: 8, note: "Letzte NO-Monsun-Reste, kleine Longboard-Wellen"}
+      "2027-03-H2": {weather: 7, surf: 4, calm: 8, note: "Saisonende"}
+      "2027-04-H1": {weather: 7, surf: 2, calm: 8, note: "Flach"}
+      "2027-04-H2": {weather: 7, surf: 1, calm: 8, note: "Flach"}
+      "2027-05-H1": {weather: 7, surf: 1, calm: 8, note: "Flach"}
+    notes: >-
+      Cherating ist die einzige echte Longboard-Welle Malaysias (lange, weiche
+      Point-Rechte), aber die Saison (Nov-Maerz) endet genau zu Reisebeginn.
+      Nur relevant, wenn der Trip wirklich am 15.03. startet und Malaysia zuerst kommt.
+
+  - id: IN-KERALA
+    name: "Kerala / Varkala / Kovalam"
+    country: Indien
+    region_short: "Kerala"
+    tier: B
+    airports: [TRV, COK]
+    primary_airport: TRV
+    tropical: true
+    work: 6
+    tz_offset_vs_madrid_winter: 4.5
+    cost_per_day_eur_pp: 40
+    activities: [longboard, backwaters, ayurveda, hill_station_munnar, scooter]
+    hub_to_base_h: 1.5
+    scores:
+      "2027-03-H1": {weather: 6, surf: 4, calm: 7, note: "Heiss (33 C), Surf-Saison (Okt-Mrz) laeuft aus"}
+      "2027-03-H2": {weather: 5, surf: 3, calm: 8, note: "Sehr heiss und schwuel"}
+      "2027-04-H1": {weather: 4, surf: 2, calm: 8, note: "Brutal heiss, flach"}
+      "2027-04-H2": {weather: 3, surf: 2, calm: 8, note: "Vor-Monsun-Hitze"}
+      "2027-05-H1": {weather: 3, surf: 4, calm: 8, note: "Monsun-Vorlauf, Swell kommt, aber Regen"}
+    notes: >-
+      Soul & Surf Varkala ist ein etabliertes Surf-/Work-Setup mit Longboard-tauglichen
+      Beachbreaks, aber Maerz/April ist dort die heisseste Zeit mit der schwaechsten
+      Welle. Guenstig und kulturell stark - saisonal aber klar zweite Wahl.
+
+  - id: IN-ANDAMAN
+    name: "Andamanen (Port Blair / Havelock)"
+    country: Indien
+    region_short: "Andamanen"
+    tier: C
+    airports: [IXZ]
+    primary_airport: IXZ
+    tropical: true
+    work: 3
+    tz_offset_vs_madrid_winter: 4.5
+    cost_per_day_eur_pp: 55
+    activities: [diving, snorkel, kayak, beaches]
+    hub_to_base_h: 3.0
+    scores:
+      "2027-03-H1": {weather: 9, surf: 1, calm: 6, note: "Beste Zeit, trocken, ruhiges Meer"}
+      "2027-03-H2": {weather: 9, surf: 1, calm: 6, note: "Top Wetter"}
+      "2027-04-H1": {weather: 8, surf: 1, calm: 7, note: "Heiss werdend"}
+      "2027-04-H2": {weather: 7, surf: 1, calm: 7, note: "Vor-Monsun"}
+      "2027-05-H1": {weather: 5, surf: 2, calm: 8, note: "Monsun beginnt"}
+    notes: >-
+      Traumwetter im Maerz, aber: kein Surf ausser Little Andaman (Permit + Faehre),
+      Internet schwach bis nicht vorhanden (Satellit, Drosselung), Inlandsflug ab MAA/CCU
+      noetig. Als Urlaubs-Woche denkbar, als Arbeitsstandort nicht.
+
+  # ============== TIER B/A: Aktiv, aber nicht tropisch / kein Surf ==============
+  - id: VN-NORTH
+    name: "Nordvietnam (Hanoi / Ha Giang / Sapa / Cao Bang / Ba Be)"
+    country: Vietnam
+    region_short: "N-Vietnam"
+    tier: A
+    airports: [HAN]
+    primary_airport: HAN
+    tropical: false
+    work: 9
+    tz_offset_vs_madrid_winter: 6.0
+    cost_per_day_eur_pp: 35
+    activities: [motorbike_loop, trekking, kayak_ba_be, caves, food, cycling]
+    hub_to_base_h: 0.5
+    scores:
+      "2027-03-H1": {weather: 6, surf: 0, calm: 8, note: "Noch kuehl/nebelig im Norden, Nieselregen"}
+      "2027-03-H2": {weather: 8, surf: 0, calm: 8, note: "Fruehling, Ha Giang wird trocken, Blueten"}
+      "2027-04-H1": {weather: 9, surf: 0, calm: 8, note: "Beste Zeit fuer die Ha-Giang-Runde: trocken, 25 C, klar"}
+      "2027-04-H2": {weather: 9, surf: 0, calm: 7, note: "Top; 30.04./01.05. vietnam. Feiertage -> Inlandsreisewelle"}
+      "2027-05-H1": {weather: 7, surf: 0, calm: 8, note: "Hitze + erste Monsunschauer"}
+    notes: >-
+      Das starke Nicht-Surf-Ziel: Hanoi hat erstklassiges, billiges Coworking und
+      Glasfaser, die Ha-Giang-Runde (4-5 Tage Motorrad) ist genau der "Ganztagesaktivitaet"-
+      Urlaubsblock, den du suchst. Kein Longboard - der Golf von Tonkin ist im Fruehjahr flach.
+      Preis-Leistung unschlagbar (35 EUR/Tag/Person inkl. allem).
+
+  - id: TW-TAIWAN
+    name: "Taiwan (Taipei / Taitung / Hualien / Kenting)"
+    country: Taiwan
+    region_short: "Taiwan"
+    tier: B
+    airports: [TPE, TSA, KHH]
+    primary_airport: TPE
+    tropical: false
+    work: 10
+    tz_offset_vs_madrid_winter: 7.0
+    cost_per_day_eur_pp: 75
+    activities: [longboard, hiking_taroko, cycling, hot_springs, food, scooter]
+    hub_to_base_h: 1.0
+    scores:
+      "2027-03-H1": {weather: 6, surf: 6, calm: 8, note: "15-22 C, feucht im Norden; letzte NO-Swells"}
+      "2027-03-H2": {weather: 7, surf: 5, calm: 8, note: "Fruehling, Surf-Saison (Sep-Mrz) endet"}
+      "2027-04-H1": {weather: 8, surf: 3, calm: 8, note: "Angenehm 24 C, aber flach"}
+      "2027-04-H2": {weather: 8, surf: 3, calm: 8, note: "Schoen, flach"}
+      "2027-05-H1": {weather: 6, surf: 2, calm: 8, note: "Pflaumenregen (Meiyu) setzt ein"}
+    notes: >-
+      Beste Arbeits- und Lebensqualitaet der Liste (Internet, Sicherheit, Zuege, Essen,
+      Taroko-Schlucht, Radwege). Aber: im Maerz nicht tropisch (Taipei 18 C, Regen),
+      und die Surf-Saison laeuft gerade aus. Jialeshuei/Kenting im Sueden waere die
+      Longboard-Option, dort aber im April klein. Teuerstes asiatisches Ziel hier.
+
+  - id: NP-NEPAL
+    name: "Nepal (Kathmandu / Pokhara / Annapurna / Langtang)"
+    country: Nepal
+    region_short: "Nepal"
+    tier: B
+    airports: [KTM]
+    primary_airport: KTM
+    tropical: false
+    work: 5
+    tz_offset_vs_madrid_winter: 4.75
+    cost_per_day_eur_pp: 35
+    activities: [trekking, paragliding, rafting, mountain_bike, yoga]
+    hub_to_base_h: 1.0
+    scores:
+      "2027-03-H1": {weather: 8, surf: 0, calm: 8, note: "Fruehlings-Trekkingsaison startet, Rhododendren"}
+      "2027-03-H2": {weather: 9, surf: 0, calm: 7, note: "Beste Trekkingzeit, klare Sicht"}
+      "2027-04-H1": {weather: 9, surf: 0, calm: 6, note: "Prime Season; Everest-BC/Annapurna voll"}
+      "2027-04-H2": {weather: 8, surf: 0, calm: 6, note: "Noch gut, zunehmend hazig im Tal"}
+      "2027-05-H1": {weather: 6, surf: 0, calm: 7, note: "Heiss, Vor-Monsun-Dunst, Gewitter"}
+    notes: >-
+      Der beste Ganztagesaktivitaets-Block ueberhaupt (10-14 Tage Annapurna/Mardi Himal),
+      aber als ARBEITS-Standort schwach: Stromausfaelle, Internet in Pokhara ok /
+      auf dem Trek keins. Null Tropen, Null Surf. Funktioniert nur als "Urlaubs-Modul"
+      an ein Arbeitsziel angehaengt - und liegt geografisch guenstig (KTM ist von CMB,
+      DEL, HAN gut erreichbar).
+
+  - id: OM-OMAN
+    name: "Oman (Muscat / Jebel Shams / Wahiba / Masirah)"
+    country: Oman
+    region_short: "Oman"
+    tier: B
+    airports: [MCT, SLL]
+    primary_airport: MCT
+    tropical: false
+    work: 7
+    tz_offset_vs_madrid_winter: 3.0
+    cost_per_day_eur_pp: 95
+    activities: [wadi_hiking, canyoning, diving, dunes_4x4, snorkel, kitesurf_masirah]
+    hub_to_base_h: 0.5
+    scores:
+      "2027-03-H1": {weather: 9, surf: 1, calm: 7, note: "26-29 C, perfekt fuer Wadis/Berge; Ramadan bis 08.03. -> Restaurants tagsueber zu"}
+      "2027-03-H2": {weather: 9, surf: 1, calm: 7, note: "Nach Eid: Bestzeit. Rosenbluete Jebel Akhdar"}
+      "2027-04-H1": {weather: 7, surf: 1, calm: 8, note: "30-33 C, Kueste schwuel, Berge gut"}
+      "2027-04-H2": {weather: 5, surf: 1, calm: 8, note: "35 C+, nur noch Hoehenlagen angenehm"}
+      "2027-05-H1": {weather: 3, surf: 1, calm: 8, note: "Zu heiss (38 C+)"}
+    notes: >-
+      Riesiger logistischer Vorteil: nur 7-8 h von MAD/BCN, Zeitversatz 2-3 h (perfekt
+      fuer europaeische Calls), exzellente Strassen, sicher. Aber: teuer (Mietwagen
+      zwingend, ~95 EUR/Tag/Person), kein Longboard-Surf, nicht tropisch, und ab
+      Mitte April zu heiss. Ideal als 10-14-taegiger ERSTER Block (zweite Maerzhaelfte),
+      danach weiter nach Osten - oder als eigenstaendige 3-Wochen-Reise.
+
+  - id: KH-CAMBODIA
+    name: "Kambodscha (Phnom Penh / Kampot / Siem Reap / Koh Rong)"
+    country: Kambodscha
+    region_short: "Kambodscha"
+    tier: C
+    airports: [PNH, REP, KOS]
+    primary_airport: PNH
+    tropical: true
+    work: 6
+    tz_offset_vs_madrid_winter: 6.0
+    cost_per_day_eur_pp: 35
+    activities: [angkor, kayak, island_beaches, scooter, caves_kampot]
+    hub_to_base_h: 0.5
+    scores:
+      "2027-03-H1": {weather: 5, surf: 0, calm: 7, note: "33-35 C, trocken aber heiss"}
+      "2027-03-H2": {weather: 4, surf: 0, calm: 7, note: "36 C+, staubig"}
+      "2027-04-H1": {weather: 3, surf: 0, calm: 4, note: "Heissester Monat (38-40 C); Khmer New Year 13.-16.04. -> alles zu"}
+      "2027-04-H2": {weather: 3, surf: 0, calm: 7, note: "Extrem heiss, erste Gewitter"}
+      "2027-05-H1": {weather: 4, surf: 0, calm: 8, note: "Regenzeit beginnt, etwas kuehler"}
+    notes: >-
+      Maerz/April ist die schlechteste Zeit des Jahres fuer Kambodscha: 38-40 C,
+      Khmer New Year mitten drin, kein Surf. Sehr guenstig und Angkor/Kampot sind
+      stark - aber saisonal hier klar ein Nein.
+
+  - id: LA-LAOS
+    name: "Laos (Luang Prabang / Vang Vieng / Nong Khiaw / 4000 Islands)"
+    country: Laos
+    region_short: "Laos"
+    tier: D
+    airports: [LPQ, VTE]
+    primary_airport: VTE
+    tropical: true
+    work: 4
+    tz_offset_vs_madrid_winter: 6.0
+    cost_per_day_eur_pp: 35
+    activities: [kayak, trekking, climbing_vang_vieng, caves, cycling]
+    hub_to_base_h: 0.5
+    hard_avoid:
+      windows: ["2027-03-H1", "2027-03-H2", "2027-04-H1", "2027-04-H2"]
+      reason: >-
+        Brandsaison. In Nord-Laos (Luang Prabang, Vang Vieng, Nong Khiaw) erreicht
+        PM2.5 im Maerz/April regelmaessig gesundheitsschaedliche Werte (AQI 150-300+).
+        Fuer "aktiv draussen" und 4-6 Wochen Aufenthalt disqualifiziert.
+    scores:
+      "2027-03-H1": {weather: 2, surf: 0, calm: 8, note: "Brandsaison, Rauch, AQI 150-300"}
+      "2027-03-H2": {weather: 1, surf: 0, calm: 8, note: "Peak Brandsaison"}
+      "2027-04-H1": {weather: 1, surf: 0, calm: 5, note: "Peak Rauch + Pi Mai (Lao New Year) 14.-16.04."}
+      "2027-04-H2": {weather: 3, surf: 0, calm: 8, note: "Erste Regen klaeren langsam"}
+      "2027-05-H1": {weather: 5, surf: 0, calm: 8, note: "Regen wascht die Luft, aber heiss"}
+    notes: >-
+      Landschaftlich und preislich grossartig - aber genau in deinem Reisefenster
+      von der Brandsaison entwertet. Empfehlung: streichen und auf Okt-Feb verschieben.
+
+  - id: MG-MADAGASCAR
+    name: "Madagaskar (Nosy Be / Tulear-Anakao / Fort Dauphin-Lavanono)"
+    country: Madagaskar
+    region_short: "Madagaskar"
+    tier: C
+    airports: [TNR, NOS, TLE]
+    primary_airport: TNR
+    tropical: true
+    work: 2
+    tz_offset_vs_madrid_winter: 2.0
+    cost_per_day_eur_pp: 70
+    activities: [shortboard, longboard, diving, lemurs, trekking_tsingy, kitesurf]
+    hub_to_base_h: 10.0
+    scores:
+      "2027-03-H1": {weather: 3, surf: 3, calm: 8, note: "Regen-/Zyklonsaison (bis ca. Mitte April)"}
+      "2027-03-H2": {weather: 4, surf: 4, calm: 8, note: "Noch Zyklonrisiko, viele Pisten unpassierbar"}
+      "2027-04-H1": {weather: 6, surf: 6, calm: 8, note: "Besser werdend, Surfsaison Sued startet"}
+      "2027-04-H2": {weather: 7, surf: 7, calm: 8, note: "Gute Zeit, Lavanono laeuft"}
+      "2027-05-H1": {weather: 8, surf: 8, calm: 8, note: "Beste Zeit beginnt (Apr-Okt)"}
+    notes: >-
+      Grosser Pluspunkt: nur 2 h Zeitversatz und (fuer Afrika) von Europa erreichbar.
+      Grosse Minuspunkte fuer eine Workation: Internet landesweit schwach (Lavanono
+      praktisch offline), teure und unzuverlaessige Inlandsfluege (Tsaradia), lange
+      Pistenfahrten, Zyklonrisiko bis Mitte April. Als Surf-Workation nicht tragfaehig;
+      als reine 3-Wochen-Urlaubsreise im Mai/Juni dagegen stark.

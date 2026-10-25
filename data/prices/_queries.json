@@ -1,0 +1,4776 @@
+[
+  {
+    "id": "g0001",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0002",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0003",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0004",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0005",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0006",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0007",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0008",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0009",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0010",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0011",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0012",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KUL",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KUL+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0013",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KUL",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KUL+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0014",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KUL",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KUL+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0015",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KUL",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KUL+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0016",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KUL",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KUL+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0017",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KUL",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KUL+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0018",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1VMcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0019",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1VMcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0020",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1VMcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0021",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDS1VMcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0022",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDS1VMcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0023",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0024",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0025",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0026",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0027",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0028",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0029",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0030",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0031",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0032",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0033",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0034",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "HAN",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+HAN+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0035",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "HAN",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+HAN+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0036",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "HAN",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+HAN+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0037",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "HAN",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+HAN+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0038",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "HAN",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+HAN+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0039",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "HAN",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+HAN+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0040",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDSEFOcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0041",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDSEFOcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0042",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDSEFOcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0043",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDSEFOcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0044",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDSEFOcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0045",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TPE",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TPE+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0046",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TPE",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TPE+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0047",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TPE",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TPE+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0048",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TPE",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TPE+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0049",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TPE",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TPE+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0050",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TPE",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TPE+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0051",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDVFBFcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0052",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDVFBFcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0053",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDVFBFcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0054",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDVFBFcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0055",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDVFBFcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0056",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KTM",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KTM+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0057",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KTM",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KTM+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0058",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KTM",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KTM+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0059",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KTM",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KTM+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0060",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KTM",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KTM+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0061",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "KTM",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+KTM+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0062",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1RNcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0063",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1RNcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0064",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1RNcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0065",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDS1RNcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0066",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDS1RNcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0067",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "MCT",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+MCT+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0068",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "MCT",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+MCT+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0069",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "MCT",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+MCT+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0070",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "MCT",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+MCT+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0071",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "MCT",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+MCT+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0072",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "MCT",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+MCT+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0073",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTUNUcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0074",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTUNUcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0075",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTUNUcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0076",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDTUNUcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0077",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDTUNUcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0078",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0079",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0080",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0081",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0082",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0083",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug MAD->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0084",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "MAD",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDVFJWcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+MAD+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0085",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "MAD",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDVFJWcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+MAD+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0086",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "MAD",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDVFJWcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+MAD+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0087",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "MAD",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDVFJWcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+MAD+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0088",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "MAD",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->MAD",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDVFJWcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+MAD+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0089",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "CMB",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+CMB+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0090",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "CMB",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+CMB+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0091",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "CMB",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+CMB+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0092",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "CMB",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+CMB+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0093",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "CMB",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+CMB+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0094",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "CMB",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+CMB+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0095",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0096",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0097",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0098",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDQ01CcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0099",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug CMB->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDQ01CcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0100",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KUL",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KUL+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0101",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KUL",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KUL+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0102",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KUL",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KUL+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0103",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KUL",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KUL+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0104",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KUL",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KUL+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0105",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KUL",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KUL+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0106",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1VMcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0107",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1VMcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0108",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1VMcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0109",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDS1VMcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0110",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KUL->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDS1VMcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0111",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "LOP",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+LOP+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0112",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "LOP",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+LOP+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0113",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "LOP",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+LOP+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0114",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "LOP",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+LOP+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0115",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "LOP",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+LOP+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0116",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "LOP",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+LOP+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0117",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTE9QcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0118",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTE9QcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0119",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTE9QcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0120",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDTE9QcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0121",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug LOP->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDTE9QcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0122",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "HAN",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+HAN+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0123",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "HAN",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+HAN+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0124",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "HAN",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+HAN+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0125",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "HAN",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+HAN+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0126",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "HAN",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+HAN+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0127",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "HAN",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+HAN+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0128",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDSEFOcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0129",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDSEFOcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0130",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDSEFOcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0131",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDSEFOcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0132",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug HAN->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDSEFOcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0133",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TPE",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TPE+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0134",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TPE",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TPE+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0135",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TPE",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TPE+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0136",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TPE",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TPE+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0137",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TPE",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TPE+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0138",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TPE",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TPE+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0139",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDVFBFcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0140",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDVFBFcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0141",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDVFBFcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0142",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDVFBFcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0143",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TPE",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TPE->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDVFBFcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TPE+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0144",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KTM",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KTM+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0145",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KTM",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KTM+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0146",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KTM",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KTM+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0147",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KTM",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KTM+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0148",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KTM",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KTM+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0149",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "KTM",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+KTM+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0150",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1RNcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0151",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1RNcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0152",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1RNcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0153",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDS1RNcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0154",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KTM",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug KTM->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDS1RNcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KTM+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0155",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "MCT",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+MCT+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0156",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "MCT",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+MCT+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0157",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "MCT",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+MCT+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0158",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "MCT",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+MCT+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0159",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "MCT",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+MCT+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0160",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "MCT",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->MCT",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA01DVEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+MCT+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0161",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTUNUcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0162",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTUNUcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0163",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTUNUcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0164",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDTUNUcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0165",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug MCT->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDTUNUcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0166",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TRV",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDQkNOcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TRV+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0167",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TRV",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDQkNOcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TRV+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0168",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TRV",
+        "2027-03-20"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjBqBRIDQkNOcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TRV+am+2027-03-20+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0169",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TRV",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQkNOcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TRV+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0170",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TRV",
+        "2027-03-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjhqBRIDQkNOcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TRV+am+2027-03-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0171",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "BCN",
+        "TRV",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Hinflug BCN->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDQkNOcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+BCN+nach+TRV+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0172",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "BCN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDVFJWcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+BCN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0173",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "BCN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDVFJWcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+BCN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0174",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "BCN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDVFJWcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+BCN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0175",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "BCN",
+        "2027-05-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDNqBRIDVFJWcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+BCN+am+2027-05-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0176",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "BCN",
+        "2027-05-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Rueckflug TRV->BCN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMDhqBRIDVFJWcgUSA0JDTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+BCN+am+2027-05-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0177",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0178",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0179",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0180",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0181",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0182",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0183",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0184",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KUL",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KUL+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0185",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0186",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0187",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0188",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0189",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0190",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0191",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0192",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0193",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0194",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0195",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0196",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0197",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0198",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0199",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0200",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "LOP",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->LOP",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1VMcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+LOP+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0201",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0202",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0203",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0204",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0205",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0206",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0207",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0208",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "HAN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+HAN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0209",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0210",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0211",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0212",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0213",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0214",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0215",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0216",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "HAN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTE9QcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+HAN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0217",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0218",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0219",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0220",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0221",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0222",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0223",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0224",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "KTM",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->KTM",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA0tUTUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+KTM+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0225",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0226",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0227",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0228",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0229",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0230",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0231",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0232",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "HAN",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->HAN",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1VMcgUSA0hBTkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+HAN+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0233",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0234",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0235",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0236",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0237",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0238",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0239",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0240",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "HAN",
+        "TPE",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug HAN->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDSEFOcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+HAN+nach+TPE+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0241",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0242",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0243",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0244",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0245",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0246",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0247",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0248",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "TRV",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug CMB->TRV",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDQ01CcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+TRV+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0249",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0250",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0251",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0252",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0253",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0254",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0255",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0256",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MCT",
+        "CMB",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug MCT->CMB",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTUNUcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MCT+nach+CMB+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0257",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0258",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0259",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0260",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0261",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0262",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0263",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0264",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "KUL",
+        "TPE",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug KUL->TPE",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDS1VMcgUSA1RQRUABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+KUL+nach+TPE+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0265",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-03-24"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjRqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-03-24+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0266",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-03-29"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjlqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-03-29+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0267",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-04-03"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDNqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-04-03+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0268",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-04-08"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDhqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-04-08+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0269",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-04-13"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMTNqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-04-13+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0270",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0271",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "g0272",
+    "phase": "grid",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "KUL",
+        "2027-04-28"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Zwischenflug LOP->KUL",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjhqBRIDTE9QcgUSA0tVTEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+KUL+am+2027-04-28+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c001-mc",
+    "phase": "candidates",
+    "trip_type": "multicity",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ],
+      [
+        "CMB",
+        "LOP",
+        "2027-04-07"
+      ],
+      [
+        "LOP",
+        "MAD",
+        "2027-04-26"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Multi-City Gesamtticket: SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQhoaEgoyMDI3LTA0LTA3agUSA0NNQnIFEgNMT1AaGhIKMjAyNy0wNC0yNmoFEgNMT1ByBRIDTUFEQAFAAUgBmAED&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c001-s0",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 1: SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c001-s1",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-07"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 2: SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDdqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-07+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c001-s2",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-04-26"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 3: SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjZqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-04-26+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c001-rt",
+    "phase": "candidates",
+    "trip_type": "return",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ],
+      [
+        "CMB",
+        "MAD",
+        "2027-04-26"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Return-Vergleich Langstrecke: SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQhoaEgoyMDI3LTA0LTI2agUSA0NNQnIFEgNNQURAAUABSAGYAQE&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+zurueck+2027-04-26&curr=EUR&hl=de"
+  },
+  {
+    "id": "c003-mc",
+    "phase": "candidates",
+    "trip_type": "multicity",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ],
+      [
+        "CMB",
+        "LOP",
+        "2027-04-07"
+      ],
+      [
+        "LOP",
+        "CMB",
+        "2027-04-18"
+      ],
+      [
+        "CMB",
+        "MAD",
+        "2027-04-26"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Multi-City Gesamtticket: SL Süd -> Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQhoaEgoyMDI3LTA0LTA3agUSA0NNQnIFEgNMT1AaGhIKMjAyNy0wNC0xOGoFEgNMT1ByBRIDQ01CGhoSCjIwMjctMDQtMjZqBRIDQ01CcgUSA01BREABQAFIAZgBAw&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c003-s0",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 1: SL Süd -> Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c003-s1",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-07"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 2: SL Süd -> Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDdqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-07+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c003-s2",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "CMB",
+        "2027-04-18"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 3: SL Süd -> Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMThqBRIDTE9QcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+CMB+am+2027-04-18+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c003-s3",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-04-26"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 4: SL Süd -> Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjZqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-04-26+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c003-rt",
+    "phase": "candidates",
+    "trip_type": "return",
+    "legs": [
+      [
+        "MAD",
+        "CMB",
+        "2027-03-16"
+      ],
+      [
+        "CMB",
+        "MAD",
+        "2027-04-26"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Return-Vergleich Langstrecke: SL Süd -> Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTZqBRIDTUFEcgUSA0NNQhoaEgoyMDI3LTA0LTI2agUSA0NNQnIFEgNNQURAAUABSAGYAQE&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+CMB+am+2027-03-16+zurueck+2027-04-26&curr=EUR&hl=de"
+  },
+  {
+    "id": "c004-mc",
+    "phase": "candidates",
+    "trip_type": "multicity",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-04-01"
+      ],
+      [
+        "LOP",
+        "CMB",
+        "2027-04-23"
+      ],
+      [
+        "CMB",
+        "MAD",
+        "2027-05-10"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Multi-City Gesamtticket: Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0xPUBoaEgoyMDI3LTA0LTIzagUSA0xPUHIFEgNDTUIaGhIKMjAyNy0wNS0xMGoFEgNDTUJyBRIDTUFEQAFAAUgBmAED&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c004-s0",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-04-01"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 1: Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-04-01+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c004-s1",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "CMB",
+        "2027-04-23"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 2: Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjNqBRIDTE9QcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+CMB+am+2027-04-23+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c004-s2",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "MAD",
+        "2027-05-10"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 3: Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDUtMTBqBRIDQ01CcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+MAD+am+2027-05-10+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c004-rt",
+    "phase": "candidates",
+    "trip_type": "return",
+    "legs": [
+      [
+        "MAD",
+        "LOP",
+        "2027-04-01"
+      ],
+      [
+        "LOP",
+        "MAD",
+        "2027-05-10"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Return-Vergleich Langstrecke: Lombok -> SL Ost",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDFqBRIDTUFEcgUSA0xPUBoaEgoyMDI3LTA1LTEwagUSA0xPUHIFEgNNQURAAUABSAGYAQE&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+LOP+am+2027-04-01+zurueck+2027-05-10&curr=EUR&hl=de"
+  },
+  {
+    "id": "c006-mc",
+    "phase": "candidates",
+    "trip_type": "multicity",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-12"
+      ],
+      [
+        "TRV",
+        "CMB",
+        "2027-03-21"
+      ],
+      [
+        "CMB",
+        "LOP",
+        "2027-04-09"
+      ],
+      [
+        "LOP",
+        "MAD",
+        "2027-04-22"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Multi-City Gesamtticket: Kerala -> SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA1RSVhoaEgoyMDI3LTAzLTIxagUSA1RSVnIFEgNDTUIaGhIKMjAyNy0wNC0wOWoFEgNDTUJyBRIDTE9QGhoSCjIwMjctMDQtMjJqBRIDTE9QcgUSA01BREABQAFIAZgBAw&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c006-s0",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-12"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 1: Kerala -> SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA1RSVkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-12+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c006-s1",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "TRV",
+        "CMB",
+        "2027-03-21"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 2: Kerala -> SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMjFqBRIDVFJWcgUSA0NNQkABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+TRV+nach+CMB+am+2027-03-21+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c006-s2",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "CMB",
+        "LOP",
+        "2027-04-09"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 3: Kerala -> SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMDlqBRIDQ01CcgUSA0xPUEABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+CMB+nach+LOP+am+2027-04-09+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c006-s3",
+    "phase": "candidates",
+    "trip_type": "oneway",
+    "legs": [
+      [
+        "LOP",
+        "MAD",
+        "2027-04-22"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Einzelticket-Vergleich Leg 4: Kerala -> SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDQtMjJqBRIDTE9QcgUSA01BREABQAFIAZgBAg&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+LOP+nach+MAD+am+2027-04-22+oneway&curr=EUR&hl=de"
+  },
+  {
+    "id": "c006-rt",
+    "phase": "candidates",
+    "trip_type": "return",
+    "legs": [
+      [
+        "MAD",
+        "TRV",
+        "2027-03-12"
+      ],
+      [
+        "TRV",
+        "MAD",
+        "2027-04-22"
+      ]
+    ],
+    "adults": 2,
+    "purpose": "Return-Vergleich Langstrecke: Kerala -> SL Süd -> Lombok",
+    "url": "https://www.google.com/travel/flights?tfs=GhoSCjIwMjctMDMtMTJqBRIDTUFEcgUSA1RSVhoaEgoyMDI3LTA0LTIyagUSA1RSVnIFEgNNQURAAUABSAGYAQE&hl=de&gl=ES&curr=EUR",
+    "fallback_url": "https://www.google.com/travel/flights?q=Fluege+von+MAD+nach+TRV+am+2027-03-12+zurueck+2027-04-22&curr=EUR&hl=de"
+  }
+]

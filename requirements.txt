@@ -1,0 +1,10 @@
+# Kern (Optimierer, Report, CLI)
+PyYAML>=6.0
+
+# Tests
+pytest>=8.0
+
+# Optional: Python-Scraper als Alternative zum Node-Skript.
+# Das Node-Skript (scripts/scrape_google_flights.cjs) ist der empfohlene Weg,
+# weil Playwright/Chromium dort meist schon vorhanden ist.
+# playwright>=1.40

@@ -1,0 +1,125 @@
+# Feiertage / Preis- und Crowd-Treiber im Reisefenster 2027.
+# Stand der Recherche: Oktober 2026. Islamische Daten sind Prognosen
+# (Mondsichtung) -> vor der Buchung erneut pruefen.
+events:
+  - id: ramadan-2027
+    name: Ramadan 2027
+    start: "2027-02-08"
+    end: "2027-03-09"
+    affects: [Oman, Malaysia, Indonesien]
+    impact: medium
+    note: >-
+      Endet VOR dem geplanten Reisebeginn. Relevant nur, wenn du vor dem 10.03.
+      in Oman/Malaysia/Indonesien startest (Restaurants tagsueber geschlossen).
+    confidence: predicted
+
+  - id: eid-2027
+    name: "Eid al-Fitr / Idul Fitri / Hari Raya"
+    start: "2027-03-09"
+    end: "2027-03-14"
+    affects: [Indonesien, Malaysia, Oman]
+    impact: high
+    note: >-
+      Groesster Preistreiber in Indonesien/Malaysia. Die Mudik-/Lebaran-Reisewelle
+      laeuft ca. 5 Tage davor bis 7 Tage danach: Inlandsfluege (z.B. nach LOP)
+      und Faehren sind teuer und ausgebucht. Fenster 05.-16.03.2027 meiden.
+    confidence: predicted
+
+  - id: semana-santa-2027
+    name: "Semana Santa / Ostern (Spanien + EU)"
+    start: "2027-03-21"
+    end: "2027-03-29"
+    affects: [Spanien, Deutschland, EU-Abfluege]
+    impact: high
+    note: >-
+      Ostersonntag 2027 = 28.03. Gruendonnerstag 25.03. und Karfreitag 26.03. sind
+      in Spanien Feiertage. Langstreckenabfluege ab MAD/BCN sowie die
+      Kanaren-Zubringer (TFS/TFN -> MAD/BCN) sind in dieser Woche am teuersten.
+      -> Entweder vor dem 20.03. oder nach dem 29.03. abfliegen.
+    confidence: confirmed
+
+  - id: eu-dst-2027
+    name: "EU-Sommerzeit beginnt"
+    start: "2027-03-28"
+    end: "2027-03-28"
+    affects: [Spanien, Deutschland]
+    impact: low
+    note: >-
+      Ab 28.03. verschiebt sich die Uhr in Spanien auf UTC+2. Alle Zeitversaetze
+      zu Asien schrumpfen um 1 h -> Calls mit Europa werden leichter.
+    confidence: confirmed
+
+  - id: sinhala-tamil-new-year-2027
+    name: "Sinhala & Tamil New Year (Sri Lanka)"
+    start: "2027-04-13"
+    end: "2027-04-15"
+    affects: [Sri Lanka]
+    impact: high
+    note: >-
+      Das Land steht 3-4 Tage still: Laeden, Coworking und viele Restaurants zu,
+      Busse/Zuege ueberfuellt, Inlandspreise hoch. Entweder vorher weiterfliegen
+      oder bewusst als Kultur-Erlebnis an einem Ort bleiben (nicht umziehen).
+    confidence: confirmed
+
+  - id: khmer-lao-thai-new-year-2027
+    name: "Khmer / Lao / Thai New Year"
+    start: "2027-04-13"
+    end: "2027-04-16"
+    affects: [Kambodscha, Laos]
+    impact: high
+    note: "Landesweite Schliessungen, Reisewellen, Preisspitzen."
+    confidence: confirmed
+
+  - id: vietnam-holidays-2027
+    name: "Vietnam: Reunification Day + Labour Day"
+    start: "2027-04-30"
+    end: "2027-05-03"
+    affects: [Vietnam]
+    impact: medium
+    note: >-
+      Langes Wochenende, starke Inlandsreisewelle (Sapa/Ha Giang/Kuesten voll,
+      Hotelpreise +50-100%). Fuer die Ha-Giang-Runde vorher einplanen.
+    confidence: confirmed
+
+  - id: labour-day-asia-2027
+    name: "1. Mai / Golden Week-Vorlauf"
+    start: "2027-04-29"
+    end: "2027-05-05"
+    affects: [Taiwan, Malaysia, Indonesien, Vietnam]
+    impact: medium
+    note: "Regionale Feiertage -> Rueckflugpreise ab Asien leicht erhoeht."
+    confidence: confirmed
+
+  - id: burning-season-2027
+    name: "Brandsaison Festland-SO-Asien"
+    start: "2027-02-15"
+    end: "2027-04-20"
+    affects: [Laos, Nord-Thailand, Nord-Vietnam, Kambodscha]
+    impact: high
+    note: >-
+      PM2.5-Belastung in Nord-Laos/Nord-Thailand regelmaessig AQI 150-300+.
+      Nord-Vietnam ist weniger betroffen als Laos, aber Hanoi hat im Maerz
+      eigene Smog-Episoden (AQI 150+). Live pruefen auf iqair.com / aqicn.org.
+    confidence: confirmed
+
+  - id: sl-monsoon-switch-2027
+    name: "Sri Lanka: SW-Monsun setzt ein"
+    start: "2027-04-25"
+    end: "2027-05-20"
+    affects: [Sri Lanka]
+    impact: high
+    note: >-
+      Der Wind dreht: Suedkueste wird onshore/choppy, Ostkueste (Arugam Bay)
+      beginnt zu laufen. Harte Deadline fuer den Suedkuesten-Block.
+    confidence: confirmed
+
+  - id: indo-dry-season-onset-2027
+    name: "Indonesien: Trockenzeit/Passat setzt ein"
+    start: "2027-04-01"
+    end: "2027-05-15"
+    affects: [Indonesien]
+    impact: high
+    note: >-
+      SO-Passat dreht offshore an Lomboks Sued-/Westkueste. Ab Mitte April
+      zuverlaessig saubere Vormittage. Je spaeter im Fenster, desto besser.
+    confidence: confirmed
