@@ -66,6 +66,10 @@ class TripConfig:
     allowed_origins: tuple[str, ...] = ()  # leer = alle aus dem Kontext erreichbaren
     allowed_return_hubs: tuple[str, ...] = ("MAD", "BCN")
     home_airport: str = "TFS"
+    # "home"  = Zubringer zum Heimatflughafen direkt im Anschluss an die Langstrecke
+    # "later" = die Reise endet in Europa (z.B. Familienfeier), der Heimflug kommt
+    #           spaeter und steckt in post_trip_cost_eur
+    return_feeder_mode: str = "home"
     ticket_strategies: tuple[str, ...] = ("separate_tickets",)
 
     eligible_tiers: tuple[str, ...] = ("A", "B")
@@ -84,6 +88,10 @@ class TripConfig:
     # einem Block klumpen. Ohne diese Grenze wuerde die greedy Zuteilung den
     # ersten Block bis zum Anschlag fuellen.
     max_vacation_share_per_block: float = 0.5
+    # Ziele, die Urlaubstage ZUERST bekommen, und zwar ohne die Share-Grenze.
+    # Fuer Vorhaben, die nur als Urlaub funktionieren - ein 7-Tage-Trek in Nepal
+    # laesst sich nicht mit drei Arbeitstagen dazwischen machen.
+    vacation_priority: tuple[str, ...] = ()
 
     objective_mode: str = "per_day"  # per_day | total
     value_per_score_point_eur: float = 22.0
@@ -93,6 +101,9 @@ class TripConfig:
     # Kosten, um ueberhaupt in den Startkontext zu kommen (z.B. Montafon -> Cottbus).
     # Gesamtbetrag fuer alle Reisenden, wird den Flugkosten zugeschlagen.
     pre_trip_cost_eur: float = 0.0
+    # Kosten NACH der Reise (z.B. Heimflug Deutschland -> Teneriffa nach einer
+    # Familienfeier). Gesamtbetrag fuer alle Reisenden.
+    post_trip_cost_eur: float = 0.0
     scenario_label: str = ""
     openjaw_discount: float = 0.12
     board_bags: int = 0
@@ -210,7 +221,7 @@ class Optimizer:
         """Gesamtkosten des Rueckwegs vom letzten Ziel bis Teneriffa."""
         cfg = self.cfg
         access = self._access(hub, "tenerife")
-        if access is None:
+        if access is None and cfg.return_feeder_mode != "later":
             return None
         longhaul, src = self._leg_price(last_airport, hub, day)
         if longhaul == float("inf"):
@@ -220,6 +231,9 @@ class Optimizer:
         longhaul *= 1 - cfg.openjaw_discount
 
         total = longhaul * cfg.travellers
+        if cfg.return_feeder_mode == "later":
+            # Die Reise endet in Europa; der Heimflug steckt in post_trip_cost_eur.
+            return total, f"{src}+endet_in_europa"
         if strategy == "through_ticket":
             if access.mode != "flight":
                 return None
@@ -412,7 +426,7 @@ class Optimizer:
                 )
             )
 
-        flight_cost += return_total + cfg.pre_trip_cost_eur
+        flight_cost += return_total + cfg.pre_trip_cost_eur + cfg.post_trip_cost_eur
         if "estimate" in return_src or "unknown" in return_src:
             estimated += return_total
         legs.append(
@@ -466,18 +480,30 @@ class Optimizer:
         budget = min(cfg.vacation_days, sum(b.days for b in blocks))
         if budget <= 0:
             return
-        ranked = sorted(
-            blocks,
-            key=lambda b: -sum(
+        def mean_gain(block: Block) -> float:
+            return sum(
                 vacation_gain(
-                    b.destination, b.start + dt.timedelta(days=n), cfg.weights, cfg.work_window
+                    block.destination,
+                    block.start + dt.timedelta(days=n),
+                    cfg.weights,
+                    cfg.work_window,
                 )
-                for n in range(b.days)
-            )
-            / b.days,
+                for n in range(block.days)
+            ) / block.days
+
+        priority = [b for b in blocks if b.destination.id in cfg.vacation_priority]
+        rest = sorted(
+            (b for b in blocks if b.destination.id not in cfg.vacation_priority),
+            key=lambda b: -mean_gain(b),
         )
+        ranked = sorted(priority, key=lambda b: -mean_gain(b)) + rest
         caps = {
-            id(b): max(1, int(b.days * cfg.max_vacation_share_per_block)) for b in blocks
+            id(b): (
+                b.days
+                if b.destination.id in cfg.vacation_priority
+                else max(1, int(b.days * cfg.max_vacation_share_per_block))
+            )
+            for b in blocks
         }
         for block in ranked:
             if budget <= 0:

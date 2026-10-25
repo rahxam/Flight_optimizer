@@ -5,25 +5,35 @@ für 2 Personen, ab Teneriffa. Es verbindet drei Dinge, die man sonst getrennt b
 
 1. **Saisonalität** – wann ist welches Ziel wirklich gut (Wetter, Longboard-Welle, Feiertage)?
 2. **Flugpreise** – echte Google-Flights-Daten, inklusive Multi-City und Open-Jaw.
-3. **Arbeitsrealität** – Internet und Coworking, und vor allem: wo landet die
-   Pflicht-Arbeitszeit 09–16 Uhr deutscher Zeit vor Ort?
+3. **Ausflüge** – Canyoning, Rafting, Trekking, Mehrtages-Bootstouren, nicht nur Surf.
+4. **Arbeitsrealität** – Internet und Coworking, und vor allem: wo landet die
+   Pflicht-Arbeitszeit 09–16 Uhr deutscher Zeit vor Ort? Ein späterer lokaler
+   Start ist dabei ein Vorteil, kein Nachteil.
 
 Daraus sucht der Optimierer Routen über 2–3 Ziele und sagt, wann welcher Block
-wie lang sein soll – und wohin die Urlaubstage gehören.
+wie lang sein soll – und wohin die Urlaubstage gehören. Dazu kommt ein
+Dauerbetrieb-Teil, der über Monate Flugpreise beobachtet und Preiseinbrüche
+meldet.
 
 ## Kernergebnis (Stand: nur Schätzpreise)
 
-**Cottbus-Brücke → Sri Lanka Südküste → Lombok Süd.** Am 06.03. von Montafon
-mit den Eltern nach Cottbus, dort knapp zwei Wochen arbeiten, am **17.03. ab BER**
-nach Colombo, **Sri Lanka 17.03.–07.04.**, **Lombok 08.04.–27.04.**, zurück über
-Madrid. Ca. **7.220 € für zwei Personen** (172 €/Tag).
+**Ostritz-Finale: Cottbus → Sri Lanka Südküste → Lombok Süd → zurück nach
+Deutschland.** Am 06.03. von Montafon mit den Eltern nach Cottbus, dort arbeiten,
+**ab 20.03. ab BER** nach Colombo, **Sri Lanka 20.03.–08.04.**, **Lombok
+09.04.–30.04.**, Rückflug nach Deutschland statt nach Teneriffa – weil der
+Geburtstag der Schwiegermutter am 06.05. (Feier 08.05. in Ostritz) ein harter
+Endtermin ist. Ca. **7.170 € für zwei Personen** inklusive Heimflug nach der
+Feier (171 €/Tag).
 
-Die beiden Ziele laufen saisonal gegenläufig: Sri Lankas Südküste ist im März auf
-dem Höhepunkt und endet Ende April mit dem SW-Monsun, Lombok startet genau dann
-seine Trockenzeit. Und sie ergänzen sich auch bei der Arbeitszeit: in Sri Lanka
-heißt 09–16 Uhr deutscher Zeit 12:30–19:30 Ortszeit (Morgen frei zum Surfen,
-Abend frei), in Lombok 15:00–22:00. Darum gehen die Urlaubstage überwiegend nach
-Lombok – 18/4 Arbeits-/Urlaubstage in Sri Lanka, 10/10 in Lombok.
+Zwei Gründe für diese Struktur: Die Ziele laufen **saisonal gegenläufig** – Sri
+Lankas Südküste ist im März auf dem Höhepunkt und endet Ende April mit dem
+SW-Monsun, Lombok startet genau dann seine Trockenzeit. Und das **Ende in
+Deutschland** spart eine komplette Extra-Runde Teneriffa–Deutschland–Teneriffa
+für die Feier, rund 880 €.
+
+Die Arbeitszeit 09–16 Uhr deutscher Zeit heißt in Sri Lanka 12:30–19:30 Ortszeit,
+in Lombok 15:00–22:00 – nach getesteter Erfahrung ist der späte Start der
+angenehmere. Urlaubstage verteilen sich auf beide Blöcke.
 
 Szenarienvergleich, Wochenplan und offene Punkte: [`docs/strategie.md`](docs/strategie.md).
 Routen im Detail: [`docs/routenplan.md`](docs/routenplan.md).
@@ -50,18 +60,52 @@ python3 -m pytest tests/ -q
 
 Profile: `surf` (Longboard-Fokus), `balanced`, `work` (Arbeitsfähigkeit zuerst).
 
+Profil `active` ist der Standard: Ausflüge wiegen mehr als Surf, weil nicht jeden
+Tag gesurft werden soll.
+
 Wichtige Schalter:
 
 ```bash
 --work-start 9 --work-end 16 --work-flex 1   # Pflicht-Arbeitszeit (deutsche Zeit)
---vacation-days 14                           # Urlaubsbudget, wird verteilt
---origins ZRH,MUC                            # Abflughäfen
---budget 6500                                # harte Kostenobergrenze
---include LK-SOUTH --exclude ID-LOMBOK        # Ziele erzwingen/ausschließen
+--ideal-local-start 14.5                      # bevorzugter lokaler Arbeitsbeginn
+--vacation-days 18                            # Urlaubsbudget, wird verteilt
+--origins ZRH,MUC                             # Abflughäfen
+--budget 6500                                 # harte Kostenobergrenze
+--include NP-NEPAL --exclude ID-LOMBOK        # Ziele erzwingen/ausschließen
+--max-dest 3                                  # auch Drei-Ziel-Routen (langsam, ~3 min)
 ```
 
-`--work-flex` ist der wirksamste Hebel: bei 2 h Flexibilität wird Lombok von
-15:00–22:00 auf 13:00–20:00 Ortszeit verschoben, und das Ranking ändert sich.
+`--ideal-local-start` ist der wirksamste Hebel. Bei 14.5 (Standard) gewinnen
+Ziele mit großem Zeitversatz nach Osten, weil der Vormittag frei bleibt; bei 12.5
+kippt es zurück Richtung Sri Lanka und Oman.
+
+## Dauerbetrieb: Preise über Monate beobachten
+
+```bash
+docker compose up -d --build        # alle 12 h ein Scrape-Lauf, Historie in SQLite
+docker compose logs -f flight-tracker
+```
+
+Der Container fragt pro Lauf 120 zufällig gewählte Suchen aus der Matrix ab
+(~15 min), schreibt sie als CSV ins Volume, liest sie in eine SQLite-Historie
+ein und meldet Allzeittiefs und Preiseinbrüche ins Log. Die Matrix hat ~520
+Suchen und ist nach rund drei Tagen einmal komplett durch.
+
+Auswerten:
+
+```bash
+python3 scripts/track.py status                 # Umfang der Historie
+python3 scripts/track.py lows                   # Allzeittiefs = Kaufsignal
+python3 scripts/track.py deals --drop 20         # Einbrüche gegen den eigenen Median
+python3 scripts/track.py best --top 30           # günstigste je gesehene Preise
+python3 scripts/track.py plan --price-mode best  # Szenarien mit echten Preisen
+```
+
+`--price-mode best` beantwortet „welche Route ist erreichbar, wenn ich geduldig
+beobachte", `--price-mode latest` beantwortet „soll ich jetzt buchen".
+
+Einstellbar in `docker-compose.yml`: `INTERVAL_HOURS`, `QUERIES_PER_RUN`,
+`DELAY_SECONDS`, `DEAL_DROP_PCT`.
 
 ## Flugpreise beschaffen
 
@@ -132,14 +176,17 @@ Längen und Urlaub aber eine Heuristik.
 ## Struktur
 
 ```
-data/destinations.yaml   17 Ziele mit Halbmonats-Scores, Kosten, Arbeitsfähigkeit
+data/destinations.yaml   17 Ziele mit Halbmonats-Scores, Kosten, Arbeitsfähigkeit,
+                         Ausflugsbewertung und konkreten Mehrtagestouren
 data/origins.yaml        12 Abflughäfen mit Anreise je Startkontext
                          (montafon / cottbus / hamburg / tenerife)
 data/calendar.yaml       Feiertage und Preistreiber im Reisefenster
 data/route_hints.yaml    Schätzpreise, Visa, Gepäck, saisonale Preisaufschläge
 data/prices/*.csv        Echte Preise (gescrapet oder manuell) – haben Vorrang
-src/workation/           seasonality · workwindow · prices · optimizer ·
-                         scenarios · report · scrape
+src/workation/           seasonality · workwindow · prices · history ·
+                         optimizer · scenarios · report · scrape
+scripts/track.py         Preishistorie: ingest, best, deals, lows, plan
+Dockerfile + compose     Dauerbetrieb mit regelmäßigen Scrape-Läufen
 scripts/plan.py          CLI
 scripts/scrape_google_flights.cjs  Scraper (Node/Playwright)
 docs/                    Report, Saison-Begründungen, Strategie, Scrape-Checkliste

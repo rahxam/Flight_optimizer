@@ -35,6 +35,8 @@ class Destination:
     tz_offset_vs_madrid_winter: float
     cost_per_day_eur_pp: float
     activities: list[str]
+    activity_score: float
+    multiday: list[str]
     hub_to_base_h: float
     scores: dict[str, WindowScore]
     notes: str = ""

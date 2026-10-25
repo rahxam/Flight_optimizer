@@ -1,0 +1,9 @@
+.git
+.gitignore
+__pycache__
+*.pyc
+.pytest_cache
+node_modules
+docs/scrape_checklist.md
+data/prices/raw
+data/prices/*.sqlite3

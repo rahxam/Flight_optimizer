@@ -5,7 +5,11 @@
 #   weather : trocken/angenehm, wenig Regen, ertraegliche Hitze
 #   surf    : Wellenqualitaet + Konsistenz SPEZIELL fuer Longboard (lange, sanfte Walls)
 #   calm    : Abwesenheit von Crowds / Feiertagschaos / Hochpreisphasen
-# work      : Internet, Coworking, Strom, Arbeitsfaehigkeit (konstant pro Ziel)
+# work           : Internet, Coworking, Strom, Arbeitsfaehigkeit (konstant pro Ziel)
+# activity_score : Vielfalt und Qualitaet von GANZTAGES-Ausfluegen (konstant pro Ziel).
+#                  Gewichtet nach dem, was die Nutzer wollen: Canyoning, Rafting,
+#                  Trekking, Mehrtages-Bootstouren - nicht nur Surfen.
+# multiday       : konkrete Mehrtagestouren, die als Urlaubsblock funktionieren
 # tz_offset_vs_madrid_winter : Stunden Versatz zu Madrid (vor 28.03.2027 = CET).
 #             Ab 28.03.2027 (EU-Sommerzeit) schrumpft der Versatz um 1 h.
 # cost_per_day_eur_pp : Unterkunft(50%) + Essen + lokale Mobilitaet, pro Person/Tag
@@ -36,6 +40,12 @@ destinations:
     tz_offset_vs_madrid_winter: 4.5
     cost_per_day_eur_pp: 55
     activities: [longboard, shortboard, snorkel, whale_watching, safari_udawalawe, jungle_hike, scooter, yoga]
+    activity_score: 8
+    multiday:
+      - "Udawalawe- oder Yala-Safari (1 Tag)"
+      - "Hochland Ella / Horton Plains (2-3 Tage)"
+      - "Rafting + Canyoning Kitulgala (1-2 Tage)"
+      - "Walbeobachtung Mirissa (halber Tag)"
     hub_to_base_h: 2.5
     scores:
       "2027-03-H1": {weather: 9, surf: 9, calm: 6, note: "Kernsaison Suedkueste, offshore Vormittage, 2-5ft"}
@@ -62,6 +72,14 @@ destinations:
     tz_offset_vs_madrid_winter: 7.0
     cost_per_day_eur_pp: 50
     activities: [longboard, shortboard, snorkel, gili_islands, rinjani_foothills, waterfalls, scooter]
+    activity_score: 9
+    multiday:
+      - "Rinjani-Trek (2-3 Tage)"
+      - "Liveaboard Lombok - Komodo (3-4 Tage, Flores/Komodo, nicht Bali)"
+      - "Gerupuk-Bootstage (1 Tag)"
+      - "Gili-Inseln Schnorcheln/Tauchen (2-3 Tage)"
+      - "Sumbawa per Faehre, Lakey Peak (1 Woche)"
+      - "Benang-Stokel-Wasserfaelle + Dschungel (1 Tag)"
     hub_to_base_h: 1.0
     scores:
       "2027-03-H1": {weather: 5, surf: 6, calm: 5, note: "Regenzeit-Ende; glassy Mornings, aber Nachmittagsregen. 10.03. Idul Fitri -> Lebaran-Reisewelle"}
@@ -91,6 +109,9 @@ destinations:
     tz_offset_vs_madrid_winter: 7.0
     cost_per_day_eur_pp: 45
     activities: [shortboard, longboard, snorkel, remote_beaches]
+    activity_score: 5
+    multiday:
+      - "abgelegene Straende, kaum organisierte Touren"
     hub_to_base_h: 8.0
     scores:
       "2027-03-H1": {weather: 5, surf: 6, calm: 8, note: "Regenzeit-Ende"}
@@ -115,6 +136,10 @@ destinations:
     tz_offset_vs_madrid_winter: 6.0
     cost_per_day_eur_pp: 45
     activities: [shortboard, boat_trips, jungle]
+    activity_score: 6
+    multiday:
+      - "Mentawai-Bootscharter (10-12 Tage)"
+      - "Harau-Valley Dschungel + Klettern (1-2 Tage)"
     hub_to_base_h: 4.0
     scores:
       "2027-03-H1": {weather: 5, surf: 5, calm: 8, note: "Nass, Saison noch nicht da"}
@@ -139,6 +164,10 @@ destinations:
     tz_offset_vs_madrid_winter: 8.0
     cost_per_day_eur_pp: 110
     activities: [diving, snorkel, kayak]
+    activity_score: 8
+    multiday:
+      - "Liveaboard Raja Ampat (5-7 Tage)"
+      - "Wayag-Viewpoint-Tour (1 Tag)"
     hub_to_base_h: 12.0
     scores:
       "2027-03-H1": {weather: 8, surf: 0, calm: 7, note: "Tauchsaison Okt-Apr, gute Sicht"}
@@ -163,6 +192,10 @@ destinations:
     tz_offset_vs_madrid_winter: 4.5
     cost_per_day_eur_pp: 45
     activities: [longboard, shortboard, lagoon, safari_kumana, scooter]
+    activity_score: 6
+    multiday:
+      - "Kumana-Nationalpark-Safari (1 Tag)"
+      - "Lagunen-Kajaktour (1 Tag)"
     hub_to_base_h: 7.0
     scores:
       "2027-03-H1": {weather: 6, surf: 2, calm: 9, note: "Off-Season, flach, halb geschlossen"}
@@ -187,6 +220,11 @@ destinations:
     tz_offset_vs_madrid_winter: 7.0
     cost_per_day_eur_pp: 50
     activities: [snorkel, jungle_hike, island_hopping, food, kayak]
+    activity_score: 6
+    multiday:
+      - "Penang-Hill / Nationalpark-Dschungeltrek (1 Tag)"
+      - "Perhentians oder Redang Tauchen (3-4 Tage)"
+      - "Langkawi Mangroven-Kajak (1 Tag)"
     hub_to_base_h: 1.0
     scores:
       "2027-03-H1": {weather: 8, surf: 0, calm: 6, note: "Trocken; Hari Raya 10.03. -> Inlandsreisewelle"}
@@ -212,6 +250,9 @@ destinations:
     tz_offset_vs_madrid_winter: 7.0
     cost_per_day_eur_pp: 45
     activities: [longboard, river_tour, turtles]
+    activity_score: 4
+    multiday:
+      - "Flusstour, Schildkroetenstation (halber Tag)"
     hub_to_base_h: 4.0
     scores:
       "2027-03-H1": {weather: 7, surf: 5, calm: 8, note: "Letzte NO-Monsun-Reste, kleine Longboard-Wellen"}
@@ -236,6 +277,11 @@ destinations:
     tz_offset_vs_madrid_winter: 4.5
     cost_per_day_eur_pp: 40
     activities: [longboard, backwaters, ayurveda, hill_station_munnar, scooter]
+    activity_score: 7
+    multiday:
+      - "Backwaters-Hausboot (2-3 Tage)"
+      - "Munnar Teeplantagen-Trekking (2 Tage)"
+      - "Periyar-Wildreservat (1 Tag)"
     hub_to_base_h: 1.5
     scores:
       "2027-03-H1": {weather: 6, surf: 4, calm: 7, note: "Heiss (33 C), Surf-Saison (Okt-Mrz) laeuft aus"}
@@ -260,6 +306,10 @@ destinations:
     tz_offset_vs_madrid_winter: 4.5
     cost_per_day_eur_pp: 55
     activities: [diving, snorkel, kayak, beaches]
+    activity_score: 5
+    multiday:
+      - "Tauchen Havelock (1-2 Tage)"
+      - "Kajak durch Mangroven (1 Tag)"
     hub_to_base_h: 3.0
     scores:
       "2027-03-H1": {weather: 9, surf: 1, calm: 6, note: "Beste Zeit, trocken, ruhiges Meer"}
@@ -285,6 +335,13 @@ destinations:
     tz_offset_vs_madrid_winter: 6.0
     cost_per_day_eur_pp: 35
     activities: [motorbike_loop, trekking, kayak_ba_be, caves, food, cycling]
+    activity_score: 10
+    multiday:
+      - "Ha-Giang-Runde mit dem Motorrad (4-5 Tage)"
+      - "Lan-Ha-/Bai-Tu-Long-Bucht Mehrtagesboot (2-3 Tage)"
+      - "Ba-Be-See Kajak + Homestay (2 Tage)"
+      - "Sapa / Mu-Cang-Chai Trekking (2-3 Tage)"
+      - "Hoehlen Phong Nha-Niveau in Cao Bang (1 Tag)"
     hub_to_base_h: 0.5
     scores:
       "2027-03-H1": {weather: 6, surf: 0, calm: 8, note: "Noch kuehl/nebelig im Norden, Nieselregen"}
@@ -310,6 +367,13 @@ destinations:
     tz_offset_vs_madrid_winter: 7.0
     cost_per_day_eur_pp: 75
     activities: [longboard, hiking_taroko, cycling, hot_springs, food, scooter]
+    activity_score: 9
+    multiday:
+      - "River Tracing / Canyoning Hualien (1 Tag)"
+      - "Taroko-Schlucht Wanderungen (2 Tage)"
+      - "Radtour Ostkueste (3-5 Tage)"
+      - "Jiaming-Lake-Trek (3 Tage)"
+      - "Heisse Quellen Beitou / Taian (1 Tag)"
     hub_to_base_h: 1.0
     scores:
       "2027-03-H1": {weather: 6, surf: 6, calm: 8, note: "15-22 C, feucht im Norden; letzte NO-Swells"}
@@ -335,6 +399,13 @@ destinations:
     tz_offset_vs_madrid_winter: 4.75
     cost_per_day_eur_pp: 35
     activities: [trekking, paragliding, rafting, mountain_bike, yoga]
+    activity_score: 10
+    multiday:
+      - "Annapurna Base Camp Trek (7-11 Tage)"
+      - "Mardi Himal Trek (5-7 Tage)"
+      - "Rafting Trisuli oder Seti (2-3 Tage)"
+      - "Canyoning Jalbire / Bhotekoshi (1 Tag)"
+      - "Gleitschirm Pokhara (halber Tag)"
     hub_to_base_h: 1.0
     scores:
       "2027-03-H1": {weather: 8, surf: 0, calm: 8, note: "Fruehlings-Trekkingsaison startet, Rhododendren"}
@@ -361,6 +432,13 @@ destinations:
     tz_offset_vs_madrid_winter: 3.0
     cost_per_day_eur_pp: 95
     activities: [wadi_hiking, canyoning, diving, dunes_4x4, snorkel, kitesurf_masirah]
+    activity_score: 9
+    multiday:
+      - "Canyoning Snake Gorge / Wadi Bani Awf (1 Tag)"
+      - "Wadi Shab, Wadi Bani Khalid (1 Tag)"
+      - "Jebel Shams Balcony Walk (1 Tag)"
+      - "Wahiba-Duenen 4x4 + Uebernachtung (2 Tage)"
+      - "Tauchen Daymaniyat-Inseln (1 Tag)"
     hub_to_base_h: 0.5
     scores:
       "2027-03-H1": {weather: 9, surf: 1, calm: 7, note: "26-29 C, perfekt fuer Wadis/Berge; Ramadan bis 08.03. -> Restaurants tagsueber zu"}
@@ -387,6 +465,11 @@ destinations:
     tz_offset_vs_madrid_winter: 6.0
     cost_per_day_eur_pp: 35
     activities: [angkor, kayak, island_beaches, scooter, caves_kampot]
+    activity_score: 6
+    multiday:
+      - "Angkor (2-3 Tage)"
+      - "Kampot Hoehlen + Bokor (1-2 Tage)"
+      - "Koh-Rong-Inseln (3-4 Tage)"
     hub_to_base_h: 0.5
     scores:
       "2027-03-H1": {weather: 5, surf: 0, calm: 7, note: "33-35 C, trocken aber heiss"}
@@ -411,6 +494,11 @@ destinations:
     tz_offset_vs_madrid_winter: 6.0
     cost_per_day_eur_pp: 35
     activities: [kayak, trekking, climbing_vang_vieng, caves, cycling]
+    activity_score: 8
+    multiday:
+      - "Kajak + Klettern Vang Vieng (2 Tage)"
+      - "Nong-Khiaw-Trekking mit Homestay (2-3 Tage)"
+      - "Kuang-Si-Wasserfaelle (1 Tag)"
     hub_to_base_h: 0.5
     hard_avoid:
       windows: ["2027-03-H1", "2027-03-H2", "2027-04-H1", "2027-04-H2"]
@@ -440,6 +528,11 @@ destinations:
     tz_offset_vs_madrid_winter: 2.0
     cost_per_day_eur_pp: 70
     activities: [shortboard, longboard, diving, lemurs, trekking_tsingy, kitesurf]
+    activity_score: 8
+    multiday:
+      - "Tsingy de Bemaraha Trekking (3-4 Tage)"
+      - "Lemuren-Nationalparks (2-3 Tage)"
+      - "Tauchen / Kitesurf Nosy Be (2-3 Tage)"
     hub_to_base_h: 10.0
     scores:
       "2027-03-H1": {weather: 3, surf: 3, calm: 8, note: "Regen-/Zyklonsaison (bis ca. Mitte April)"}

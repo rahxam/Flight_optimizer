@@ -2,12 +2,19 @@
 /**
  * Google-Flights-Scraper (Playwright/Chromium).
  *
- *   node scripts/scrape_google_flights.cjs data/prices/_queries.json data/prices/scraped.csv
+ *   node scripts/scrape_google_flights.cjs data/prices/_queries.json out.csv
  *   node scripts/scrape_google_flights.cjs --verify            # eine Suche pruefen
- *   node scripts/scrape_google_flights.cjs <json> <csv> --headed --limit 20 --delay 7
  *
- * Schreibt inkrementell: ein Abbruch verliert nichts, ein Neustart ueberspringt,
- * was schon in der CSV steht.
+ * Flags:
+ *   --limit N     nur N Suchen in diesem Lauf (fuer kurze, regelmaessige Laeufe)
+ *   --shuffle     Reihenfolge zufaellig - ueber viele Laeufe deckt das alles ab
+ *   --resume      Suchen ueberspringen, die in der Ziel-CSV schon stehen
+ *                 (fuer einen einmaligen Komplettdurchlauf; beim Dauer-Tracking
+ *                  will man dieselbe Strecke bewusst wieder und wieder messen)
+ *   --delay S     Pause zwischen Abfragen in Sekunden (Default 6)
+ *   --headed      sichtbarer Browser
+ *
+ * Schreibt inkrementell: ein Abbruch verliert nichts.
  *
  * WICHTIG: Google Flights hat keine offizielle API. Scraping verstoesst gegen die
  * ToS und die Seitenstruktur aendert sich ohne Vorwarnung. Fuer eine private
@@ -21,6 +28,7 @@ const { chromium } = require('playwright');
 const CSV_HEADER = [
   'origin', 'destination', 'depart_date', 'return_date', 'trip_type', 'price_eur',
   'carrier', 'stops', 'duration_min', 'source', 'url', 'itinerary_id', 'leg_index',
+  'scraped_at',
 ].join(',');
 
 const CONSENT_LABELS = ['Alle akzeptieren', 'Accept all', 'Ich stimme zu', 'I agree', 'Alle ablehnen'];
@@ -147,7 +155,10 @@ async function main() {
     delay: parseFloat(getOpt('delay', '6')) * 1000,
     limit: parseInt(getOpt('limit', '0'), 10),
     headless: !flags.has('--headed'),
+    shuffle: flags.has('--shuffle'),
+    resume: flags.has('--resume'),
   };
+  const startedAt = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
 
   if (flags.has('--verify')) {
     const url = positional[0] || 'https://www.google.com/travel/flights?tfs='
@@ -170,14 +181,14 @@ async function main() {
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   const done = new Set();
-  if (fs.existsSync(outPath)) {
+  if (!fs.existsSync(outPath)) {
+    fs.writeFileSync(outPath, CSV_HEADER + '\n');
+  } else if (opts.resume) {
     const text = fs.readFileSync(outPath, 'utf8').split('\n').slice(1);
     for (const row of text) {
       const cells = row.split(',');
-      if (cells.length > 12) done.add(cells[11] || `${cells[0]}|${cells[1]}|${cells[2]}|${cells[4]}`);
+      if (cells.length > 12) done.add(cells[11]);
     }
-  } else {
-    fs.writeFileSync(outPath, CSV_HEADER + '\n');
   }
 
   const browser = await chromium.launch({ headless: opts.headless });
@@ -190,9 +201,18 @@ async function main() {
   let written = 0;
   let processed = 0;
   let firstReadBack = '';
-  const todo = queries.filter((q) => !done.has(q.id));
+  let todo = queries.filter((q) => !done.has(q.id));
+  if (opts.shuffle) {
+    for (let i = todo.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [todo[i], todo[j]] = [todo[j], todo[i]];
+    }
+  }
   const slice = opts.limit > 0 ? todo.slice(0, opts.limit) : todo;
-  console.log(`${queries.length} Suchen in der Matrix, ${slice.length} offen.`);
+  console.log(
+    `${queries.length} Suchen in der Matrix, ${slice.length} in diesem Lauf` +
+    (opts.shuffle ? ' (zufaellige Auswahl)' : '') + '.'
+  );
 
   for (const query of slice) {
     processed += 1;
@@ -218,6 +238,7 @@ async function main() {
         query.url,
         query.id,
         i,
+        startedAt,
       ].map(csvEscape).join(','));
       if (rows.length) {
         fs.appendFileSync(outPath, rows.join('\n') + '\n');
@@ -244,7 +265,7 @@ async function main() {
 
   await browser.close();
   console.log(`\nFertig: ${written} Preiszeilen in ${outPath}`);
-  console.log('Weiter mit: python3 scripts/plan.py report --profile surf');
+  console.log(`Weiter mit: python3 scripts/track.py ingest ${outPath}`);
 }
 
 main().catch((err) => {

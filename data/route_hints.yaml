@@ -20,6 +20,15 @@ longhaul:
   - {from: [MAD, BCN], to: CMB, oneway_eur: 390, return_eur: 620, best_carriers: [QR, EK, TK, UL+AY], typical_stops: 1, note: "Qatar/Emirates ueber DOH/DXB, 15-18 h"}
   - {from: [MAD, BCN], to: KUL, oneway_eur: 430, return_eur: 690, best_carriers: [QR, EK, TK, SQ], typical_stops: 1, note: "Gut als Gateway fuer LOP"}
   - {from: [MAD, BCN], to: LOP, oneway_eur: 620, return_eur: 980, best_carriers: [QR+AK, EK+GA, SQ+AK], typical_stops: 2, note: "Meist 2 Stops; oft billiger als KUL+Separat-Ticket pruefen"}
+  # --- Java/Bali NUR als Transit, nicht als Aufenthalt (Nutzervorgabe) ---
+  # Nutzerbeobachtung 25.10.2026: MAD-CGK fuer 350 EUR Return gesehen. Das ist
+  # deutlich unter dem, was ein Umstieg via KUL kostet, und macht CGK zum
+  # wichtigsten Gateway nach Lombok. Unbedingt scrapen.
+  - {from: [MAD, BCN], to: CGK, oneway_eur: 220, return_eur: 360, best_carriers: [QR, EK, TK, GA], typical_stops: 1, note: "Transit-Gateway; Nutzer sah 350 EUR Return ab MAD"}
+  - {from: [ZRH, MUC], to: CGK, oneway_eur: 240, return_eur: 400, best_carriers: [QR, EK, TK], typical_stops: 1}
+  - {from: [BER, HAM], to: CGK, oneway_eur: 240, return_eur: 400, best_carriers: [QR, EK, TK], typical_stops: 1}
+  - {from: [MAD, BCN], to: DPS, oneway_eur: 320, return_eur: 520, typical_stops: 1, note: "Transit-Gateway; Bali als Aufenthalt ausgeschlossen"}
+  - {from: [BER, HAM], to: DPS, oneway_eur: 340, return_eur: 550, typical_stops: 1}
   - {from: [MAD, BCN], to: HAN, oneway_eur: 430, return_eur: 660, best_carriers: [QR, TK, EK, CZ], typical_stops: 1}
   - {from: [MAD, BCN], to: TPE, oneway_eur: 520, return_eur: 780, best_carriers: [TK, QR, EK, CI], typical_stops: 1}
   - {from: [MAD, BCN], to: KTM, oneway_eur: 450, return_eur: 700, best_carriers: [QR, TK, EK], typical_stops: 1}
@@ -70,6 +79,12 @@ intra_asia:
   - {from: CMB, to: MCT, oneway_eur: 180, carriers: [WY, UL, OD], duration_h: 4.5}
   - {from: CMB, to: TPE, oneway_eur: 420, carriers: ["AK+div", SQ, TG], duration_h: 13, stops: 1}
   - {from: KUL, to: LOP, oneway_eur: 120, carriers: [AK], duration_h: 3.5, note: "AirAsia direkt (saisonal); sonst via DPS/CGK"}
+  - {from: CGK, to: LOP, oneway_eur: 55, carriers: [JT, QG, ID, GA], duration_h: 2.2, note: "Inlandsflug, mehrfach taeglich, sehr guenstig"}
+  - {from: DPS, to: LOP, oneway_eur: 40, carriers: [JT, QG, ID], duration_h: 0.8, note: "Kurzhop; auch Schnellfaehre Padangbai-Lombok moeglich"}
+  - {from: SUB, to: LOP, oneway_eur: 50, carriers: [JT, QG], duration_h: 1.5}
+  - {from: CGK, to: PDG, oneway_eur: 45, carriers: [JT, QG, ID], duration_h: 1.8}
+  - {from: CGK, to: KUL, oneway_eur: 70, carriers: [AK, MH, GA], duration_h: 2.0}
+  - {from: CMB, to: CGK, oneway_eur: 240, carriers: [AK+QZ, UL+GA], duration_h: 11, stops: 1}
   - {from: KUL, to: HAN, oneway_eur: 110, carriers: [AK, VJ, MH], duration_h: 3.5}
   - {from: KUL, to: TPE, oneway_eur: 230, carriers: [AK, CI, BR], duration_h: 4.8}
   - {from: KUL, to: PNH, oneway_eur: 100, carriers: [AK, K6], duration_h: 2.2}
@@ -113,6 +128,11 @@ visa_eur:
 # applies_to: "eu_departure" = Abflug ab EU-Hub, "eu_return" = Ankunft an EU-Hub,
 #             oder eine Liste von Flughafencodes (ein Endpunkt genuegt).
 estimate_multipliers:
+  - start: "2027-03-05"
+    end: "2027-03-16"
+    factor: 1.25
+    applies_to: [CGK, DPS, SUB]
+    reason: "Lebaran / Mudik - indonesische Inlandsfluege"
   - start: "2027-03-19"
     end: "2027-03-30"
     factor: 1.28

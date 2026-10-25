@@ -27,29 +27,45 @@ def _window_bounds(key: str) -> tuple[dt.date, dt.date]:
 
 @dataclass(frozen=True)
 class Weights:
-    """Gewichtung der Teilscores. Die Summe der fuenf Gewichte sollte 1.0 sein.
+    """Gewichtung der Teilscores. Die Summe der sechs Gewichte sollte 1.0 sein.
 
+    weather     = trocken/angenehm
+    surf        = Longboard-taugliche Welle
+    activity    = Vielfalt von Ganztages- und Mehrtagesausfluegen
+    calm        = keine Crowds, keine Feiertagsstillstaende
     work        = Arbeitsinfrastruktur (Internet, Coworking, Strom)
     work_window = wie gut die Pflicht-Arbeitszeit vor Ort liegt (s. workwindow.py)
     """
 
-    weather: float = 0.25
-    surf: float = 0.25
-    calm: float = 0.10
-    work: float = 0.20
-    work_window: float = 0.20
+    weather: float = 0.20
+    surf: float = 0.18
+    activity: float = 0.18
+    calm: float = 0.08
+    work: float = 0.18
+    work_window: float = 0.18
     tropical_bonus: float = 0.3
+
+    @classmethod
+    def active(cls) -> "Weights":
+        """Default: aktiv unterwegs, Surfen ist eine Option von mehreren."""
+        return cls(
+            weather=0.20, surf=0.18, activity=0.22, calm=0.07,
+            work=0.16, work_window=0.17, tropical_bonus=0.4,
+        )
 
     @classmethod
     def surf_focused(cls) -> "Weights":
         return cls(
-            weather=0.22, surf=0.36, calm=0.08, work=0.16, work_window=0.18,
-            tropical_bonus=0.5,
+            weather=0.20, surf=0.32, activity=0.13, calm=0.06,
+            work=0.14, work_window=0.15, tropical_bonus=0.5,
         )
 
     @classmethod
     def work_focused(cls) -> "Weights":
-        return cls(weather=0.20, surf=0.12, calm=0.10, work=0.28, work_window=0.30)
+        return cls(
+            weather=0.18, surf=0.10, activity=0.14, calm=0.08,
+            work=0.25, work_window=0.25, tropical_bonus=0.2,
+        )
 
     @classmethod
     def balanced(cls) -> "Weights":
@@ -111,17 +127,22 @@ def daily_score(
     """
     weather, surf, calm = interpolated_scores(dest, day)
     if vacation:
-        experience = weights.weather + weights.surf + weights.calm
+        # An einem Urlaubstag zaehlt vor allem, was man unternehmen kann.
+        experience = weights.weather + weights.surf + weights.activity + weights.calm
         total = experience + weights.work + weights.work_window
         scale = (total / experience) if experience else 0.0
         score = scale * (
-            weights.weather * weather + weights.surf * surf + weights.calm * calm
+            weights.weather * weather
+            + weights.surf * surf
+            + weights.activity * dest.activity_score
+            + weights.calm * calm
         )
     else:
         work_window = overlap_score(dest, day, window or DEFAULT_WINDOW)
         score = (
             weights.weather * weather
             + weights.surf * surf
+            + weights.activity * dest.activity_score
             + weights.calm * calm
             + weights.work * dest.work
             + weights.work_window * work_window

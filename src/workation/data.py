@@ -48,6 +48,8 @@ def load_destinations() -> tuple[dict[str, Destination], dict]:
             tz_offset_vs_madrid_winter=float(item["tz_offset_vs_madrid_winter"]),
             cost_per_day_eur_pp=float(item["cost_per_day_eur_pp"]),
             activities=list(item.get("activities", [])),
+            activity_score=float(item.get("activity_score", 5)),
+            multiday=list(item.get("multiday", [])),
             hub_to_base_h=float(item.get("hub_to_base_h", 1.0)),
             scores={
                 win: WindowScore(

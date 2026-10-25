@@ -1,0 +1,32 @@
+services:
+  flight-tracker:
+    build: .
+    image: workation-flight-tracker:latest
+    container_name: flight-tracker
+    restart: unless-stopped
+    environment:
+      # Abstand zwischen zwei Laeufen. 12 h sind ein guter Kompromiss:
+      # Flugpreise bewegen sich nicht stuendlich, und wenig Last heisst
+      # weniger Captchas.
+      INTERVAL_HOURS: "12"
+      # Suchen pro Lauf. 120 x 7 s = ca. 15 Minuten. Die Matrix hat ~520
+      # Suchen, mit --shuffle ist sie nach wenigen Tagen mehrfach abgedeckt.
+      QUERIES_PER_RUN: "120"
+      DELAY_SECONDS: "7"
+      DEAL_DROP_PCT: "15"
+      JITTER_MINUTES: "20"
+      TZ: "Atlantic/Canary"
+    volumes:
+      # Rohdaten und SQLite-Historie ueberleben jeden Rebuild.
+      - flight-prices:/app/data/prices
+    # Chromium braucht mehr /dev/shm als Docker per Default gibt.
+    shm_size: "1gb"
+    # Kein Port nach aussen: der Container redet nur raus.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  flight-prices:

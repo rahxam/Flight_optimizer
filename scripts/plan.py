@@ -32,6 +32,7 @@ from workation.seasonality import Weights, season_table  # noqa: E402
 from workation.workwindow import WorkWindow  # noqa: E402
 
 PROFILES = {
+    "active": Weights.active,
     "surf": Weights.surf_focused,
     "work": Weights.work_focused,
     "balanced": Weights.balanced,
@@ -49,8 +50,11 @@ def _config(args) -> TripConfig:
         max_destinations=args.max_dest,
         allowed_origins=tuple(args.origins.split(",")),
         weights=PROFILES[args.profile](),
-        work_window=WorkWindow(args.work_start, args.work_end, args.work_flex),
+        work_window=WorkWindow(
+            args.work_start, args.work_end, args.work_flex, args.ideal_local_start
+        ),
         vacation_days=args.vacation_days,
+        vacation_priority=tuple(x for x in args.vacation_first.split(",") if x),
         start_date_step=args.step,
         budget_eur=args.budget,
         min_good_surf_days=args.min_surf_days,
@@ -131,10 +135,12 @@ def cmd_scenarios(args) -> None:
     for scenario, it in details:
         print(f"[{scenario.name}]")
         print(f"  {scenario.pre_trip_note}")
+        if scenario.post_trip_note:
+            print(f"  {scenario.post_trip_note}")
         for b in it.blocks:
             print(
                 f"  {b.start:%d.%m.}-{b.end:%d.%m.} ({b.days:>2}d, davon {b.vacation_days:>2}d Urlaub)  "
-                f"{b.destination.name}"
+                f"{b.destination.region_short}"
             )
         for leg in it.legs:
             print(
@@ -197,7 +203,7 @@ def cmd_scrape_matrix(args) -> None:
 
 def main() -> None:
     common = argparse.ArgumentParser(add_help=False)
-    common.add_argument("--profile", choices=PROFILES, default="surf")
+    common.add_argument("--profile", choices=PROFILES, default="active")
     common.add_argument("--earliest-start", default="2027-03-12")
     common.add_argument("--latest-end", default="2027-05-10")
     common.add_argument("--min-days", type=int, default=28)
@@ -216,7 +222,19 @@ def main() -> None:
     common.add_argument("--work-start", type=float, default=9.0, help="Arbeitsbeginn CET")
     common.add_argument("--work-end", type=float, default=16.0, help="Arbeitsende CET")
     common.add_argument("--work-flex", type=float, default=1.0, help="Verschiebbarkeit in Stunden")
+    common.add_argument(
+        "--ideal-local-start",
+        type=float,
+        default=14.5,
+        help="bevorzugter lokaler Arbeitsbeginn (14.5 = 14:30 Ortszeit)",
+    )
     common.add_argument("--vacation-days", type=int, default=14)
+    common.add_argument(
+        "--vacation-first",
+        default="",
+        help="Ziel-IDs, die Urlaubstage zuerst und ohne Obergrenze bekommen "
+        "(z.B. NP-NEPAL fuer einen mehrtaegigen Trek)",
+    )
 
     p = argparse.ArgumentParser(description="Workation-Routenplaner", parents=[common])
     sub = p.add_subparsers(dest="cmd", required=True)

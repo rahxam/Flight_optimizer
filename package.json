@@ -1,0 +1,13 @@
+{
+  "name": "workation-flight-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Google-Flights-Scraper fuer die Workation-Routenplanung",
+  "scripts": {
+    "verify": "node scripts/scrape_google_flights.cjs --verify",
+    "scrape": "node scripts/scrape_google_flights.cjs data/prices/_queries.json data/prices/raw/manual.csv"
+  },
+  "dependencies": {
+    "playwright": "1.49.1"
+  }
+}

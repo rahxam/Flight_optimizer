@@ -162,3 +162,140 @@ Rückweg MAD→TFS – der Hinflug geht ab BER ohne Kanaren-Zubringer.
    Sri-Lanka-Variante (Südküste → Arugam Bay) nachzudenken, die ganz ohne
    Abendverlust auskommt.
 4. **Alle Flugpreise** sind bis zum ersten Scrape Schätzwerte.
+
+---
+
+# Nachtrag 2: Ostritz, Ausflüge, Arbeitszeit, Dauerbetrieb
+
+Stand 25.10.2026, nach deinen Angaben zu Arbeitszeit-Präferenz, Aktivitäten,
+Schwiegermutter-Geburtstag und Docker-Deployment.
+
+## Ich hatte die Arbeitszeit genau falsch herum bewertet
+
+Mein erstes Modell hat einen späten lokalen Arbeitsbeginn bestraft und den freien
+Vormittag bei 3 Stunden gedeckelt. Deine Erfahrung sagt das Gegenteil: erst gegen
+15 Uhr anzufangen und den ganzen Vormittag für eine Bootstour zu haben war ein
+Gewinn — und besser als 12:30 zu starten. Das Modell bewertet jetzt den Abstand
+zu einem bevorzugten lokalen Arbeitsbeginn (Standard 14:30, über
+`--ideal-local-start` einstellbar); zu spät kostet weiter, aber erst wenn der
+Arbeitstag über 23 Uhr hinausgeht.
+
+Folge: **Lombok ist mit +6 h jetzt besser bewertet als Sri Lanka mit +3,5 h.**
+
+| Ziel | lokaler Start bei 9–16 Uhr DE | Score |
+|---|---|---|
+| Lombok, Penang, Taiwan | 15:00–22:00 | 9,4 |
+| Nordvietnam, Kambodscha | 14:00–21:00 | 9,8 |
+| Sri Lanka | 12:30–19:30 | 9,0 |
+| Oman | 11:00–18:00 | 8,3 |
+
+Der Zeitversatz ist damit kein Argument mehr gegen Indonesien — eher dafür.
+
+## Ausflüge sind jetzt eine eigene Bewertungsdimension
+
+Weil du nicht jeden Tag surfen willst, sondern auch Canyoning, Rafting, Wandern
+und Mehrtages-Bootstouren, haben alle Ziele einen `activity_score` und eine Liste
+konkreter Mehrtagestouren bekommen. Das neue Standardprofil heißt `active`
+(Surf 18 %, Ausflüge 22 %) statt `surf` (Surf 32 %).
+
+Das hebt drei Ziele deutlich:
+
+- **Nordvietnam (10/10):** Ha-Giang-Runde 4–5 Tage Motorrad, Lan-Ha-Bucht
+  Mehrtagesboot, Ba-Be-See Kajak, Sapa-Trekking. Kein Surf, aber die dichteste
+  Ausflugsliste überhaupt — und mit 35 €/Person/Tag das billigste Ziel.
+- **Nepal (10/10):** genau dein Vorschlag, 7 Tage Annapurna oder Mardi Himal als
+  Urlaub und danach mehr arbeiten. Plus Rafting Trisuli und Canyoning Jalbire.
+  CMB–KTM ist ein Direktflug für ~190 €, also billig anzuhängen.
+- **Oman (9/10):** Snake Gorge und Wadi Bani Awf sind Canyoning-Klassiker.
+  Scheitert weiter an der Hitze ab Mitte April und am Preis (~95 €/Person/Tag).
+
+**Lombok (9/10)** hat eine Option, die gut zu „Mehrtagesbootstour" passt und die
+ich vorher nicht gelistet hatte: ein **Liveaboard Lombok–Komodo, 3–4 Tage**.
+Komodo/Flores ist nicht Bali oder Java, fällt also nicht unter deinen Ausschluss.
+
+## Der 6. Mai ändert die Struktur der Reise
+
+Der Geburtstag deiner Schwiegermutter (Feier wohl Samstag 08.05. in Ostritz) ist
+der teurere der beiden Fixtermine. Endet die Reise auf Teneriffa, müsst ihr für
+die Feier noch einmal nach Deutschland und zurück: vier Flüge, rund 880 €.
+Endet sie in Deutschland, entfällt das — und der Lombok-Block rutscht zusätzlich
+in die beste Zeit des Fensters.
+
+Darum tragen jetzt alle Szenarien, die auf Teneriffa enden, diese 880 € als
+Nachlaufkosten. Erst damit ist der Vergleich ehrlich:
+
+| Szenario | Zeitraum | ab | Kosten¹ | €/Tag |
+|---|---|---|---|---|
+| **E2 – Ostritz-Finale, Rückkehr über HAM** | 20.03.–30.04. | BER | **7.166 €** | **171 €** |
+| E – Ostritz-Finale, Rückkehr über BER | 20.03.–30.04. | BER | 7.356 € | 175 € |
+| B – Cottbus-Brücke, zurück nach TFS | 17.03.–27.04. | BER | 7.594 € | 181 € |
+| D – Bürotage Hamburg, ab HAM, zurück nach TFS | 17.03.–27.04. | HAM | 7.594 € | 181 € |
+| A – direkt ab Montafon | 07.03.–17.04. | MUC | 7.674 € | 183 € |
+| C – erst heim nach Teneriffa | 17.03.–27.04. | MAD | 8.084 € | 192 € |
+
+¹ inklusive Nachlaufkosten für die Feier (880 € bei Teneriffa-Ende, 440 € bzw.
+250 € bei Deutschland-Ende).
+
+**E2 ist die Empfehlung:** Reise endet in Deutschland, du nimmst Bürotage in
+Hamburg und den von der Firma bezahlten HAM→TFS-Flug, ihr Ticket kostet ~220 €.
+Der Haken: Hamburg → Ostritz → Teneriffa ist ein Umweg, wenn die Feier
+dazwischenliegt. Wenn dir das zu verwinkelt ist, nimm **E** für 190 € mehr —
+Rückflug direkt nach BER, 2 h mit der Bahn nach Ostritz, danach gemeinsam heim.
+
+Und: dein Hamburg-Zugticket zahlt die Firma, ihres kostet mit früh gebuchtem
+Flixtrain ~30 € — damit ist die Hamburg-Variante viel billiger, als ich sie
+zuerst gerechnet hatte (vorher 400 €, jetzt 30 €).
+
+Noch nicht ausgeschöpft: E endet am 30.04., obwohl bis 06.05. Zeit wäre. Der
+Grund ist die 42-Tage-Obergrenze bei Abflug am 20.03. Wenn du bis 06.05. in Asien
+bleiben willst, sind zwei Wege denkbar — Abflug erst 26.03. (dann aber mitten in
+der Osterwoche) oder eine Reise von 47 Tagen. Sag mir, ob knapp sieben Wochen
+drin sind, dann rechne ich das als eigene Variante.
+
+## Jakarta: dein 350-€-Fund hat echte Folgen
+
+CGK fehlte komplett in meinen Daten. Mit MAD→CGK als Gateway fällt die
+Schätzung für MAD→Lombok von 590 € auf **315 €** pro Person und Strecke — fast
+die Hälfte, weil CGK→LOP ein Inlandsflug für ~55 € ist. Java bleibt als
+Aufenthalt ausgeschlossen, als Transit ist es jetzt der wichtigste Weg nach
+Lombok. CGK, DPS und SUB sind in der Scrape-Matrix.
+
+Das zeigt vor allem: meine Schätzpreise sind eher zu hoch. Die echte Rechnung
+kommt mit den Scrapes.
+
+## Dauerbetrieb auf deinem Docker-Stack
+
+```bash
+docker compose up -d --build
+docker compose logs -f flight-tracker
+```
+
+Der Container fragt alle 12 Stunden 120 zufällig gewählte Suchen aus der Matrix
+ab (~15 Minuten bei 7 s Pause), schreibt sie als CSV ins Volume, liest sie in
+eine SQLite-Historie ein und meldet Allzeittiefs und Preiseinbrüche ins Log.
+Die Matrix hat ~520 Suchen, ist also nach rund drei Tagen einmal komplett
+durch und wird danach immer wieder neu gemessen.
+
+Einstellbar über `docker-compose.yml`: `INTERVAL_HOURS`, `QUERIES_PER_RUN`,
+`DELAY_SECONDS`, `DEAL_DROP_PCT`.
+
+Auswerten von außerhalb des Containers:
+
+```bash
+python3 scripts/track.py status                 # wie viel Historie liegt vor
+python3 scripts/track.py lows                   # Allzeittiefs = Kaufsignal
+python3 scripts/track.py deals --drop 20         # Einbrüche gegen den Median
+python3 scripts/track.py best --top 30           # günstigste je gesehene Preise
+python3 scripts/track.py plan --price-mode best  # Szenarien mit echten Preisen
+```
+
+`--price-mode best` rechnet mit dem günstigsten je beobachteten Preis — das ist
+die richtige Frage für „welche Route ist erreichbar, wenn ich geduldig warte".
+`--price-mode latest` rechnet mit dem aktuell buchbaren Preis — die richtige
+Frage für „soll ich jetzt buchen".
+
+Zwei Vorbehalte, bewusst so gebaut: Bei einem Captcha bricht der Scraper ab statt
+weiterzuhämmern — dann `DELAY_SECONDS` hoch und `QUERIES_PER_RUN` runter. Und die
+`tfs`-Kodierung ist reverse-engineered; prüfe nach einem Google-Update mit
+`node scripts/scrape_google_flights.cjs --verify --headed`, ob die Suche noch
+richtig ankommt.
