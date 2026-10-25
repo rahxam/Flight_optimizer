@@ -132,8 +132,11 @@ origins:
       tenerife:
         mode: flight
         hours: 5.0
-        price_eur_pp: 220
-        note: "kein Residentenrabatt (kein Peninsula-Flug)"
+        price_eur_pp: 100
+        note: >-
+          GEMESSEN (Nutzer): BER-TFS ca. 100 EUR pro Person und Richtung.
+          Kein Residentenrabatt, aber guenstiger als gedacht - damit ist ein
+          Rueckweg ueber Deutschland kaum teurer als ueber Madrid.
     notes: >-
       Der Flughafen fuer die Cottbus-Variante. Keine eigene Asien-Langstrecke,
       aber gute Anbindung ueber IST/DOH/DXB.
@@ -155,7 +158,7 @@ origins:
       tenerife:
         mode: flight
         hours: 5.0
-        price_eur_pp: 220
+        price_eur_pp: 100
         company_covered_travellers: 1
         note: >-
           HAM->TFS zahlt die Firma - aber NUR fuer dich, nicht fuer deine Freundin.
@@ -172,10 +175,12 @@ origins:
       tenerife:
         mode: flight
         hours: 3.2
-        price_eur_pp: 45
+        price_eur_pp: 75
         residencia_discount: true
         min_connect_h: 3.0
-        note: "Separates Ticket mit 75% Residentenrabatt, 3 h Eigenumstieg"
+        note: >-
+          GEMESSEN (Nutzer, Reise 2026): TFS-MAD-TFS 150 EUR pro Person Return,
+          also 75 EUR je Richtung, separates Ticket mit Residentenrabatt.
       cottbus:
         mode: flight
         hours: 3.0
@@ -190,7 +195,7 @@ origins:
       tenerife:
         mode: flight
         hours: 3.5
-        price_eur_pp: 50
+        price_eur_pp: 80
         residencia_discount: true
         min_connect_h: 3.0
         note: "Separates Ticket mit 75% Residentenrabatt, 3 h Eigenumstieg"

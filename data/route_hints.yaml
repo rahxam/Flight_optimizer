@@ -24,7 +24,7 @@ longhaul:
   # Nutzerbeobachtung 25.10.2026: MAD-CGK fuer 350 EUR Return gesehen. Das ist
   # deutlich unter dem, was ein Umstieg via KUL kostet, und macht CGK zum
   # wichtigsten Gateway nach Lombok. Unbedingt scrapen.
-  - {from: [MAD, BCN], to: CGK, oneway_eur: 220, return_eur: 360, best_carriers: [QR, EK, TK, GA], typical_stops: 1, note: "Transit-Gateway; Nutzer sah 350 EUR Return ab MAD"}
+  - {from: [MAD, BCN], to: CGK, oneway_eur: 190, return_eur: 350, best_carriers: [QR, EK, TK, GA], typical_stops: 1, note: "GEMESSEN: 350 EUR Return pro Person ab MAD (Nutzer, Reise 2026)"}
   - {from: [ZRH, MUC], to: CGK, oneway_eur: 240, return_eur: 400, best_carriers: [QR, EK, TK], typical_stops: 1}
   - {from: [BER, HAM], to: CGK, oneway_eur: 240, return_eur: 400, best_carriers: [QR, EK, TK], typical_stops: 1}
   - {from: [MAD, BCN], to: DPS, oneway_eur: 320, return_eur: 520, typical_stops: 1, note: "Transit-Gateway; Bali als Aufenthalt ausgeschlossen"}

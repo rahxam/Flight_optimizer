@@ -299,3 +299,96 @@ weiterzuhämmern — dann `DELAY_SECONDS` hoch und `QUERIES_PER_RUN` runter. Und
 `tfs`-Kodierung ist reverse-engineered; prüfe nach einem Google-Update mit
 `node scripts/scrape_google_flights.cjs --verify --headed`, ob die Suche noch
 richtig ankommt.
+
+---
+
+# Nachtrag 3: Billigste sinnvolle Route statt bester Route
+
+Stand 25.10.2026, nach deiner Rückmeldung zu Kosten, Stress und Auswahllogik.
+
+## Der Ansatz war verkehrt
+
+Ich hatte eine Zielliste gesetzt und darauf optimiert. Du machst es umgekehrt:
+erst schauen, wo die Flüge billig sind, dann prüfen, ob daraus eine sinnvolle
+Reise wird. Das Werkzeug kann das jetzt — `plan.py discover`:
+
+```bash
+python3 scripts/plan.py discover --min-score 6.5 --budget-pp 1800 --lengths 21,28,35,42
+```
+
+Es durchsucht alle Ziele (ein bis drei Blöcke), sortiert nach **Gesamtkosten pro
+Person** und verwirft alles unter einer Sinnhaftigkeitsschwelle (`--min-score`,
+Punkte pro Tag). Ohne diese Schwelle käme die billigste Route heraus, nicht die
+billigste brauchbare.
+
+## Meine Kosten waren an zwei Stellen zu hoch
+
+**Lebenshaltung:** Ich hatte Tourist-Tagespreise angesetzt (50–55 €/Person/Tag).
+Bei 3–6 Wochen verhandelt man monatsweise, und ihr teilt ein Zimmer. Korrigiert
+auf realistische Werte: Lombok 35 €, Sri Lanka 38 €, Nordvietnam 27 €,
+Kerala 28 €, Taiwan 58 €, Oman 78 € pro Person und Tag.
+
+**Flüge:** Deine gemessenen Preise sind jetzt in den Daten — TFS–MAD 150 €
+Return pro Person (meine Schätzung war zu niedrig), BER–TFS 100 € pro Richtung
+(meine Schätzung 220 € war mehr als doppelt so hoch), MAD–CGK 350 € Return.
+Dass BER–TFS nur 100 € kostet, macht einen Rückweg über Deutschland fast
+gleichwertig zu einem über Madrid.
+
+## Ein Ziel ist drastisch billiger — und entspannter
+
+Das war der größte Fund. Ein einziger Standort für die ganze Reise bedeutet ein
+Flugpaar statt zwei oder drei, keine Umzüge, keine Transfertage. Vorher hat eine
+stille Fehlkonfiguration das verhindert (Blockobergrenze 22 Tage bei
+Mindestreiselänge 28), jetzt steht es auf dem Tisch:
+
+| Tage | günstigste sinnvolle Route | pro Person | Flüge | vor Ort | Score/Tag | Surftage |
+|---|---|---|---|---|---|---|
+| 21 | **Lombok allein** | 1.501 € | 736 € | 735 € | 8,92 | 21 |
+| 28 | **Lombok allein** | 1.746 € | 736 € | 980 € | 8,95 | 28 |
+| 35 | **Lombok allein** | 1.991 € | 736 € | 1.225 € | 8,90 | 35 |
+| 42 | Kerala allein | 2.219 € | 1.008 € | 1.176 € | 6,01 | 0 |
+
+Zum Vergleich dieselben 28 Tage mit zwei Zielen: Lombok + Nordvietnam kostet
+2.006 € pro Person — 260 € mehr, ein Umzugstag mehr, und nur noch 9 statt 28
+Surftage, weil die Hälfte der Zeit in Vietnam ohne Welle liegt.
+
+**Lombok allein ist damit die Empfehlung:** billigste Variante, höchster Score,
+jeden Tag Welle, kein Stress. Und Ausflüge gibt es dort genug für mehrere
+Wochen — Rinjani-Trek, Liveaboard nach Komodo, Gerupuk-Bootstage, Gilis,
+Sumbawa per Fähre, Wasserfälle.
+
+Mit deinen gemessenen Flugpreisen statt meiner Schätzung (610 € statt 736 €
+pro Person für TFS–MAD–CGK–LOP und zurück) wird es noch günstiger:
+
+| Tage | Lombok allein, mit gemessenen Flugpreisen |
+|---|---|
+| 21 | **1.375 €** pro Person |
+| 28 | 1.620 € pro Person |
+| 35 | 1.865 € pro Person |
+| 42 | 2.110 € pro Person |
+
+## Was dein Budget hergibt
+
+Bei **1.500 € pro Person für alles** reichen es für etwa **drei Wochen** an
+einem günstigen Ziel. Sechs Wochen all-in landen bei rund 2.100–2.300 € pro
+Person — der Unterschied ist fast ausschließlich Lebenshaltung, nicht Flug.
+Die Flüge machen bei sechs Wochen nur noch knapp 30 % der Kosten aus.
+
+Wenn die 1.500 € dagegen **nur die Flüge** meinen, ist das Budget kein Problem:
+selbst eine Drei-Ziel-Route bleibt unter 1.250 € pro Person, und Lombok allein
+kostet 610–740 €.
+
+Das ist die eine Frage, die ich nicht selbst beantworten kann — sie entscheidet
+zwischen „drei Wochen, ein Ziel" und „sechs Wochen, zwei Ziele".
+
+## Der Geburtstag treibt die Planung nicht mehr
+
+Du musst nicht hin. Die 880 €, die ich allen Teneriffa-Varianten zugeschlagen
+hatte, sind raus. Die Ostritz-Szenarien bleiben als Option erhalten, falls
+deine Freundin fährt — und weil BER–TFS nur 100 € kostet, ist ein Rückweg über
+Deutschland jetzt ohnehin kaum teurer.
+
+Nebenbei dabei gefunden und behoben: `date_grid()` hat das Abflugfenster eines
+Szenarios ignoriert und konnte Starttermine vorschlagen, die das Szenario gar
+nicht zulässt (Szenario A erlaubt 05.–07.03., vorgeschlagen wurde bis zum
+21.03.).

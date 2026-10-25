@@ -1,17 +1,14 @@
 """Startszenarien: wie du ueberhaupt in die Reise hineinkommst - und wie du
 wieder herauskommst.
 
-Zwei harte Randbedingungen:
-  * Du bist bis 06.03.2027 im Montafon (Skifahren mit den Eltern).
-  * Der Geburtstag deiner Schwiegermutter ist am 06.05.2027, gefeiert wird
-    voraussichtlich am Samstag 08.05. in Ostritz. Deine Freundin muss dort sein.
+Eine harte Randbedingung: du bist bis 06.03.2027 im Montafon (Skifahren mit den
+Eltern). Daraus ergeben sich mehrere Wege in die Reise hinein.
 
-Der zweite Punkt ist der teurere. Endet die Reise auf Teneriffa, muss ihr fuer
-die Feier noch einmal nach Deutschland und zurueck - vier Fluege, rund 880 EUR.
-Endet sie stattdessen in Deutschland, entfaellt das komplett, und der
-Lombok-Block rutscht zusaetzlich in die beste Zeit des Fensters. Damit der
-Vergleich ehrlich ist, tragen alle Szenarien, die auf Teneriffa enden, diese
-880 EUR als Nachlaufkosten.
+Der Geburtstag der Schwiegermutter am 06.05. (Feier wohl 08.05. in Ostritz) ist
+nach deiner Angabe KEINE Pflicht fuer dich - deshalb treibt er die Planung nicht
+mehr. Die Szenarien E/E2 lassen die Reise trotzdem in Deutschland enden; das ist
+jetzt eine Option, kein Zwang, und kostet dank BER->TFS fuer rund 100 EUR pro
+Person kaum mehr als der Rueckweg ueber Madrid.
 """
 
 
@@ -22,14 +19,13 @@ from dataclasses import dataclass, replace
 
 from .optimizer import TripConfig
 
-# Fluege Teneriffa -> Deutschland -> Teneriffa fuer zwei Personen, wenn die
-# Reise auf Teneriffa endet und die Feier in Ostritz separat angereist werden muss.
-PARTY_TRIP_EUR = 880.0
-PARTY_TRIP_NOTE = (
-    "Zusaetzlich: Fuer die Feier am 08.05. in Ostritz noch einmal TFS -> "
-    "Deutschland -> TFS, ca. 880 EUR fuer zwei Personen. Diese Variante endet "
-    "auf Teneriffa, also faellt das an."
-)
+# Nutzerangabe 25.10.: zum Geburtstag der Schwiegermutter muss er nicht, nur
+# seine Freundin. Die Feier ist damit KEINE Randbedingung der Reiseplanung mehr,
+# und die Nachlaufkosten sind 0. Die Ostritz-Szenarien E/E2 bleiben als Option
+# erhalten, falls sie doch hinfahren will - der Rueckweg ueber Deutschland ist
+# mit 100 EUR pro Person fuer BER->TFS ohnehin kaum teurer als ueber Madrid.
+PARTY_TRIP_EUR = 0.0
+PARTY_TRIP_NOTE = ""
 
 
 @dataclass(frozen=True)
@@ -60,6 +56,7 @@ class Scenario:
             allowed_return_hubs=self.return_hubs,
             return_feeder_mode=self.return_feeder_mode,
             earliest_start=self.earliest_start,
+            latest_start=self.latest_start,
             latest_end=latest_end,
             pre_trip_cost_eur=self.pre_trip_cost_eur,
             post_trip_cost_eur=self.post_trip_cost_eur,
@@ -84,8 +81,6 @@ SCENARIOS: dict[str, Scenario] = {
         latest_start=dt.date(2027, 3, 7),
         pre_trip_cost_eur=0.0,
         pre_trip_note="Bahn ab Bludenz ist in den Anreisekosten des Hubs enthalten.",
-        post_trip_cost_eur=PARTY_TRIP_EUR,
-        post_trip_note=PARTY_TRIP_NOTE,
     ),
     "cottbus_bruecke": Scenario(
         key="cottbus_bruecke",
@@ -102,8 +97,6 @@ SCENARIOS: dict[str, Scenario] = {
         latest_start=dt.date(2027, 3, 20),
         pre_trip_cost_eur=0.0,
         pre_trip_note="Mitfahrt mit den Eltern, Unterkunft bei der Familie - keine Zusatzkosten.",
-        post_trip_cost_eur=PARTY_TRIP_EUR,
-        post_trip_note=PARTY_TRIP_NOTE,
     ),
     "cottbus_lang": Scenario(
         key="cottbus_lang",
@@ -120,8 +113,6 @@ SCENARIOS: dict[str, Scenario] = {
         latest_start=dt.date(2027, 3, 31),
         pre_trip_cost_eur=0.0,
         pre_trip_note="Wie B - keine Zusatzkosten, nur drei statt zwei Wochen Cottbus.",
-        post_trip_cost_eur=PARTY_TRIP_EUR,
-        post_trip_note=PARTY_TRIP_NOTE,
     ),
     "heim_tfs": Scenario(
         key="heim_tfs",
@@ -137,8 +128,6 @@ SCENARIOS: dict[str, Scenario] = {
         latest_start=dt.date(2027, 3, 24),
         pre_trip_cost_eur=460.0,
         pre_trip_note="ZRH/MUC -> TFS fuer 2 Personen, ca. 230 EUR pro Person, kein Residentenrabatt.",
-        post_trip_cost_eur=PARTY_TRIP_EUR,
-        post_trip_note=PARTY_TRIP_NOTE,
     ),
     "hamburg_direkt": Scenario(
         key="hamburg_direkt",
@@ -158,8 +147,6 @@ SCENARIOS: dict[str, Scenario] = {
             "Bahn Montafon -> Hamburg: dein Ticket zahlt die Firma, ihres ca. "
             "30 EUR (Flixtrain, frueh gebucht)."
         ),
-        post_trip_cost_eur=PARTY_TRIP_EUR,
-        post_trip_note=PARTY_TRIP_NOTE,
     ),
     "ostritz_finale_ber": Scenario(
         key="ostritz_finale_ber",
@@ -180,10 +167,10 @@ SCENARIOS: dict[str, Scenario] = {
         pre_trip_note="Mitfahrt mit den Eltern nach Cottbus, Unterkunft bei der Familie.",
         return_hubs=("BER",),
         return_feeder_mode="later",
-        post_trip_cost_eur=440.0,
+        post_trip_cost_eur=200.0,
         post_trip_note=(
-            "Nach der Feier BER -> TFS fuer zwei Personen, ca. 220 EUR pro "
-            "Person (kein Residentenrabatt ab Deutschland)."
+            "Danach BER -> TFS fuer zwei Personen, ca. 100 EUR pro Person "
+            "(gemessener Nutzerpreis, kein Residentenrabatt ab Deutschland)."
         ),
         hard_latest_end=dt.date(2027, 5, 6),
     ),
@@ -204,10 +191,9 @@ SCENARIOS: dict[str, Scenario] = {
         pre_trip_note="Mitfahrt mit den Eltern nach Cottbus, Unterkunft bei der Familie.",
         return_hubs=("HAM",),
         return_feeder_mode="later",
-        post_trip_cost_eur=250.0,
+        post_trip_cost_eur=100.0,
         post_trip_note=(
-            "HAM -> TFS: dein Flug zahlt die Firma, ihrer ca. 220 EUR, plus "
-            "ca. 30 EUR Bahn fuer den Umweg nach Ostritz."
+            "HAM -> TFS: dein Flug zahlt die Firma, ihrer ca. 100 EUR."
         ),
         hard_latest_end=dt.date(2027, 5, 6),
     ),

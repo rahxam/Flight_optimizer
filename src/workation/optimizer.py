@@ -8,13 +8,18 @@ jede Ticketstrategie laeuft ein Dynamic-Programming ueber die Tage (Zustand =
 "Ziele seq[0..i-1] fertig, Tage [0,t) gefuellt"). Das ist innerhalb des Tagesrasters
 exakt: es gibt keine Aufteilung der Blocklaengen, die die Suche verpassen koennte.
 
-Zielfunktion (kleiner = besser), standardmaessig laengenneutral pro Reisetag:
+Drei Zielfunktionen, ueber `objective_mode` waehlbar:
 
-    objective_per_day = (Gesamtkosten - wert_pro_punkt * Score * Reisende) / Reisetage
-
-Warum pro Tag: eine 42-Tage-Route sammelt zwangslaeufig mehr Erlebnispunkte als
-eine 28-Tage-Route. Ohne Normierung gewinnt immer die laengste Reise, was keine
-Information ist - die Reiselaenge ist eine Vorgabe, keine Optimierungsgroesse.
+  "cheapest" (Default) - die GUENSTIGSTE Route, die noch sinnvoll ist.
+      Sortiert nach Gesamtkosten pro Person; `min_score_per_day` ist die
+      Sinnhaftigkeitsschwelle, unter der eine Route verworfen wird. Das
+      entspricht der tatsaechlichen Entscheidungsregel: Ziele nach guenstigen
+      Fluegen auswaehlen, nicht die Route vorher festlegen.
+  "per_day"  - bester Kompromiss aus Kosten und Erlebniswert, laengenneutral:
+      objective_per_day = (Kosten - wert_pro_punkt * Score * Reisende) / Reisetage
+      Die Normierung ist notwendig, weil eine 42-Tage-Route sonst allein durch
+      ihre Laenge gewinnt.
+  "total"    - dasselbe als Gesamtsumme.
 
 Anreise: der Abflughafen wird aus einem Startkontext erreicht (montafon, cottbus,
 hamburg, tenerife - s. data/origins.yaml). Der Rueckweg endet immer auf Teneriffa,
@@ -52,6 +57,10 @@ GOOD_SURF = 6.0
 @dataclass
 class TripConfig:
     earliest_start: dt.date = dt.date(2027, 3, 12)
+    # Spaetester Abflugtag. None = nur durch latest_end und min_days begrenzt.
+    # Szenarien setzen das, weil ihr Abflugfenster oft schmaler ist als das, was
+    # sich aus latest_end rechnerisch ergibt.
+    latest_start: dt.date | None = None
     latest_end: dt.date = dt.date(2027, 5, 10)
     min_days: int = 28
     max_days: int = 42
@@ -59,7 +68,10 @@ class TripConfig:
     min_destinations: int = 2
     max_destinations: int = 3
     min_block_days: int = 9
-    max_block_days: int = 22
+    # Muss mindestens so gross sein wie min_days, damit auch EIN Ziel fuer die
+    # ganze Reise moeglich ist - das ist die guenstigste und entspannteste
+    # Variante (nur ein Flugpaar, keine Umzuege) und gehoert auf den Tisch.
+    max_block_days: int = 45
 
     # Anreise und Rueckweg
     outbound_context: str = "tenerife"
@@ -93,8 +105,12 @@ class TripConfig:
     # laesst sich nicht mit drei Arbeitstagen dazwischen machen.
     vacation_priority: tuple[str, ...] = ()
 
-    objective_mode: str = "per_day"  # per_day | total
+    objective_mode: str = "cheapest"  # cheapest | per_day | total
     value_per_score_point_eur: float = 22.0
+    # Sinnhaftigkeitsschwelle fuer "cheapest": Routen unter diesem Tagesscore
+    # werden verworfen, egal wie billig sie sind.
+    min_score_per_day: float = 0.0
+    budget_per_person_eur: float | None = None
     travel_day_score_factor: float = 0.35
     # 3 h Eigenumstieg ohne Puffernacht: nur Umbuchungsrisiko, kein Hotel.
     self_connect_risk_eur: float = 50.0
@@ -114,7 +130,10 @@ class TripConfig:
     start_date_step: int = 2
 
     def date_grid(self) -> list[dt.date]:
-        span = (self.latest_end - self.earliest_start).days - self.min_days + 1
+        last = self.latest_end - dt.timedelta(days=self.min_days - 1)
+        if self.latest_start is not None:
+            last = min(last, self.latest_start)
+        span = (last - self.earliest_start).days
         return [
             self.earliest_start + dt.timedelta(days=i)
             for i in range(0, max(1, span + 1), self.start_date_step)
@@ -347,6 +366,8 @@ class Optimizer:
                         row_out[end] = net
                         back[(i + 1, end)] = (i, t, arrival_cost, src)
 
+        # cost_so_far[i][t] = reine Geldkosten zum selben Zustand wie g[i][t].
+        # Im Billig-Modus wird danach optimiert, nicht nach dem Nettowert.
         best: tuple[float, float, int, float, str] | None = None
         last = seq[-1]
         for total in range(cfg.min_days, max_len + 1):
@@ -360,7 +381,14 @@ class Optimizer:
             if cfg.board_bags:
                 cost += self.pb.boardbag_eur() * cfg.board_bags
             net = g[k][total] - cost
-            rank = -net / total if cfg.objective_mode == "per_day" else -net
+            if cfg.objective_mode == "per_day":
+                rank = -net / total
+            else:
+                # Auch im Billig-Modus waehlt das DP die Gesamtlaenge nach dem
+                # Nettowert. Damit Kosten dominieren, setzt der Billig-Modus
+                # value_per_score_point_eur niedrig (s. cheapest_config()); die
+                # endgueltige Reihenfolge entsteht in run_all() nach Gesamtkosten.
+                rank = -net
             if best is None or rank < best[0]:
                 best = (rank, net, total, cost, src)
 
@@ -372,7 +400,13 @@ class Optimizer:
         )
         if cfg.budget_eur is not None and itin.total_cost_eur > cfg.budget_eur:
             return None
+        if cfg.budget_per_person_eur is not None and (
+            itin.total_cost_eur / cfg.travellers > cfg.budget_per_person_eur
+        ):
+            return None
         if itin.good_surf_days < cfg.min_good_surf_days:
+            return None
+        if itin.score_per_day < cfg.min_score_per_day:
             return None
         return itin
 
@@ -597,12 +631,12 @@ class Optimizer:
                             itin = self._solve(seq, start, hub, return_hub, strategy)
                             if itin:
                                 out.append(itin)
-        key = (
-            (lambda i: i.objective_per_day_eur)
-            if self.cfg.objective_mode == "per_day"
-            else (lambda i: i.objective_eur)
-        )
-        out.sort(key=key)
+        if self.cfg.objective_mode == "cheapest":
+            out.sort(key=lambda i: (i.total_cost_eur, -i.experience_score))
+        elif self.cfg.objective_mode == "per_day":
+            out.sort(key=lambda i: i.objective_per_day_eur)
+        else:
+            out.sort(key=lambda i: i.objective_eur)
         return out
 
     def run(self, top_n: int = 15) -> list[Itinerary]:
@@ -618,3 +652,22 @@ class Optimizer:
             if len(unique) >= top_n:
                 break
         return unique
+
+
+def cheapest_config(base: TripConfig, min_score_per_day: float = 6.5) -> TripConfig:
+    """Variante von `base`, die auf "billigste noch sinnvolle Route" optimiert.
+
+    Zwei Eingriffe: der Erlebniswert wird im DP stark abgewertet (damit die
+    Blocklaengen und Flugdaten nach dem Preis gewaehlt werden), und
+    `min_score_per_day` wirkt als harte Schwelle, unter der eine Route
+    verworfen wird. Ohne diese Schwelle kaeme die billigste Route heraus,
+    nicht die billigste brauchbare.
+    """
+    import dataclasses
+
+    return dataclasses.replace(
+        base,
+        objective_mode="cheapest",
+        value_per_score_point_eur=4.0,
+        min_score_per_day=min_score_per_day,
+    )

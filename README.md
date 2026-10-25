@@ -17,23 +17,26 @@ meldet.
 
 ## Kernergebnis (Stand: nur Schätzpreise)
 
-**Ostritz-Finale: Cottbus → Sri Lanka Südküste → Lombok Süd → zurück nach
-Deutschland.** Am 06.03. von Montafon mit den Eltern nach Cottbus, dort arbeiten,
-**ab 20.03. ab BER** nach Colombo, **Sri Lanka 20.03.–08.04.**, **Lombok
-09.04.–30.04.**, Rückflug nach Deutschland statt nach Teneriffa – weil der
-Geburtstag der Schwiegermutter am 06.05. (Feier 08.05. in Ostritz) ein harter
-Endtermin ist. Ca. **7.170 € für zwei Personen** inklusive Heimflug nach der
-Feier (171 €/Tag).
+**Lombok Süd allein, 3–5 Wochen, ab Madrid über Jakarta.** Ein einziger Standort
+ist zugleich die günstigste und die entspannteste Variante: ein Flugpaar statt
+zwei oder drei, keine Umzüge, und die Trockenzeit beginnt genau im Reisefenster.
 
-Zwei Gründe für diese Struktur: Die Ziele laufen **saisonal gegenläufig** – Sri
-Lankas Südküste ist im März auf dem Höhepunkt und endet Ende April mit dem
-SW-Monsun, Lombok startet genau dann seine Trockenzeit. Und das **Ende in
-Deutschland** spart eine komplette Extra-Runde Teneriffa–Deutschland–Teneriffa
-für die Feier, rund 880 €.
+| Tage | pro Person (alles inkl.) | davon Flüge | Score/Tag | Surftage |
+|---|---|---|---|---|
+| 21 | 1.501 € | 736 € | 8,92 | 21 |
+| 28 | 1.746 € | 736 € | 8,95 | 28 |
+| 35 | 1.991 € | 736 € | 8,90 | 35 |
 
-Die Arbeitszeit 09–16 Uhr deutscher Zeit heißt in Sri Lanka 12:30–19:30 Ortszeit,
-in Lombok 15:00–22:00 – nach getesteter Erfahrung ist der späte Start der
-angenehmere. Urlaubstage verteilen sich auf beide Blöcke.
+Dieselben 28 Tage mit zwei Zielen (Lombok + Nordvietnam) kosten 260 € mehr pro
+Person und lassen von 28 Surftagen nur 9 übrig. Ausflüge gibt es auf Lombok für
+mehrere Wochen: Rinjani-Trek, Liveaboard nach Komodo, Gerupuk-Bootstage, Gilis,
+Sumbawa per Fähre.
+
+Zwei saisonale Alternativen, falls es doch zwei Ziele sein sollen:
+**Sri Lanka Südküste → Lombok** (die Saisons laufen gegenläufig — Sri Lankas
+Südküste endet mit dem SW-Monsun genau dann, wenn Lomboks Trockenzeit beginnt)
+und **Nordvietnam → Lombok** (billiger, dichteste Ausflugsliste, aber kein Surf
+im Vietnam-Block).
 
 Szenarienvergleich, Wochenplan und offene Punkte: [`docs/strategie.md`](docs/strategie.md).
 Routen im Detail: [`docs/routenplan.md`](docs/routenplan.md).
@@ -42,8 +45,11 @@ Begründung je Ziel mit Quellen: [`docs/seasonality.md`](docs/seasonality.md).
 ## Schnellstart
 
 ```bash
+# Günstigste noch sinnvolle Routen suchen, ohne Ziele vorzugeben
+python3 scripts/plan.py discover --min-score 6.5 --budget-pp 1800 --lengths 21,28,35,42
+
 # Startszenarien vergleichen (Montafon direkt / Cottbus / Teneriffa / Hamburg)
-python3 scripts/plan.py scenarios --profile surf --max-dest 2
+python3 scripts/plan.py scenarios --profile active --max-dest 2
 
 # Saisontabelle aller Ziele
 python3 scripts/plan.py season --profile surf

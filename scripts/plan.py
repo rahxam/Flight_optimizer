@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from workation.optimizer import Optimizer, TripConfig  # noqa: E402
+from workation.optimizer import Optimizer, TripConfig, cheapest_config  # noqa: E402
 from workation.prices import PriceBook  # noqa: E402
 from workation.report import build_report  # noqa: E402
 from workation.scenarios import SCENARIOS  # noqa: E402
@@ -150,6 +150,63 @@ def cmd_scenarios(args) -> None:
         print()
 
 
+def cmd_discover(args) -> None:
+    """Guenstigste noch sinnvolle Routen - ohne die Ziele vorher festzulegen."""
+    import dataclasses
+
+    base = _config(args)
+    base = dataclasses.replace(
+        base,
+        min_destinations=args.min_dest,
+        max_destinations=args.max_dest,
+        eligible_tiers=tuple(args.tiers.split(",")),
+        budget_per_person_eur=args.budget_pp,
+    )
+    lengths = [int(x) for x in args.lengths.split(",")]
+    pb = PriceBook()
+    print(
+        f"Suche: {args.min_dest}-{args.max_dest} Ziele, Tiers {args.tiers}, "
+        f"Sinnhaftigkeitsschwelle {args.min_score} Punkte/Tag"
+        + (f", Budget {args.budget_pp:.0f} EUR pro Person" if args.budget_pp else "")
+    )
+    print("Preise: " + ("Historie + Schaetzwerte" if pb.has_real_data else "nur Schaetzwerte"))
+    any_hit = False
+    for length in lengths:
+        cfg = cheapest_config(
+            dataclasses.replace(base, min_days=length, max_days=length),
+            min_score_per_day=args.min_score,
+        )
+        results = Optimizer(cfg, pb).run(top_n=args.top)
+        print(f"\n--- {length} Tage ---")
+        if not results:
+            print("  keine Route erfuellt Schwelle und Budget")
+            continue
+        any_hit = True
+        print(
+            f"  {'Route':<34}{'Zeitraum':<14}{'ab':>5}{'pro Pers':>10}"
+            f"{'Fluege':>9}{'vor Ort':>9}{'S/Tag':>7}{'Surf':>6}"
+        )
+        for it in results:
+            pp = it.total_cost_eur / it.travellers
+            print(
+                f"  {it.label:<34}{it.start:%d.%m}-{it.end:%d.%m}  {it.origin_hub:>5}"
+                f"{pp:>10,.0f}{it.flight_cost_eur / it.travellers:>9,.0f}"
+                f"{it.ground_cost_eur / it.travellers:>9,.0f}"
+                f"{it.score_per_day:>7.2f}{it.good_surf_days:>6}"
+            )
+    if not any_hit:
+        print(
+            "\nNichts gefunden. Senke --min-score, erhoehe --budget-pp oder "
+            "erweitere --tiers."
+        )
+    else:
+        print(
+            "\n'pro Pers' = Fluege + Unterkunft + Essen + lokale Mobilitaet + Visa, "
+            "alles zusammen.\n'vor Ort' rechnet mit Monatsmieten fuer ein Paar, "
+            "nicht mit Tagespreisen."
+        )
+
+
 def cmd_report(args) -> None:
     opt = Optimizer(_config(args), PriceBook())
     results = opt.run(top_n=args.top)
@@ -209,7 +266,7 @@ def main() -> None:
     common.add_argument("--min-days", type=int, default=28)
     common.add_argument("--max-days", type=int, default=42)
     common.add_argument("--travellers", type=int, default=2)
-    common.add_argument("--min-dest", type=int, default=2)
+    common.add_argument("--min-dest", type=int, default=1)
     common.add_argument("--max-dest", type=int, default=3)
     common.add_argument("--origins", default="MAD,BCN")
     common.add_argument("--step", type=int, default=2, help="Raster der Startdaten in Tagen")
@@ -250,6 +307,15 @@ def main() -> None:
     r.set_defaults(func=cmd_report)
 
     sub.add_parser("scenarios", parents=[common]).set_defaults(func=cmd_scenarios)
+
+    dis = sub.add_parser("discover", parents=[common])
+    dis.add_argument("--lengths", default="28,35,42", help="Reiselaengen in Tagen")
+    dis.add_argument("--min-score", type=float, default=6.5,
+                     help="Sinnhaftigkeitsschwelle in Score-Punkten pro Tag")
+    dis.add_argument("--budget-pp", type=float, default=None,
+                     help="Obergrenze pro Person fuer ALLE Kosten")
+    dis.add_argument("--tiers", default="A,B", help="welche Ziel-Tiers zugelassen sind")
+    dis.set_defaults(func=cmd_discover)
 
     s = sub.add_parser("scrape-matrix", parents=[common])
     s.add_argument("--level", choices=["quick", "standard", "full"], default="standard")

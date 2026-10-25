@@ -351,12 +351,12 @@ def test_estimate_uses_cheapest_gateway_combination():
     """Die Schaetzung muss die billigste Gateway-Kombination finden, nicht den Direkt-Hint.
 
     MAD->LOP: Direkt-Hint 620, via KUL 430+120+40 = 590, via Jakarta
-    220+55+40 = 315. Jakarta gewinnt - und genau deshalb ist CGK als
+    190+55+40 = 285. Jakarta gewinnt - und genau deshalb ist CGK als
     Transit-Gateway in den Daten (Java selbst ist als Aufenthalt ausgeschlossen).
     """
     pb = PriceBook(quotes=[])
     via_jakarta, _ = pb.oneway("MAD", "LOP", dt.date(2027, 4, 7))
-    assert via_jakarta == pytest.approx(315.0)
+    assert via_jakarta == pytest.approx(285.0)   # 190 + 55 + 40
     assert via_jakarta < 590.0
 
 
@@ -404,10 +404,11 @@ def test_unknown_route_returns_infinity():
 def small_result():
     cfg = TripConfig(
         weights=Weights.surf_focused(),
+        objective_mode="per_day",
         start_date_step=7,
+        min_destinations=2,
         max_destinations=2,
         allowed_origins=("MAD",),
-        ticket_strategies=("self_transfer",),
         eligible_tiers=("A",),
     )
     opt = Optimizer(cfg)
@@ -438,7 +439,13 @@ def test_optimizer_returns_feasible_itineraries(small_result):
 
 
 def test_sri_lanka_then_lombok_is_the_leading_pair(small_result):
-    """Die saisonale Kernaussage: Südküste zuerst, Lombok danach."""
+    """Nach Erlebniswert (objective_mode='per_day') fuehrt Suedkueste -> Lombok.
+
+    Die saisonale Kernaussage: Sri Lankas Saison endet mit dem SW-Monsun genau
+    dann, wenn Lomboks Trockenzeit beginnt. Im Billig-Modus gewinnt dagegen
+    Nordvietnam, weil es schlicht guenstiger ist - das pruefen die Tests zum
+    Billig-Modus separat.
+    """
     _, results = small_result
     best = results[0]
     ids = [b.destination.id for b in best.blocks]
@@ -628,15 +635,18 @@ def test_return_mode_later_skips_the_home_feeder():
     assert later[1].endswith("+endet_in_europa")
 
 
-def test_party_trip_cost_is_charged_only_to_tenerife_scenarios():
-    from workation.scenarios import PARTY_TRIP_EUR
-
+def test_scenarios_that_end_in_europe_carry_the_flight_home():
+    """Endet die Reise in Deutschland, muss der Heimflug danach mitgerechnet werden."""
     for key in ("montafon_direkt", "cottbus_bruecke", "heim_tfs", "hamburg_direkt"):
-        assert SCENARIOS[key].post_trip_cost_eur == PARTY_TRIP_EUR, key
-        assert SCENARIOS[key].return_feeder_mode == "home"
+        assert SCENARIOS[key].return_feeder_mode == "home", key
+        assert SCENARIOS[key].post_trip_cost_eur == 0.0, key
     for key in ("ostritz_finale_ber", "ostritz_finale_ham"):
-        assert SCENARIOS[key].post_trip_cost_eur < PARTY_TRIP_EUR, key
-        assert SCENARIOS[key].return_feeder_mode == "later"
+        assert SCENARIOS[key].return_feeder_mode == "later", key
+        assert SCENARIOS[key].post_trip_cost_eur > 0.0, key
+    # Der Firmenflug deckt genau eine Person, also die Haelfte.
+    assert SCENARIOS["ostritz_finale_ham"].post_trip_cost_eur == pytest.approx(
+        SCENARIOS["ostritz_finale_ber"].post_trip_cost_eur / 2
+    )
 
 
 def test_ostritz_scenarios_end_before_the_party():
@@ -781,3 +791,112 @@ def test_vacation_priority_overrides_the_share_cap():
     assert nepal_with.vacation_days >= 7, "zu wenig fuer einen Annapurna-Trek"
     # Das Gesamtbudget bleibt eingehalten.
     assert with_prio.vacation_days <= 16
+
+
+# --------------------------------------------------------------------------- #
+# Billig-Modus: guenstigste noch sinnvolle Route
+# --------------------------------------------------------------------------- #
+def _cheap_base(**over):
+    from workation.optimizer import cheapest_config
+
+    base = TripConfig(
+        weights=Weights.active(), eligible_tiers=("A",), min_destinations=1,
+        max_destinations=2, start_date_step=7, vacation_days=18,
+        outbound_context="tenerife", allowed_origins=("MAD",),
+        **over,
+    )
+    return cheapest_config(base, min_score_per_day=6.0)
+
+
+def test_cheapest_mode_sorts_by_total_cost():
+    results = Optimizer(_cheap_base()).run(top_n=6)
+    assert results
+    costs = [i.total_cost_eur for i in results]
+    assert costs == sorted(costs), costs
+
+
+def test_a_single_destination_is_reachable_for_the_whole_trip():
+    """Ein Ziel fuer 4-6 Wochen ist die guenstigste und entspannteste Variante.
+
+    Vorher hat max_block_days (22) das verhindert, obwohl min_destinations=1
+    erlaubt war - eine stille Fehlkonfiguration.
+    """
+    cfg = _cheap_base(min_days=35, max_days=35)
+    assert cfg.max_block_days >= cfg.min_days
+    results = Optimizer(cfg).run(top_n=10)
+    singles = [i for i in results if len(i.blocks) == 1]
+    assert singles, "keine Ein-Ziel-Route gefunden"
+    best = singles[0]
+    assert best.blocks[0].days == 35
+    assert len(best.legs) == 2  # nur Hin- und Rueckflug
+    # Und sie muss billiger sein als die beste Zwei-Ziel-Route derselben Laenge.
+    doubles = [i for i in results if len(i.blocks) == 2]
+    if doubles:
+        assert best.total_cost_eur < min(d.total_cost_eur for d in doubles)
+
+
+def test_min_score_per_day_filters_cheap_nonsense():
+    loose = Optimizer(_cheap_base()).run(top_n=1)[0]
+    strict_cfg = _cheap_base()
+    import dataclasses
+
+    strict_cfg = dataclasses.replace(strict_cfg, min_score_per_day=8.5)
+    strict = Optimizer(strict_cfg).run(top_n=1)
+    assert strict, "Schwelle 8.5 sollte noch erreichbar sein"
+    assert strict[0].score_per_day >= 8.5
+    assert strict[0].total_cost_eur >= loose.total_cost_eur
+
+
+def test_budget_per_person_is_enforced():
+    import dataclasses
+
+    cfg = dataclasses.replace(
+        _cheap_base(min_days=21, max_days=21), budget_per_person_eur=1400.0
+    )
+    for itin in Optimizer(cfg).run(top_n=5):
+        assert itin.total_cost_eur / itin.travellers <= 1400.0
+
+
+def test_measured_user_prices_replaced_the_estimates():
+    """Die vom Nutzer gemessenen Preise muessen in den Daten stehen, nicht meine Schaetzung."""
+    origins, _ = load_origins()
+    assert origins["MAD"].access["tenerife"].price_eur_pp == 75.0   # 150 EUR Return
+    assert origins["BER"].access["tenerife"].price_eur_pp == 100.0  # statt 220
+    from workation.data import load_route_hints
+
+    cgk = [
+        e for e in load_route_hints()["longhaul"]
+        if e["to"] == "CGK" and "MAD" in e["from"]
+    ]
+    assert cgk and cgk[0]["return_eur"] == 350.0
+
+
+def test_living_costs_reflect_monthly_rates_for_a_couple():
+    dests, _ = load_destinations()
+    # Tagespreise fuer Touristen waeren 50-55; monatsweise fuer zwei Personen
+    # deutlich weniger.
+    assert dests["ID-LOMBOK"].cost_per_day_eur_pp <= 40
+    assert dests["VN-NORTH"].cost_per_day_eur_pp <= 30
+    assert dests["LK-SOUTH"].cost_per_day_eur_pp <= 40
+
+
+def test_birthday_no_longer_loads_every_scenario():
+    from workation.scenarios import PARTY_TRIP_EUR
+
+    assert PARTY_TRIP_EUR == 0.0
+    for key in ("montafon_direkt", "cottbus_bruecke", "heim_tfs", "hamburg_direkt"):
+        assert SCENARIOS[key].post_trip_cost_eur == 0.0, key
+
+
+def test_date_grid_respects_a_scenario_latest_start():
+    """Ohne latest_start kann das Raster hinter das Abflugfenster laufen.
+
+    Szenario A erlaubt nur 05.-07.03.; latest_end ergibt sich daraus als 17.04.,
+    und daraus wiederum ein rechnerisch spaetester Start am 21.03. - zehn Tage
+    nach dem, was das Szenario zulaesst.
+    """
+    base = TripConfig(weights=Weights.active(), eligible_tiers=("A",), max_destinations=2)
+    cfg = SCENARIOS["montafon_direkt"].config(base)
+    assert cfg.latest_start == dt.date(2027, 3, 7)
+    assert max(cfg.date_grid()) <= dt.date(2027, 3, 7)
+    assert min(cfg.date_grid()) == dt.date(2027, 3, 5)

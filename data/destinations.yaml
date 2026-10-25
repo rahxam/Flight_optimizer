@@ -12,7 +12,12 @@
 # multiday       : konkrete Mehrtagestouren, die als Urlaubsblock funktionieren
 # tz_offset_vs_madrid_winter : Stunden Versatz zu Madrid (vor 28.03.2027 = CET).
 #             Ab 28.03.2027 (EU-Sommerzeit) schrumpft der Versatz um 1 h.
-# cost_per_day_eur_pp : Unterkunft(50%) + Essen + lokale Mobilitaet, pro Person/Tag
+# cost_per_day_eur_pp : Unterkunft + Essen + lokale Mobilitaet, pro Person/Tag,
+#                  gerechnet fuer ZWEI Personen, die ein Zimmer teilen und bei
+#                  3-6 Wochen Aufenthalt monatsweise mieten statt pro Nacht.
+#                  Das ist deutlich guenstiger als Tourist-Tagespreise: in
+#                  Weligama oder Kuta Lombok kostet eine ordentliche Monatsmiete
+#                  400-600 EUR, also ca. 8-10 EUR pro Person und Tag.
 # Quellen/Begruendung siehe docs/seasonality.md
 # ---------------------------------------------------------------------------
 meta:
@@ -38,7 +43,7 @@ destinations:
     tropical: true
     work: 8
     tz_offset_vs_madrid_winter: 4.5
-    cost_per_day_eur_pp: 55
+    cost_per_day_eur_pp: 38
     activities: [longboard, shortboard, snorkel, whale_watching, safari_udawalawe, jungle_hike, scooter, yoga]
     activity_score: 8
     multiday:
@@ -70,7 +75,7 @@ destinations:
     tropical: true
     work: 7
     tz_offset_vs_madrid_winter: 7.0
-    cost_per_day_eur_pp: 50
+    cost_per_day_eur_pp: 35
     activities: [longboard, shortboard, snorkel, gili_islands, rinjani_foothills, waterfalls, scooter]
     activity_score: 9
     multiday:
@@ -107,7 +112,7 @@ destinations:
     tropical: true
     work: 3
     tz_offset_vs_madrid_winter: 7.0
-    cost_per_day_eur_pp: 45
+    cost_per_day_eur_pp: 32
     activities: [shortboard, longboard, snorkel, remote_beaches]
     activity_score: 5
     multiday:
@@ -134,7 +139,7 @@ destinations:
     tropical: true
     work: 4
     tz_offset_vs_madrid_winter: 6.0
-    cost_per_day_eur_pp: 45
+    cost_per_day_eur_pp: 32
     activities: [shortboard, boat_trips, jungle]
     activity_score: 6
     multiday:
@@ -162,7 +167,7 @@ destinations:
     tropical: true
     work: 3
     tz_offset_vs_madrid_winter: 8.0
-    cost_per_day_eur_pp: 110
+    cost_per_day_eur_pp: 95
     activities: [diving, snorkel, kayak]
     activity_score: 8
     multiday:
@@ -190,7 +195,7 @@ destinations:
     tropical: true
     work: 5
     tz_offset_vs_madrid_winter: 4.5
-    cost_per_day_eur_pp: 45
+    cost_per_day_eur_pp: 32
     activities: [longboard, shortboard, lagoon, safari_kumana, scooter]
     activity_score: 6
     multiday:
@@ -218,7 +223,7 @@ destinations:
     tropical: true
     work: 9
     tz_offset_vs_madrid_winter: 7.0
-    cost_per_day_eur_pp: 50
+    cost_per_day_eur_pp: 35
     activities: [snorkel, jungle_hike, island_hopping, food, kayak]
     activity_score: 6
     multiday:
@@ -248,7 +253,7 @@ destinations:
     tropical: true
     work: 5
     tz_offset_vs_madrid_winter: 7.0
-    cost_per_day_eur_pp: 45
+    cost_per_day_eur_pp: 32
     activities: [longboard, river_tour, turtles]
     activity_score: 4
     multiday:
@@ -275,7 +280,7 @@ destinations:
     tropical: true
     work: 6
     tz_offset_vs_madrid_winter: 4.5
-    cost_per_day_eur_pp: 40
+    cost_per_day_eur_pp: 28
     activities: [longboard, backwaters, ayurveda, hill_station_munnar, scooter]
     activity_score: 7
     multiday:
@@ -304,7 +309,7 @@ destinations:
     tropical: true
     work: 3
     tz_offset_vs_madrid_winter: 4.5
-    cost_per_day_eur_pp: 55
+    cost_per_day_eur_pp: 42
     activities: [diving, snorkel, kayak, beaches]
     activity_score: 5
     multiday:
@@ -333,7 +338,7 @@ destinations:
     tropical: false
     work: 9
     tz_offset_vs_madrid_winter: 6.0
-    cost_per_day_eur_pp: 35
+    cost_per_day_eur_pp: 27
     activities: [motorbike_loop, trekking, kayak_ba_be, caves, food, cycling]
     activity_score: 10
     multiday:
@@ -365,7 +370,7 @@ destinations:
     tropical: false
     work: 10
     tz_offset_vs_madrid_winter: 7.0
-    cost_per_day_eur_pp: 75
+    cost_per_day_eur_pp: 58
     activities: [longboard, hiking_taroko, cycling, hot_springs, food, scooter]
     activity_score: 9
     multiday:
@@ -397,7 +402,7 @@ destinations:
     tropical: false
     work: 5
     tz_offset_vs_madrid_winter: 4.75
-    cost_per_day_eur_pp: 35
+    cost_per_day_eur_pp: 30
     activities: [trekking, paragliding, rafting, mountain_bike, yoga]
     activity_score: 10
     multiday:
@@ -430,7 +435,7 @@ destinations:
     tropical: false
     work: 7
     tz_offset_vs_madrid_winter: 3.0
-    cost_per_day_eur_pp: 95
+    cost_per_day_eur_pp: 78
     activities: [wadi_hiking, canyoning, diving, dunes_4x4, snorkel, kitesurf_masirah]
     activity_score: 9
     multiday:
@@ -463,7 +468,7 @@ destinations:
     tropical: true
     work: 6
     tz_offset_vs_madrid_winter: 6.0
-    cost_per_day_eur_pp: 35
+    cost_per_day_eur_pp: 26
     activities: [angkor, kayak, island_beaches, scooter, caves_kampot]
     activity_score: 6
     multiday:
@@ -492,7 +497,7 @@ destinations:
     tropical: true
     work: 4
     tz_offset_vs_madrid_winter: 6.0
-    cost_per_day_eur_pp: 35
+    cost_per_day_eur_pp: 26
     activities: [kayak, trekking, climbing_vang_vieng, caves, cycling]
     activity_score: 8
     multiday:
@@ -526,7 +531,7 @@ destinations:
     tropical: true
     work: 2
     tz_offset_vs_madrid_winter: 2.0
-    cost_per_day_eur_pp: 70
+    cost_per_day_eur_pp: 58
     activities: [shortboard, longboard, diving, lemurs, trekking_tsingy, kitesurf]
     activity_score: 8
     multiday:
