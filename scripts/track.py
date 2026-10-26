@@ -6,6 +6,8 @@ Wochen beobachten, was auf den relevanten Strecken wirklich zu holen ist.
 
     python3 scripts/track.py ingest data/prices/raw/scrape-2026-10-25.csv
     python3 scripts/track.py ingest-all          # alles aus data/prices/raw/
+    python3 scripts/track.py ingest-har ~/Downloads/www.google.com.har
+    python3 scripts/track.py ingest-capture data/prices/raw/scrape-….rpc.jsonl
     python3 scripts/track.py status
     python3 scripts/track.py best --top 30
     python3 scripts/track.py deals --drop 15
@@ -23,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from workation import history  # noqa: E402
+from workation.scrape import gf_rpc  # noqa: E402
 from workation.optimizer import Optimizer, TripConfig  # noqa: E402
 from workation.prices import PriceBook  # noqa: E402
 from workation.scenarios import SCENARIOS  # noqa: E402
@@ -40,14 +43,60 @@ def cmd_ingest(args) -> None:
     print(f"Gesamt: {total}")
 
 
+def _write_csv(rows: list[dict], out: str) -> None:
+    import csv
+
+    fields = list(rows[0]) if rows else []
+    with open(out, "w", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"{len(rows)} Zeilen -> {out}")
+
+
+def _ingest_exchanges(label: str, exchanges, args) -> int:
+    exchanges = list(exchanges)
+    rows = gf_rpc.rows_from_exchanges(exchanges)
+    blocked = sum(1 for ex in exchanges if gf_rpc.error_code(ex.response_text) is not None)
+    n = history.ingest_rows(rows, args.db)
+    kinds = {}
+    for row in rows:
+        kinds[row["source"]] = kinds.get(row["source"], 0) + 1
+    detail = ", ".join(f"{k}: {v}" for k, v in sorted(kinds.items())) or "keine Preise"
+    print(f"{label}: {len(exchanges)} Abfragen, {len(rows)} Preise ({detail}), {n} neu"
+          + (f", {blocked} von Google abgelehnt" if blocked else ""))
+    if getattr(args, "csv", None):
+        _write_csv(rows, args.csv)
+    return n
+
+
+def cmd_ingest_har(args) -> None:
+    """Preise aus einer HAR-Datei, die im eigenen Browser auf Google Flights entstand."""
+    total = 0
+    for path in args.paths:
+        total += _ingest_exchanges(path, gf_rpc.exchanges_from_har(Path(path)), args)
+    print(f"Gesamt: {total} neue Beobachtungen")
+
+
+def cmd_ingest_capture(args) -> None:
+    total = 0
+    for path in args.paths:
+        total += _ingest_exchanges(path, gf_rpc.exchanges_from_capture(Path(path)), args)
+    print(f"Gesamt: {total} neue Beobachtungen")
+
+
 def cmd_ingest_all(args) -> None:
-    files = sorted(RAW_DIR.glob("*.csv"))
+    files = sorted(RAW_DIR.glob("*.csv")) + sorted(RAW_DIR.glob("*.rpc.jsonl"))
     if not files:
-        print(f"Keine CSVs in {RAW_DIR}")
+        print(f"Keine Scrapes in {RAW_DIR}")
         return
     total = 0
     for path in files:
-        n = history.ingest_csv(path, args.db)
+        if path.name.endswith(".rpc.jsonl"):
+            rows = gf_rpc.rows_from_exchanges(gf_rpc.exchanges_from_capture(path))
+            n = history.ingest_rows(rows, args.db)
+        else:
+            n = history.ingest_csv(path, args.db)
         if n:
             print(f"{path.name}: {n} neue Beobachtungen")
         total += n
@@ -145,6 +194,16 @@ def main() -> None:
     i = sub.add_parser("ingest")
     i.add_argument("paths", nargs="+")
     i.set_defaults(func=cmd_ingest)
+
+    har = sub.add_parser("ingest-har", help="Preise aus einer Browser-HAR-Datei")
+    har.add_argument("paths", nargs="+")
+    har.add_argument("--csv", help="Zeilen zusaetzlich als CSV schreiben")
+    har.set_defaults(func=cmd_ingest_har)
+
+    cap = sub.add_parser("ingest-capture", help="Mitschnitt des Scrapers (.rpc.jsonl)")
+    cap.add_argument("paths", nargs="+")
+    cap.add_argument("--csv", help="Zeilen zusaetzlich als CSV schreiben")
+    cap.set_defaults(func=cmd_ingest_capture)
 
     sub.add_parser("ingest-all").set_defaults(func=cmd_ingest_all)
     sub.add_parser("status").set_defaults(func=cmd_status)

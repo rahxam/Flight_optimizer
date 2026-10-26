@@ -92,15 +92,25 @@ def ingest_csv(csv_path: Path, db: Path | None = None, scraped_at: str | None = 
     stamp = scraped_at or dt.datetime.fromtimestamp(
         csv_path.stat().st_mtime, dt.timezone.utc
     ).isoformat(timespec="seconds")
+    with open(csv_path, newline="", encoding="utf-8") as fh:
+        return ingest_rows(csv.DictReader(fh), db, stamp)
+
+
+def ingest_rows(rows, db: Path | None = None, scraped_at: str | None = None) -> int:
+    """Rows in the CSV schema (dicts) into the history. Re-ingesting is harmless."""
+    stamp = scraped_at or dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     inserted = 0
-    with connect(db) as conn, open(csv_path, newline="", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
+    with connect(db) as conn:
+        for row in rows:
+            row = {k: ("" if v is None else str(v)) for k, v in row.items()}
             if not (row.get("origin") and row.get("destination") and row.get("depart_date")):
                 continue
             try:
                 price = float(str(row["price_eur"]).replace(",", "."))
             except (KeyError, TypeError, ValueError):
                 continue
+            if price <= 0:
+                continue  # follow-up legs of a multi-city ticket carry no price of their own
             cur = conn.execute(
                 """INSERT OR IGNORE INTO observations
                    (scraped_at, origin, destination, depart_date, return_date, trip_type,

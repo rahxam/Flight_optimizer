@@ -12,6 +12,7 @@ set -uo pipefail
 : "${DEAL_DROP_PCT:=15}"         # ab welchem Einbruch gemeldet wird
 : "${JITTER_MINUTES:=20}"        # Zufallsversatz, damit die Laeufe nicht im Takt liegen
 : "${RUN_ONCE:=0}"               # 1 = nur ein Lauf, dann beenden
+: "${MATRIX_ARGS:=--from-scenarios --with-candidates --calendar}"
 
 QUERIES=/app/data/prices/_queries.json
 RAW_DIR=/app/data/prices/raw
@@ -19,26 +20,28 @@ mkdir -p "$RAW_DIR"
 
 log() { printf '[%s] %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*"; }
 
-if [ ! -f "$QUERIES" ]; then
-  log "Query-Matrix fehlt, erzeuge sie neu"
-  python3 /app/scripts/plan.py scrape-matrix --from-scenarios --with-candidates \
+# Matrices from before the calendar mode have no "calendar" field - rebuild those.
+if [ ! -f "$QUERIES" ] || ! grep -q '"calendar"' "$QUERIES"; then
+  log "Query-Matrix fehlt oder ist veraltet, erzeuge sie neu ($MATRIX_ARGS)"
+  # shellcheck disable=SC2086
+  python3 /app/scripts/plan.py scrape-matrix $MATRIX_ARGS \
     || { log "FEHLER beim Erzeugen der Matrix"; exit 1; }
 fi
 
 while true; do
   STAMP=$(date -u +%Y%m%dT%H%M%SZ)
-  OUT="$RAW_DIR/scrape-$STAMP.csv"
+  OUT="$RAW_DIR/scrape-$STAMP.rpc.jsonl"
 
   log "Scrape-Lauf startet: $QUERIES_PER_RUN Suchen, $DELAY_SECONDS s Pause"
   if node /app/scripts/scrape_google_flights.cjs "$QUERIES" "$OUT" \
        --shuffle --limit "$QUERIES_PER_RUN" --delay "$DELAY_SECONDS"; then
     log "Scrape fertig"
   else
-    log "WARNUNG: Scraper mit Fehler beendet (Captcha oder Netzproblem) - Teildaten werden trotzdem verwertet"
+    log "WARNUNG: Scraper mit Fehler beendet (abgelehnt, Captcha oder Netzproblem) - Teildaten werden trotzdem verwertet"
   fi
 
   if [ -s "$OUT" ]; then
-    python3 /app/scripts/track.py ingest "$OUT" || log "WARNUNG: Ingest fehlgeschlagen"
+    python3 /app/scripts/track.py ingest-capture "$OUT" || log "WARNUNG: Ingest fehlgeschlagen"
   else
     log "WARNUNG: keine Zeilen erfasst"
   fi

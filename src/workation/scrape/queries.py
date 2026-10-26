@@ -9,6 +9,12 @@ Zwei Phasen:
                         Optimierer aus Phase 1 als Favoriten ausspuckt.
                         Open-Jaw/Multi-City ist oft 10-20% guenstiger als zwei
                         Einzeltickets - das laesst sich nur direkt messen.
+
+Kalender-Modus (``calendar_queries``): statt jeden Tag einzeln zu suchen,
+oeffnet der Scraper pro Strecke die Preisgrafik - eine Seite liefert dann
+~60 Abflugtage. Dazu kommen Entdeckungssuchen ueber mehrere Abflug- und
+Zielorte auf einmal (``discovery_queries``), wie sie die Google-Flights-
+Oberflaeche selbst anbietet.
 """
 
 from __future__ import annotations
@@ -49,6 +55,7 @@ class Query:
     legs: list[tuple[str, str, str]]  # (origin, dest, ISO-Datum)
     adults: int = 2
     purpose: str = ""
+    calendar: bool = False  # scraper also opens the price graph (~60 departure days)
     url: str = field(default="")
     fallback_url: str = field(default="")
 
@@ -71,6 +78,7 @@ class Query:
             "legs": [list(leg) for leg in self.legs],
             "adults": self.adults,
             "purpose": self.purpose,
+            "calendar": self.calendar,
             "url": self.url,
             "fallback_url": self.fallback_url,
         }
@@ -274,6 +282,84 @@ def candidate_queries(itineraries: list[Itinerary], adults: int = 2) -> list[Que
     return queries
 
 
+# The price graph opened for departure day d spans roughly d-7 .. d+52
+# (seen in the UI in October 2026: 60 days).
+GRAPH_BEFORE_DAYS = 7
+GRAPH_AFTER_DAYS = 52
+
+
+def calendar_queries(queries: list[Query]) -> list[Query]:
+    """Collapse one-way day-by-day searches into price-graph searches.
+
+    Every distinct one-way route gets as few searches as needed for its dates
+    to fall inside one graph each. Return and multi-city searches stay as they
+    are - the graph of a return search is for one fixed trip length only.
+    """
+    by_route: dict[tuple[str, str], list[dt.date]] = {}
+    purposes: dict[tuple[str, str], str] = {}
+    rest: list[Query] = []
+    for q in queries:
+        if q.trip_type != "oneway":
+            rest.append(q)
+            continue
+        origin, destination, day = q.legs[0]
+        by_route.setdefault((origin, destination), []).append(dt.date.fromisoformat(day))
+        purposes.setdefault((origin, destination), q.purpose)
+
+    out: list[Query] = []
+    n = 0
+    for (origin, destination), days in by_route.items():
+        days = sorted(set(days))
+        while days:
+            anchor = days[0] + dt.timedelta(days=GRAPH_BEFORE_DAYS)
+            last = anchor + dt.timedelta(days=GRAPH_AFTER_DAYS)
+            n += 1
+            out.append(
+                Query(
+                    id=f"k{n:04d}",
+                    phase="calendar",
+                    trip_type="oneway",
+                    legs=[(origin, destination, anchor.isoformat())],
+                    adults=queries[0].adults if queries else 2,
+                    purpose=purposes[(origin, destination)],
+                    calendar=True,
+                ).build_urls()
+            )
+            days = [d for d in days if d > last]
+    return out + rest
+
+
+def discovery_queries(
+    origins: list[str],
+    destinations: list[str],
+    outbound: dt.date = dt.date(2027, 3, 20),
+    inbound: dt.date = dt.date(2027, 4, 28),
+    adults: int = 2,
+) -> list[Query]:
+    """Searches over several origins and destinations at once.
+
+    Google then picks the cheapest combination itself and the result list
+    shows which airports it used - the question "where is it cheapest to fly
+    in and out" in a handful of searches. The price graph adds the day.
+    """
+    src, dst = "+".join(origins), "+".join(destinations)
+    out = [
+        Query(id="d0001", phase="discovery", trip_type="oneway",
+              legs=[(src, dst, outbound.isoformat())], adults=adults,
+              purpose="Entdeckung Hinflug: alle Abflugorte -> alle Ziele", calendar=True),
+        Query(id="d0002", phase="discovery", trip_type="oneway",
+              legs=[(dst, src, inbound.isoformat())], adults=adults,
+              purpose="Entdeckung Rueckflug: alle Ziele -> alle Abflugorte", calendar=True),
+    ]
+    for n, gate in enumerate(destinations, start=3):
+        out.append(
+            Query(id=f"d{n:04d}", phase="discovery", trip_type="oneway",
+                  legs=[(src, gate, outbound.isoformat())], adults=adults,
+                  purpose=f"Entdeckung Hinflug: alle Abflugorte -> {gate}", calendar=True)
+        )
+    return [q.build_urls() for q in out]
+
+
 def write_matrix(queries: list[Query], json_path: Path, markdown_path: Path | None = None) -> None:
     json_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.write_text(
@@ -293,7 +379,7 @@ def write_matrix(queries: list[Query], json_path: Path, markdown_path: Path | No
         f"{len(queries) * 6 / 60:.0f} Minuten automatisiert.",
         "",
         "Automatisiert: `node scripts/scrape_google_flights.cjs data/prices/_queries.json "
-        "data/prices/scraped.csv`",
+        "data/prices/scraped.rpc.jsonl`",
         "",
         "Manuell: Link anklicken, guenstigsten Preis ablesen, Zeile in "
         "`data/prices/manual.csv` eintragen (Schema: `data/prices/_SCHEMA.csv`).",

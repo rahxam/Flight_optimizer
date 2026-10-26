@@ -99,10 +99,12 @@ docker compose up -d --build        # alle 12 h ein Scrape-Lauf, Historie in SQL
 docker compose logs -f flight-tracker
 ```
 
-Der Container fragt pro Lauf 120 zufällig gewählte Suchen aus der Matrix ab
-(~15 min), schreibt sie als CSV ins Volume, liest sie in eine SQLite-Historie
-ein und meldet Allzeittiefs und Preiseinbrüche ins Log. Die Matrix hat ~520
-Suchen und ist nach rund drei Tagen einmal komplett durch.
+Der Container arbeitet pro Lauf die Kalender-Matrix ab (gut 90 Suchen, siehe
+unten), schneidet die Antworten von Google Flights mit, liest sie in eine
+SQLite-Historie ein und meldet Allzeittiefs und Preiseinbrüche ins Log. Pro
+Suche öffnet er die Preisgrafik, eine Seite liefert damit ~60 Abflugtage plus
+die Angebotsliste. Lehnt Google mehrere Suchen hintereinander ab, bricht der
+Lauf ab und der nächste versucht es wieder.
 
 Auswerten:
 
@@ -132,24 +134,52 @@ Einstellbar in `docker-compose.yml`: `INTERVAL_HOURS`, `QUERIES_PER_RUN`,
 
 Das Projekt rechnet ohne echte Preise mit Schätzwerten aus `data/route_hints.yaml`
 und markiert jede Zahl entsprechend. Mit echten Preisen wird daraus eine belastbare
-Rechnung. Zwei Wege:
+Rechnung. Drei Wege:
 
 **A) Automatisiert scrapen** (braucht Node + Playwright, läuft lokal, nicht in einer
 Cloud-Session mit eingeschränktem Netz):
 
 ```bash
-# 1. Query-Matrix erzeugen (521 Suchen, genau die der Startszenarien)
-python3 scripts/plan.py scrape-matrix --from-scenarios --with-candidates
+# 1. Query-Matrix erzeugen. --calendar bündelt die Einzeltage jeder Strecke zu
+#    Preisgrafik-Suchen und ergänzt Entdeckungssuchen über alle Abflugorte und
+#    Ziele auf einmal ("MAD+BER+…" -> "CMB+KUL+…"): ~90 statt ~760 Suchen.
+python3 scripts/plan.py scrape-matrix --from-scenarios --with-candidates --calendar
 
 # 2. Erst prüfen, ob Google die URL-Kodierung noch versteht
 node scripts/scrape_google_flights.cjs --verify --headed
 
-# 3. Dann scrapen (inkrementell, Neustart überspringt Erledigtes)
-node scripts/scrape_google_flights.cjs data/prices/_queries.json data/prices/scraped.csv --delay 7
+# 3. Dann scrapen (inkrementell, --resume überspringt Erledigtes)
+node scripts/scrape_google_flights.cjs data/prices/_queries.json data/prices/scraped.rpc.jsonl --delay 7
+python3 scripts/track.py ingest-capture data/prices/scraped.rpc.jsonl
 
 # 4. Neu rechnen
 python3 scripts/plan.py report --profile surf
 ```
+
+Der Scraper liest keinen Seitentext, sondern die Antworten der internen
+Google-Flights-Schnittstelle (`GetShoppingResults`, `GetCalendarGraph`,
+`GetCalendarGrid`, `GetCalendarPicker`), ausgewertet in
+`src/workation/scrape/gf_rpc.py`. Nachbauen lassen sich diese Aufrufe nicht:
+jeder trägt ein BotGuard-Token, das an den Inhalt gebunden ist. Darum lädt
+Playwright die Seite und schneidet mit, was die Seite selbst abfragt. Google
+liefert Gesamtpreise für alle Reisenden; gespeichert wird der Preis pro Person.
+
+Ein Leg darf mehrere Orte haben: `MUC+FRA+TENERIFE` (IATA-Codes oder benannte
+Orte aus `PLACES` in `src/workation/scrape/urls.py`). Bei solchen Suchen steht
+in der Angebotsliste der Flughafen, den Google gewählt hat; die Kalenderpreise
+laufen unter dem zusammengesetzten Namen.
+
+**C) Aus dem eigenen Browser** – auf Google Flights suchen, Preisgrafik,
+Datumsraster und Datumswähler nach Belieben öffnen, dann in den Entwicklertools
+(Netzwerk) „Alle als HAR speichern“ und einlesen:
+
+```bash
+python3 scripts/track.py ingest-har ~/Downloads/www.google.com.har [--csv data/prices/har.csv]
+```
+
+Eingelesen werden nur die vier Preis-Aufrufe; die HAR-Datei selbst enthält
+Cookies und gehört nicht ins Repo. Mit `--csv` landen die Zeilen zusätzlich
+als CSV, die der Optimierer direkt liest (nötig für Multi-City-Tickets).
 
 **B) Manuell** – `docs/scrape_checklist.md` enthält alle Suchen als klickbare
 Google-Flights-Links. Preise ablesen und als CSV nach dem Schema in

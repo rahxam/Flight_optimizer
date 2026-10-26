@@ -199,19 +199,25 @@ def _scenario_table(cache: ScenarioCache, mode: str) -> str:
 
 
 def _recent_scrapes(limit: int = 8) -> str:
-    files = sorted(RAW_DIR.glob("scrape-*.csv"), reverse=True)[:limit]
+    files = sorted(
+        [*RAW_DIR.glob("scrape-*.csv"), *RAW_DIR.glob("scrape-*.rpc.jsonl")],
+        key=lambda f: f.name,
+        reverse=True,
+    )[:limit]
     if not files:
         return "<p class='muted'>Noch kein Scrape-Lauf.</p>"
     items = []
     for f in files:
         try:
-            lines = max(sum(1 for _ in f.open(encoding="utf-8")) - 1, 0)
+            lines = sum(1 for line in f.open(encoding="utf-8") if line.strip())
         except OSError:
             lines = 0
+        # CSV: one line per price (minus header); capture: one line per recorded call
+        count = f"{max(lines - 1, 0)} Preise" if f.suffix == ".csv" else f"{lines} Abfragen"
         when = dt.datetime.fromtimestamp(f.stat().st_mtime).strftime("%d.%m.%Y %H:%M")
-        items.append(f"<tr><td>{when}</td><td class='n'>{lines}</td></tr>")
+        items.append(f"<tr><td>{when}</td><td class='n'>{count}</td></tr>")
     return (
-        "<table><tr><th>Lauf beendet</th><th class='n'>Preise</th></tr>"
+        "<table><tr><th>Lauf beendet</th><th class='n'>Umfang</th></tr>"
         f"{''.join(items)}</table>"
     )
 

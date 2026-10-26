@@ -23,7 +23,9 @@ from workation.prices import PriceBook  # noqa: E402
 from workation.report import build_report  # noqa: E402
 from workation.scenarios import SCENARIOS  # noqa: E402
 from workation.scrape.queries import (  # noqa: E402
+    calendar_queries,
     candidate_queries,
+    discovery_queries,
     grid_queries,
     scenario_queries,
     write_matrix,
@@ -236,6 +238,12 @@ def cmd_scrape_matrix(args) -> None:
             for scenario in SCENARIOS.values():
                 opt = Optimizer(scenario.config(base), PriceBook())
                 queries += candidate_queries(opt.run(top_n=2), adults=args.travellers)
+        if args.calendar:
+            queries = discovery_queries(
+                origins=sorted({o for s in SCENARIOS.values() for o in s.allowed_origins}),
+                destinations=[g for g in args.gateways.split(",") if g],
+                adults=args.travellers,
+            ) + calendar_queries(queries)
         write_matrix(
             queries,
             ROOT / "data" / "prices" / "_queries.json",
@@ -347,6 +355,12 @@ def main() -> None:
         "--from-scenarios",
         action="store_true",
         help="nur die Suchen, die die Startszenarien brauchen (empfohlen)",
+    )
+    s.add_argument(
+        "--calendar",
+        action="store_true",
+        help="Einzeltage pro Strecke zu Preisgrafik-Suchen buendeln (~60 Tage je Seite) "
+        "und Entdeckungssuchen ueber alle Abflugorte und Ziele ergaenzen",
     )
     s.set_defaults(func=cmd_scrape_matrix)
 

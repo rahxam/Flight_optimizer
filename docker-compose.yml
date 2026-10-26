@@ -9,8 +9,8 @@ services:
       # Flugpreise bewegen sich nicht stuendlich, und wenig Last heisst
       # weniger Captchas.
       INTERVAL_HOURS: "12"
-      # Suchen pro Lauf. 120 x 7 s = ca. 15 Minuten. Die Matrix hat ~520
-      # Suchen, mit --shuffle ist sie nach wenigen Tagen mehrfach abgedeckt.
+      # Suchen pro Lauf. Die Kalender-Matrix hat gut 90 Suchen; mit 120 wird
+      # sie in jedem Lauf ganz abgearbeitet (~30-40 min mit Preisgrafik).
       QUERIES_PER_RUN: "120"
       DELAY_SECONDS: "7"
       DEAL_DROP_PCT: "15"
