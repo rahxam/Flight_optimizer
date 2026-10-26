@@ -392,3 +392,98 @@ Nebenbei dabei gefunden und behoben: `date_grid()` hat das Abflugfenster eines
 Szenarios ignoriert und konnte Starttermine vorschlagen, die das Szenario gar
 nicht zulässt (Szenario A erlaubt 05.–07.03., vorgeschlagen wurde bis zum
 21.03.).
+
+---
+
+# Nachtrag 4: Flugbudget, Reisestil, drei Ziele
+
+Stand 26.10.2026. Zwei meiner Annahmen waren falsch, eine davon hatte ich
+vorher schon einmal in die andere Richtung falsch.
+
+## Die Lebenshaltungskosten: ich habe überkorrigiert
+
+Erst hatte ich Tourist-Tagespreise angesetzt (50–55 €/Person/Tag), dann auf
+Monatsmieten korrigiert (27–38 €). Beides falsch. Du wechselst etwa alle drei
+Tage das Hotel, zahlst aber unter 50 € pro Nacht fürs Doppelzimmer — also
+Hotelpreise ohne Monatsrabatt, bei geteiltem Zimmer. Jetzt gerechnet als bis
+25 € pro Person Unterkunft, ~13 € Essen, ~6 € lokale Mobilität und Inlandshops,
+~6 € Ausflüge:
+
+| Ziel | €/Person/Tag |
+|---|---|
+| Nordvietnam, Kerala | 38 |
+| Sumbawa, Cherating, Nepal | 40 |
+| Lombok, Penang | 45–46 |
+| Sri Lanka Südküste | 48 |
+| Flores/Komodo | 50 |
+| Taiwan | 68 |
+| Oman | 88 |
+
+## Das Flugbudget ist nicht die bindende Grenze
+
+1.500 € pro Person nur für Flüge heißt: selbst eine Drei-Ziel-Route bleibt
+deutlich darunter. Die beste Variante unten kostet **1.281 € pro Person an
+Flügen** — also ist nicht der Preis die Grenze, sondern was sinnvoll ist. Damit
+ist der Billig-Modus aus Nachtrag 3 das falsche Werkzeug für deine Situation;
+der Standard ist wieder der wertbasierte Modus, mit dem Flugbudget als
+Nebenbedingung (`--flight-budget-pp 1500`).
+
+## Zwei Modellregeln waren schlicht falsch
+
+**Ein Land zweimal war verboten.** Meine Sequenzregel hat zwei Regionen
+desselben Landes hintereinander ausgeschlossen — also genau das Muster, das du
+beschreibst (Java→Bali, Java→Yogyakarta). Das ist weg. Stattdessen wird ein
+Umzug jetzt korrekt bepreist: ein echter Inlandsflug als Flug (Lombok→Labuan
+Bajo, ~55 €/Person), ein Umzug innerhalb desselben Flughafeneinzugsgebiets als
+Bodentransfer (Sri Lanka Süd→Ost, 35 €/Person, 7 h Auto). Vorher wäre der
+zweite Fall gratis gewesen, weil Abflug- und Zielflughafen identisch sind.
+
+**Ein Ziel für alles war die Empfehlung.** Mit „nicht sechs Wochen an einer
+Stelle" ist das vom Tisch. Die Vorgaben sind jetzt: mindestens zwei Ziele,
+höchstens 18 Tage pro Region.
+
+## Neues Ziel: Flores/Komodo
+
+Das lag auf der Hand und fehlte. LOP→LBJ ist ein Inlandsflug von einer Stunde
+für 40–70 €, mehrfach täglich. Aktivitätsmäßig ist es das stärkste Ziel der
+ganzen Liste (10/10): Liveaboard im Komodo-Nationalpark 3–4 Tage, Kelimutu-
+Dreifarbenseen, Wae-Rebo-Trekking, Tauchen ab Labuan Bajo. Surf nebensächlich,
+Arbeitsinfrastruktur nur mittel (Labuan Bajo ja, der Rest der Insel nicht) —
+also ein 8–14-Tage-Block, nicht mehr.
+
+## Die neue Empfehlung: drei Ziele, je zwei Wochen
+
+**Sri Lanka Südküste → Flores/Komodo → Lombok Süd, 18.03.–28.04., je 14 Tage.**
+
+| Posten | für zwei |
+|---|---|
+| Flüge (MAD→CMB, CMB→LBJ, LBJ→LOP, LOP→MAD) | 2.562 € |
+| davon pro Person | **1.281 €** (Budget: 1.500 €) |
+| vor Ort, 42 Tage | 3.994 € |
+| Visa | 160 € |
+| **Gesamt** | **6.716 €** = 3.358 € pro Person |
+
+Score 8,24/Tag, 28 Tage mit longboardtauglicher Welle. Die Logik: Sri Lankas
+Südküste im März auf dem Saisonhöhepunkt, Flores Anfang April mit dem Beginn
+der Trockenzeit und der besten Tauchsicht, Lombok Mitte bis Ende April, wenn
+der Passat offshore dreht.
+
+Die nächstbesten Varianten:
+
+| Route | Zeitraum | Flug/Person | Gesamt | Score/Tag |
+|---|---|---|---|---|
+| **SL Süd → Flores/Komodo → Lombok** | 18.03.–28.04. | 1.281 € | 6.716 € | 8,24 |
+| SL Süd → Nordvietnam → Lombok | 18.03.–28.04. | 1.391 € | 6.650 € | 8,07 |
+| SL Süd → SL Ost → Lombok | 12.03.–22.04. | 1.166 € | 6.262 € | 7,79 |
+| SL Süd → SL Ost → Lombok → Flores | 18.03.–28.04. | 1.271 € | 6.581 € | 7,83 |
+| SL Süd → Nepal → Lombok | 12.03.–22.04. | 1.381 € | 6.726 € | 7,85 |
+
+Die Vier-Ziel-Variante ist dabei: 14/14/7/7 Tage, 6.581 €, aber mit 7,83 der
+schwächste Score der Gruppe — vier Umzüge in sechs Wochen kosten mehr
+Reisetage, als sie an Abwechslung bringen. Wenn dir drei Ziele zu wenig sind,
+ist die Sri-Lanka-Variante (Süd- und Ostküste als zwei Blöcke mit 7 h Autofahrt
+dazwischen) der billigere Weg zu vier Standorten.
+
+Bei zwei Zielen führt **Flores/Komodo → Lombok** mit nur 811 € Flug pro Person
+und 5.102 € Gesamt — eine reine Indonesien-Reise mit einem Inlandsflug in der
+Mitte, also minimaler Flugaufwand.

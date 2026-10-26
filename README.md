@@ -17,26 +17,29 @@ meldet.
 
 ## Kernergebnis (Stand: nur Schätzpreise)
 
-**Lombok Süd allein, 3–5 Wochen, ab Madrid über Jakarta.** Ein einziger Standort
-ist zugleich die günstigste und die entspannteste Variante: ein Flugpaar statt
-zwei oder drei, keine Umzüge, und die Trockenzeit beginnt genau im Reisefenster.
+**Sri Lanka Südküste → Flores/Komodo → Lombok Süd, 18.03.–28.04.2027, je 14 Tage.**
 
-| Tage | pro Person (alles inkl.) | davon Flüge | Score/Tag | Surftage |
-|---|---|---|---|---|
-| 21 | 1.501 € | 736 € | 8,92 | 21 |
-| 28 | 1.746 € | 736 € | 8,95 | 28 |
-| 35 | 1.991 € | 736 € | 8,90 | 35 |
+| Posten | für zwei | pro Person |
+|---|---|---|
+| Flüge (MAD→CMB, CMB→LBJ, LBJ→LOP, LOP→MAD) | 2.562 € | **1.281 €** |
+| vor Ort, 42 Tage | 3.994 € | 1.997 € |
+| Visa | 160 € | 80 € |
+| **Gesamt** | **6.716 €** | 3.358 € |
 
-Dieselben 28 Tage mit zwei Zielen (Lombok + Nordvietnam) kosten 260 € mehr pro
-Person und lassen von 28 Surftagen nur 9 übrig. Ausflüge gibt es auf Lombok für
-mehrere Wochen: Rinjani-Trek, Liveaboard nach Komodo, Gerupuk-Bootstage, Gilis,
-Sumbawa per Fähre.
+Score 8,24/Tag, 28 Tage mit longboardtauglicher Welle, drei Regionen mit je
+mehreren Standorten. Das Flugbudget von 1.500 € pro Person ist damit nicht die
+bindende Grenze.
 
-Zwei saisonale Alternativen, falls es doch zwei Ziele sein sollen:
-**Sri Lanka Südküste → Lombok** (die Saisons laufen gegenläufig — Sri Lankas
-Südküste endet mit dem SW-Monsun genau dann, wenn Lomboks Trockenzeit beginnt)
-und **Nordvietnam → Lombok** (billiger, dichteste Ausflugsliste, aber kein Surf
-im Vietnam-Block).
+Die Saison-Logik: Sri Lankas Südküste ist im März auf dem Höhepunkt und endet
+Ende April mit dem SW-Monsun; Flores beginnt Anfang April seine Trockenzeit mit
+der besten Tauchsicht; Lombok dreht Mitte April auf offshore. Jedes Ziel wird in
+seinem eigenen Saisonfenster besucht.
+
+Alternativen: **Flores/Komodo → Lombok** (nur 811 € Flug pro Person, 5.102 €
+gesamt — eine Indonesien-Reise mit einem Inlandsflug in der Mitte),
+**SL Süd → Nordvietnam → Lombok** (dichteste Ausflugsliste, kein Surf im
+Vietnam-Block), **SL Süd → SL Ost → Lombok** (billigste Drei-Ziel-Variante,
+Umzug innerhalb Sri Lankas per Auto).
 
 Szenarienvergleich, Wochenplan und offene Punkte: [`docs/strategie.md`](docs/strategie.md).
 Routen im Detail: [`docs/routenplan.md`](docs/routenplan.md).
@@ -45,8 +48,12 @@ Begründung je Ziel mit Quellen: [`docs/seasonality.md`](docs/seasonality.md).
 ## Schnellstart
 
 ```bash
-# Günstigste noch sinnvolle Routen suchen, ohne Ziele vorzugeben
-python3 scripts/plan.py discover --min-score 6.5 --budget-pp 1800 --lengths 21,28,35,42
+# Routen suchen, ohne Ziele vorzugeben, mit Flugbudget als Grenze
+python3 scripts/plan.py optimize --min-dest 2 --max-dest 3 --max-block 14 \
+    --flight-budget-pp 1500 --vacation-days 18 --top 10
+
+# Reine Preissuche: günstigste noch sinnvolle Routen je Reiselänge
+python3 scripts/plan.py discover --min-score 6.5 --lengths 28,35,42
 
 # Startszenarien vergleichen (Montafon direkt / Cottbus / Teneriffa / Hamburg)
 python3 scripts/plan.py scenarios --profile active --max-dest 2

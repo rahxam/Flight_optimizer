@@ -22,13 +22,16 @@ from ..models import Itinerary
 from .urls import TRIP_MULTICITY, TRIP_ONEWAY, TRIP_ROUND, fallback_query_url, google_flights_url
 
 # Langstrecken-Gateways, die als Ein-/Ausstieg in Frage kommen.
-GATEWAYS = ["CMB", "KUL", "LOP", "HAN", "TPE", "KTM", "MCT", "TRV"]
+GATEWAYS = ["CMB", "KUL", "LOP", "CGK", "LBJ", "HAN", "TPE", "KTM", "MCT", "TRV"]
 
 # Verbindungen zwischen den Zielen, die der Optimierer braucht.
 INTRA_ROUTES = [
     ("CMB", "KUL"), ("CMB", "LOP"), ("KUL", "LOP"), ("CMB", "HAN"),
     ("LOP", "HAN"), ("CMB", "KTM"), ("KUL", "HAN"), ("HAN", "TPE"),
     ("CMB", "TRV"), ("MCT", "CMB"), ("KUL", "TPE"), ("LOP", "KUL"),
+    # Inlandsfluege Indonesien - gehoeren zum Reisestil (Java-Bali-Muster)
+    ("CGK", "LOP"), ("CGK", "LBJ"), ("LOP", "LBJ"), ("LBJ", "LOP"),
+    ("CMB", "CGK"), ("KUL", "CGK"),
 ]
 
 LEVELS = {
@@ -155,7 +158,7 @@ def scenario_queries(
     Weil die Abflugfenster der Szenarien klein sind (3-8 Tage), wird dort jeder
     Tag abgefragt - gerade bei Flugpreisen entscheidet oft ein einzelner Tag.
     """
-    gateways = gateways or ["CMB", "KUL", "LOP", "HAN", "MCT", "TPE", "KTM"]
+    gateways = gateways or ["CMB", "KUL", "LOP", "CGK", "LBJ", "HAN", "MCT"]
     queries: list[Query] = []
     n = 0
     seen: set[tuple] = set()

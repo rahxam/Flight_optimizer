@@ -231,8 +231,8 @@ def test_vacation_gain_is_highest_where_the_work_window_hurts():
 def test_vacation_days_are_spread_across_blocks():
     cfg = TripConfig(
         outbound_context="cottbus", allowed_origins=("BER",), eligible_tiers=("A",),
-        max_destinations=2, start_date_step=7, vacation_days=14,
-        max_vacation_share_per_block=0.5,
+        min_destinations=2, max_destinations=2, start_date_step=7, vacation_days=14,
+        max_vacation_share_per_block=0.5, max_block_days=22,
     )
     results = Optimizer(cfg).run(top_n=1)
     assert results
@@ -438,19 +438,58 @@ def test_optimizer_returns_feasible_itineraries(small_result):
         assert itin.total_cost_eur > 0
 
 
-def test_sri_lanka_then_lombok_is_the_leading_pair(small_result):
-    """Nach Erlebniswert (objective_mode='per_day') fuehrt Suedkueste -> Lombok.
+def test_lombok_always_comes_last(small_result):
+    """Die saisonale Kernaussage, unabhaengig davon, welches Ziel davor liegt.
 
-    Die saisonale Kernaussage: Sri Lankas Saison endet mit dem SW-Monsun genau
-    dann, wenn Lomboks Trockenzeit beginnt. Im Billig-Modus gewinnt dagegen
-    Nordvietnam, weil es schlicht guenstiger ist - das pruefen die Tests zum
-    Billig-Modus separat.
+    Lomboks Trockenzeit beginnt Mitte April und laeuft in den Mai hinein - es
+    ist das einzige Ziel der Liste, dessen Saisonhoch am Ende des Reisefensters
+    liegt. Jede gute Route muss es deshalb hinten einsortieren. Welches Ziel
+    davor kommt, haengt am Profil und an den Preisen (Flores/Komodo, Sri Lanka
+    oder Nordvietnam liegen dicht beieinander).
     """
     _, results = small_result
-    best = results[0]
-    ids = [b.destination.id for b in best.blocks]
-    assert ids == ["LK-SOUTH", "ID-LOMBOK"], ids
-    assert best.blocks[0].start < best.blocks[1].start
+    for itin in results:
+        ids = [b.destination.id for b in itin.blocks]
+        if "ID-LOMBOK" in ids:
+            assert ids[-1] == "ID-LOMBOK", ids
+        # Sri Lankas Suedkueste endet mit dem Monsun, darf also nie hinten stehen,
+        # wenn ein spaeter laufendes Ziel dabei ist.
+        if "LK-SOUTH" in ids and "ID-LOMBOK" in ids:
+            assert ids.index("LK-SOUTH") < ids.index("ID-LOMBOK"), ids
+
+
+def test_two_regions_in_one_country_are_allowed():
+    """Inlandsfluege wie Lombok -> Labuan Bajo gehoeren zum Reisestil.
+
+    Die alte Regel hat zwei Regionen desselben Landes hintereinander verboten
+    und damit genau dieses Muster ausgeschlossen.
+    """
+    cfg = TripConfig(
+        weights=Weights.active(), objective_mode="per_day", start_date_step=7,
+        min_destinations=2, max_destinations=2, allowed_origins=("MAD",),
+        eligible_tiers=("A",),
+    )
+    seqs = [[d.id for d in seq] for seq in Optimizer(cfg).sequences()]
+    assert ["ID-FLORES", "ID-LOMBOK"] in seqs
+    assert ["ID-LOMBOK", "ID-FLORES"] in seqs
+
+
+def test_same_airport_transfer_is_priced_as_ground_travel():
+    """Sri Lankas Sued- und Ostkueste haengen beide an CMB - das ist eine Autofahrt.
+
+    Ohne Sonderbehandlung waere der Umzug kostenlos, weil origin == destination.
+    """
+    opt = Optimizer(TripConfig(weights=Weights.active()))
+    south, east = opt.dests["LK-SOUTH"], opt.dests["LK-EAST"]
+    assert south.primary_airport == east.primary_airport == "CMB"
+    price, source = opt._transfer_price(south, east, dt.date(2027, 4, 20))
+    assert price > 0, "Bodentransfer darf nicht gratis sein"
+    assert source.startswith("ground")
+    # Ein echter Inlandsflug wird dagegen als Flug bepreist.
+    price, source = opt._transfer_price(
+        opt.dests["ID-LOMBOK"], opt.dests["ID-FLORES"], dt.date(2027, 4, 20)
+    )
+    assert not source.startswith("ground")
 
 
 def test_budget_constraint_is_enforced():
@@ -799,6 +838,8 @@ def test_vacation_priority_overrides_the_share_cap():
 def _cheap_base(**over):
     from workation.optimizer import cheapest_config
 
+    # max_block_days hochgesetzt, weil diese Tests auch Ein-Ziel-Routen pruefen.
+    over.setdefault("max_block_days", 45)
     base = TripConfig(
         weights=Weights.active(), eligible_tiers=("A",), min_destinations=1,
         max_destinations=2, start_date_step=7, vacation_days=18,
@@ -871,13 +912,19 @@ def test_measured_user_prices_replaced_the_estimates():
     assert cgk and cgk[0]["return_eur"] == 350.0
 
 
-def test_living_costs_reflect_monthly_rates_for_a_couple():
+def test_living_costs_match_the_actual_travel_style():
+    """Hotelwechsel alle 3 Tage, unter 50 EUR pro Nacht fuers Doppelzimmer.
+
+    Weder Tourist-Tagespreise (55+) noch Monatsmieten (unter 35) treffen das:
+    es sind Hotelpreise ohne Monatsrabatt, aber ein geteiltes Zimmer.
+    """
     dests, _ = load_destinations()
-    # Tagespreise fuer Touristen waeren 50-55; monatsweise fuer zwei Personen
-    # deutlich weniger.
-    assert dests["ID-LOMBOK"].cost_per_day_eur_pp <= 40
-    assert dests["VN-NORTH"].cost_per_day_eur_pp <= 30
-    assert dests["LK-SOUTH"].cost_per_day_eur_pp <= 40
+    for dest_id in ("ID-LOMBOK", "LK-SOUTH", "VN-NORTH"):
+        cost = dests[dest_id].cost_per_day_eur_pp
+        assert 35 <= cost <= 55, (dest_id, cost)
+    # Guenstige Laender bleiben guenstiger als teure.
+    assert dests["VN-NORTH"].cost_per_day_eur_pp < dests["LK-SOUTH"].cost_per_day_eur_pp
+    assert dests["LK-SOUTH"].cost_per_day_eur_pp < dests["OM-OMAN"].cost_per_day_eur_pp
 
 
 def test_birthday_no_longer_loads_every_scenario():
@@ -900,3 +947,66 @@ def test_date_grid_respects_a_scenario_latest_start():
     assert cfg.latest_start == dt.date(2027, 3, 7)
     assert max(cfg.date_grid()) <= dt.date(2027, 3, 7)
     assert min(cfg.date_grid()) == dt.date(2027, 3, 5)
+
+
+def test_flight_budget_is_separate_from_the_total_budget():
+    """Fluege sind ein Fixposten pro Ziel, Lebenshaltung skaliert mit der Dauer.
+
+    Bei 1500 EUR pro Person NUR fuer Fluege ist das Budget nicht die bindende
+    Grenze - auch Drei-Ziel-Routen passen hinein.
+    """
+    import dataclasses
+
+    base = TripConfig(
+        weights=Weights.active(), eligible_tiers=("A", "B"), min_destinations=2,
+        max_destinations=3, start_date_step=7, vacation_days=18,
+        outbound_context="tenerife", allowed_origins=("MAD",),
+    )
+    tight = dataclasses.replace(base, flight_budget_per_person_eur=600.0)
+    roomy = dataclasses.replace(base, flight_budget_per_person_eur=1500.0)
+    for itin in Optimizer(tight).run(top_n=5):
+        assert itin.flight_cost_eur / itin.travellers <= 600.0
+    results = Optimizer(roomy).run(top_n=10)
+    assert results
+    assert any(len(i.blocks) == 3 for i in results), "Drei Ziele muessten passen"
+    for itin in results:
+        assert itin.flight_cost_eur / itin.travellers <= 1500.0
+
+
+def test_flores_is_reachable_by_a_domestic_hop_from_lombok():
+    """Inlandsfluege sind Teil des Reisestils - Lombok -> Labuan Bajo ist einer."""
+    dests, _ = load_destinations()
+    flores = dests["ID-FLORES"]
+    assert flores.primary_airport == "LBJ"
+    assert flores.activity_score == 10
+    pb = PriceBook(quotes=[])
+    price, _ = pb.oneway("LOP", "LBJ", dt.date(2027, 4, 20))
+    assert price <= 80, price
+    # Trotzdem kein Ziel fuer mehrere Wochen - Arbeitsinfrastruktur nur mittel.
+    assert flores.work == 5
+
+
+def test_defaults_encode_the_no_boredom_rule():
+    """Sechs Wochen an einem Ort sind den Nutzern zu langweilig.
+
+    Zwei Vorgaben setzen das um: mindestens zwei Ziele, und maximal 18 Tage je
+    Region. Innerhalb einer Region wird ohnehin alle drei Tage der Standort
+    gewechselt.
+    """
+    cfg = TripConfig()
+    assert cfg.min_destinations >= 2
+    assert cfg.max_block_days <= 18
+    assert cfg.max_block_days < cfg.min_days, "sonst waere ein Ziel fuer alles moeglich"
+    for seq in Optimizer(cfg).sequences():
+        assert len(seq) >= 2
+
+
+def test_block_cap_forces_a_balanced_route():
+    cfg = TripConfig(
+        weights=Weights.active(), objective_mode="per_day", eligible_tiers=("A",),
+        min_destinations=2, max_destinations=3, min_block_days=8, max_block_days=14,
+        start_date_step=7, allowed_origins=("MAD",), vacation_days=18,
+    )
+    for itin in Optimizer(cfg).run(top_n=5):
+        for block in itin.blocks:
+            assert 8 <= block.days <= 14, (itin.label, block.days)

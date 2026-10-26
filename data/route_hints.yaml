@@ -81,6 +81,10 @@ intra_asia:
   - {from: KUL, to: LOP, oneway_eur: 120, carriers: [AK], duration_h: 3.5, note: "AirAsia direkt (saisonal); sonst via DPS/CGK"}
   - {from: CGK, to: LOP, oneway_eur: 55, carriers: [JT, QG, ID, GA], duration_h: 2.2, note: "Inlandsflug, mehrfach taeglich, sehr guenstig"}
   - {from: DPS, to: LOP, oneway_eur: 40, carriers: [JT, QG, ID], duration_h: 0.8, note: "Kurzhop; auch Schnellfaehre Padangbai-Lombok moeglich"}
+  - {from: LOP, to: LBJ, oneway_eur: 55, carriers: [JT, IW, QG], duration_h: 1.0, note: "Inlandsflug Lombok-Labuan Bajo, mehrfach taeglich"}
+  - {from: CGK, to: LBJ, oneway_eur: 75, carriers: [JT, IW, GA], duration_h: 2.8, stops: 1}
+  - {from: DPS, to: LBJ, oneway_eur: 45, carriers: [JT, IW, QG, GA], duration_h: 1.2}
+  - {from: LBJ, to: CGK, oneway_eur: 75, duration_h: 2.8, stops: 1}
   - {from: SUB, to: LOP, oneway_eur: 50, carriers: [JT, QG], duration_h: 1.5}
   - {from: CGK, to: PDG, oneway_eur: 45, carriers: [JT, QG, ID], duration_h: 1.8}
   - {from: CGK, to: KUL, oneway_eur: 70, carriers: [AK, MH, GA], duration_h: 2.0}

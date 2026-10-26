@@ -10,12 +10,14 @@ exakt: es gibt keine Aufteilung der Blocklaengen, die die Suche verpassen koennt
 
 Drei Zielfunktionen, ueber `objective_mode` waehlbar:
 
-  "cheapest" (Default) - die GUENSTIGSTE Route, die noch sinnvoll ist.
+  "per_day" (Default) - bester Kompromiss aus Kosten und Erlebniswert,
+      laengenneutral. Das ist der richtige Modus, solange das Flugbudget nicht
+      die bindende Grenze ist (bei 1500 EUR pro Person ist es das nicht).
+  "cheapest" - die GUENSTIGSTE Route, die noch sinnvoll ist.
       Sortiert nach Gesamtkosten pro Person; `min_score_per_day` ist die
       Sinnhaftigkeitsschwelle, unter der eine Route verworfen wird. Das
       entspricht der tatsaechlichen Entscheidungsregel: Ziele nach guenstigen
       Fluegen auswaehlen, nicht die Route vorher festlegen.
-  "per_day"  - bester Kompromiss aus Kosten und Erlebniswert, laengenneutral:
       objective_per_day = (Kosten - wert_pro_punkt * Score * Reisende) / Reisetage
       Die Normierung ist notwendig, weil eine 42-Tage-Route sonst allein durch
       ihre Laenge gewinnt.
@@ -67,11 +69,16 @@ class TripConfig:
     travellers: int = 2
     min_destinations: int = 2
     max_destinations: int = 3
-    min_block_days: int = 9
-    # Muss mindestens so gross sein wie min_days, damit auch EIN Ziel fuer die
-    # ganze Reise moeglich ist - das ist die guenstigste und entspannteste
-    # Variante (nur ein Flugpaar, keine Umzuege) und gehoert auf den Tisch.
-    max_block_days: int = 45
+    # Ein "Ziel" ist eine Region mit mehreren Standorten; innerhalb davon wird
+    # etwa alle 3 Tage das Hotel gewechselt. 7 Tage sind damit ein sinnvolles
+    # Minimum fuer einen Block - darunter lohnt die Anreise nicht.
+    min_block_days: int = 8
+    # Nutzervorgabe: sechs Wochen an einem Ort sind zu langweilig. 18 Tage ist
+    # die Obergrenze fuer eine Region - innerhalb davon wird ohnehin etwa alle
+    # drei Tage der Standort gewechselt.
+    # Fuer eine Ein-Ziel-Route (min_destinations=1) muss dieser Wert auf
+    # mindestens min_days gesetzt werden, sonst ist sie unerreichbar.
+    max_block_days: int = 18
 
     # Anreise und Rueckweg
     outbound_context: str = "tenerife"
@@ -105,12 +112,17 @@ class TripConfig:
     # laesst sich nicht mit drei Arbeitstagen dazwischen machen.
     vacation_priority: tuple[str, ...] = ()
 
-    objective_mode: str = "cheapest"  # cheapest | per_day | total
+    objective_mode: str = "per_day"  # per_day | cheapest | total
     value_per_score_point_eur: float = 22.0
     # Sinnhaftigkeitsschwelle fuer "cheapest": Routen unter diesem Tagesscore
     # werden verworfen, egal wie billig sie sind.
     min_score_per_day: float = 0.0
     budget_per_person_eur: float | None = None
+    # Eigenes Budget nur fuer Fluege (inkl. Zubringer und Vor-/Nachlauf), pro
+    # Person. Getrennt vom Gesamtbudget, weil Flug- und Vor-Ort-Kosten sich
+    # voellig unterschiedlich verhalten: Fluege sind ein Fixposten pro Ziel,
+    # die Lebenshaltung skaliert mit der Reisedauer.
+    flight_budget_per_person_eur: float | None = None
     travel_day_score_factor: float = 0.35
     # 3 h Eigenumstieg ohne Puffernacht: nur Umbuchungsrisiko, kein Hotel.
     self_connect_risk_eur: float = 50.0
@@ -204,6 +216,23 @@ class Optimizer:
             self._prices[key] = cached
         return cached
 
+    def _transfer_price(
+        self, prev: Destination, nxt: Destination, day: dt.date
+    ) -> tuple[float, str]:
+        """Umzug zwischen zwei Zielen - Flug, oder Boden wenn der Flughafen derselbe ist.
+
+        Sri Lankas Sued- und Ostkueste haengen beide an CMB; ein Flug dazwischen
+        gibt es nicht, es ist eine 7-stuendige Autofahrt. Ohne diesen Fall waere
+        der Umzug kostenlos und das Modell wuerde ihn verschenken.
+        """
+        if prev.primary_airport != nxt.primary_airport:
+            return self._leg_price(prev.primary_airport, nxt.primary_airport, day)
+        for entry in self.hints.get("ground", []):
+            if {entry["from"], entry["to"]} == {prev.id, nxt.id}:
+                return float(entry["cost_eur_pp"]), f"ground({entry['mode']})"
+        # Kein Eintrag: Richtwert fuer eine Inlandsstrecke per Bus/Auto.
+        return 40.0, "ground(estimate)"
+
     # ------------------------------------------------------------------ #
     # Anreise und Rueckweg
     # ------------------------------------------------------------------ #
@@ -294,9 +323,11 @@ class Optimizer:
         seqs: list[tuple[Destination, ...]] = []
         for n in range(self.cfg.min_destinations, self.cfg.max_destinations + 1):
             for combo in itertools.permutations(pool, n):
-                countries = [d.country for d in combo]
-                if any(countries[i] == countries[i + 1] for i in range(len(countries) - 1)):
-                    continue
+                # Zwei Regionen im selben Land hintereinander sind ausdruecklich
+                # erlaubt - Inlandsfluege wie Lombok -> Labuan Bajo gehoeren zum
+                # Reisestil. Nur dasselbe Ziel zweimal ist sinnlos, und das
+                # verhindert permutations schon.
+                pass
                 if self.cfg.require_tropical and not any(d.tropical for d in combo):
                     continue
                 if required and not required.issubset({d.id for d in combo}):
@@ -342,9 +373,7 @@ class Optimizer:
                         continue
                     arrival_cost, src = priced
                 else:
-                    ppp, src = self._leg_price(
-                        seq[i - 1].primary_airport, dest.primary_airport, arrive_day
-                    )
+                    ppp, src = self._transfer_price(seq[i - 1], dest, arrive_day)
                     if ppp == float("inf"):
                         continue
                     arrival_cost = ppp * cfg.travellers
@@ -402,6 +431,10 @@ class Optimizer:
             return None
         if cfg.budget_per_person_eur is not None and (
             itin.total_cost_eur / cfg.travellers > cfg.budget_per_person_eur
+        ):
+            return None
+        if cfg.flight_budget_per_person_eur is not None and (
+            itin.flight_cost_eur / cfg.travellers > cfg.flight_budget_per_person_eur
         ):
             return None
         if itin.good_surf_days < cfg.min_good_surf_days:

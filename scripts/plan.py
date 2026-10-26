@@ -57,6 +57,9 @@ def _config(args) -> TripConfig:
         vacation_priority=tuple(x for x in args.vacation_first.split(",") if x),
         start_date_step=args.step,
         budget_eur=args.budget,
+        flight_budget_per_person_eur=args.flight_budget_pp,
+        min_block_days=args.min_block,
+        max_block_days=args.max_block,
         min_good_surf_days=args.min_surf_days,
         include_destinations=tuple(x for x in args.include.split(",") if x),
         exclude_destinations=tuple(x for x in args.exclude.split(",") if x),
@@ -163,6 +166,9 @@ def cmd_discover(args) -> None:
         budget_per_person_eur=args.budget_pp,
     )
     lengths = [int(x) for x in args.lengths.split(",")]
+    if args.min_dest <= 1:
+        # Eine Ein-Ziel-Route braucht einen Block, der die ganze Reise abdeckt.
+        base = dataclasses.replace(base, max_block_days=max(base.max_block_days, max(lengths)))
     pb = PriceBook()
     print(
         f"Suche: {args.min_dest}-{args.max_dest} Ziele, Tiers {args.tiers}, "
@@ -266,11 +272,20 @@ def main() -> None:
     common.add_argument("--min-days", type=int, default=28)
     common.add_argument("--max-days", type=int, default=42)
     common.add_argument("--travellers", type=int, default=2)
-    common.add_argument("--min-dest", type=int, default=1)
+    common.add_argument("--min-dest", type=int, default=2)
     common.add_argument("--max-dest", type=int, default=3)
     common.add_argument("--origins", default="MAD,BCN")
     common.add_argument("--step", type=int, default=2, help="Raster der Startdaten in Tagen")
     common.add_argument("--budget", type=float, default=None, help="Harte Kostenobergrenze in EUR")
+    common.add_argument(
+        "--flight-budget-pp", type=float, default=None,
+        help="Obergrenze NUR fuer Fluege, pro Person",
+    )
+    common.add_argument("--min-block", type=int, default=8, help="kuerzester Aufenthalt je Ziel")
+    common.add_argument(
+        "--max-block", type=int, default=18,
+        help="laengster Aufenthalt je Ziel (fuer Ein-Ziel-Routen hochsetzen)",
+    )
     common.add_argument("--min-surf-days", type=int, default=0)
     common.add_argument("--include", default="", help="Ziel-IDs, die vorkommen muessen")
     common.add_argument("--exclude", default="", help="Ziel-IDs, die ausgeschlossen sind")
