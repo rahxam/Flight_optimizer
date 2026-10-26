@@ -117,6 +117,14 @@ python3 scripts/track.py plan --price-mode best  # Szenarien mit echten Preisen
 `--price-mode best` beantwortet „welche Route ist erreichbar, wenn ich geduldig
 beobachte", `--price-mode latest` beantwortet „soll ich jetzt buchen".
 
+Dieselben Auswertungen gibt es als Webseite (`scripts/web.py`, Dienst
+`flight-web`, lokal auf http://127.0.0.1:8080): Allzeittiefs, Preiseinbrüche,
+Szenarien mit aktuellen und mit Bestpreisen, günstigste Preise und die letzten
+Läufe. Die Szenarien rechnet die Seite im Hintergrund neu, sobald neue Preise
+in der Historie stehen (gut eine Minute). Eine eigene Anmeldung hat sie nicht;
+nach außen nur hinter einem Proxy mit Login stellen. Auf dem Unraid läuft sie
+als `flights.hartig.es` hinter Authentik.
+
 Einstellbar in `docker-compose.yml`: `INTERVAL_HOURS`, `QUERIES_PER_RUN`,
 `DELAY_SECONDS`, `DEAL_DROP_PCT`.
 

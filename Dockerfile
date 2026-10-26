@@ -19,6 +19,7 @@ RUN npm install --omit=dev --no-audit --no-fund
 COPY src/ ./src/
 COPY data/ ./data/
 COPY scripts/ ./scripts/
+COPY docs/ ./docs/
 COPY docker/entrypoint.sh ./docker/entrypoint.sh
 RUN chmod +x ./docker/entrypoint.sh
 

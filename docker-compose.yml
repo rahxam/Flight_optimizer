@@ -28,5 +28,27 @@ services:
         max-size: "10m"
         max-file: "5"
 
+  # Read-only web view of the history (scripts/web.py). Shares the image and the
+  # volume with the tracker. No login of its own: expose it only behind a proxy
+  # with authentication, or keep the port on localhost as here.
+  flight-web:
+    image: workation-flight-tracker:latest
+    container_name: flight-web
+    restart: unless-stopped
+    depends_on:
+      - flight-tracker
+    entrypoint: ["python3", "/app/scripts/web.py"]
+    environment:
+      TZ: "Atlantic/Canary"
+    volumes:
+      - flight-prices:/app/data/prices
+    ports:
+      - "127.0.0.1:8080:8080"
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz')"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+
 volumes:
   flight-prices:
