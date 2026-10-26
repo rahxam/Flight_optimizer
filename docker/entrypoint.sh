@@ -33,8 +33,17 @@ while true; do
   OUT="$RAW_DIR/scrape-$STAMP.rpc.jsonl"
 
   log "Scrape-Lauf startet: $QUERIES_PER_RUN Suchen, $DELAY_SECONDS s Pause"
-  if node /app/scripts/scrape_google_flights.cjs "$QUERIES" "$OUT" \
-       --shuffle --limit "$QUERIES_PER_RUN" --delay "$DELAY_SECONDS"; then
+  node /app/scripts/scrape_google_flights.cjs "$QUERIES" "$OUT" \
+       --shuffle --limit "$QUERIES_PER_RUN" --delay "$DELAY_SECONDS" &
+  SCRAPER=$!
+  # A run takes ~40 min; read in what is there every few minutes so the web
+  # view fills up during the run. Ingesting the same file again is harmless.
+  while kill -0 "$SCRAPER" 2>/dev/null; do
+    sleep "${INGEST_EVERY_SECONDS:-300}" &
+    wait $! 2>/dev/null
+    [ -s "$OUT" ] && python3 /app/scripts/track.py ingest-capture "$OUT" >/dev/null 2>&1
+  done
+  if wait "$SCRAPER"; then
     log "Scrape fertig"
   else
     log "WARNUNG: Scraper mit Fehler beendet (abgelehnt, Captcha oder Netzproblem) - Teildaten werden trotzdem verwertet"
